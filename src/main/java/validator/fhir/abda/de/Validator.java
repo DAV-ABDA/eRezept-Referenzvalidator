@@ -24,15 +24,20 @@ public class Validator {
     private FhirValidator validator;
 
     public Validator() {
+        this(FhirContext.forR4());
+    }
+
+    public Validator(FhirContext ctx) {
         try {
-            this.validator = getValidatorInstance();
+            this.validator = getValidatorInstance(ctx);
         } catch (Exception e) {
             logger.error("Could not instantiate validator!");
         }
     }
 
-    private static FhirValidator getValidatorInstance() throws Exception {
-        FhirContext ctx = FhirContext.forR4();
+//    private void init(ctx);
+
+    private static FhirValidator getValidatorInstance(FhirContext ctx) throws Exception {
         NpmPackageValidationSupport npmPackageSupport = new NpmPackageValidationSupport(ctx);
         try {
             npmPackageSupport.loadPackageFromClasspath(DE_BASE_PACKAGE);

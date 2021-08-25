@@ -1,13 +1,12 @@
-package validator.fhir.abda.de;
+package de.abda.fhir.validator.cli;
 
 import ca.uhn.fhir.validation.ResultSeverityEnum;
 import ca.uhn.fhir.validation.SingleValidationMessage;
+import de.abda.fhir.validator.core.Validator;
+import de.abda.fhir.validator.util.FileHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -23,7 +22,7 @@ public class ValidatorCLI {
             return;
         }
 
-        String validatorInput = InputHelper.loadValidatorInput(args[0]);
+        String validatorInput = FileHelper.loadValidatorInput(args[0]);
 
         logger.debug(validatorInput);
 

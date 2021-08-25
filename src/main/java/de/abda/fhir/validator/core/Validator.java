@@ -9,6 +9,7 @@ import ca.uhn.fhir.validation.ValidationResult;
 import de.abda.fhir.validator.cli.ValidatorCLI;
 import org.hl7.fhir.common.hapi.validation.support.*;
 import org.hl7.fhir.common.hapi.validation.validator.FhirInstanceValidator;
+import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -71,6 +72,17 @@ public class Validator {
     }
 
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validate(String input) {
+        ValidationResult result = validator.validateWithResult(input);
+
+        // The result object now contains the validation results
+        for (SingleValidationMessage next : result.getMessages()) {
+            logger.info("Validator message: " + next.getSeverity() + " " + next.getLocationString() + " " + next.getMessage());
+        }
+        Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = result.getMessages().stream().collect(Collectors.groupingBy(SingleValidationMessage::getSeverity, Collectors.toList()));
+        return errors;
+    }
+
+    public Map<ResultSeverityEnum, List<SingleValidationMessage>> validate(IBaseResource input) {
         ValidationResult result = validator.validateWithResult(input);
 
         // The result object now contains the validation results

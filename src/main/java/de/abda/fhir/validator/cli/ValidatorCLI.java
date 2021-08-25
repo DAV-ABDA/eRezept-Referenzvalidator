@@ -1,5 +1,6 @@
 package de.abda.fhir.validator.cli;
 
+import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.validation.ResultSeverityEnum;
 import ca.uhn.fhir.validation.SingleValidationMessage;
 import de.abda.fhir.validator.core.Validator;
@@ -22,11 +23,13 @@ public class ValidatorCLI {
             return;
         }
 
-        String validatorInput = FileHelper.loadValidatorInput(args[0]);
+        FhirContext ctx = FhirContext.forR4();
 
+        String validatorInput = FileHelper.loadValidatorInputAsString(args[0]);
         logger.debug(validatorInput);
+//        IBaseResource validatorInput = FileHelper.loadValidatorInputAsResource(args[0],ctx);
 
-        Validator validator = new Validator();
+        Validator validator = new Validator(ctx);
 
         Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validate(validatorInput);
         String mapAsString = errors.keySet().stream()

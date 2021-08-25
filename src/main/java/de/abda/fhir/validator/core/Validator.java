@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class Validator {
 
     static final String DE_BASE_PACKAGE = "classpath:package/de.basisprofil.r4-0.9.13.tgz";
-    static final String DAV_ERP_PR_ABDABEDATENBUNDLE = "classpath:package/de.abda.erezeptabgabedaten-1.0.3.tgz";
+    static final String EREZEPTABGABEDATEN_PACKAGE = "classpath:package/de.abda.erezeptabgabedaten-1.0.3.tgz";
 
     static Logger logger = LoggerFactory.getLogger(ValidatorCLI.class);
     private FhirValidator validator;
@@ -42,7 +42,7 @@ public class Validator {
         NpmPackageValidationSupport npmPackageSupport = new NpmPackageValidationSupport(ctx);
         try {
             npmPackageSupport.loadPackageFromClasspath(DE_BASE_PACKAGE);
-            npmPackageSupport.loadPackageFromClasspath(DAV_ERP_PR_ABDABEDATENBUNDLE);
+            npmPackageSupport.loadPackageFromClasspath(EREZEPTABGABEDATEN_PACKAGE);
         } catch (Exception e) {
             logger.error(e.getMessage());
             throw new Exception();

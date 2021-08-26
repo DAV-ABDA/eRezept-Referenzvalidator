@@ -1,4 +1,4 @@
-package de.abda.fhir.validator.util;
+package de.abda.fhir.validator.core.util;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.StrictErrorHandler;

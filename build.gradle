@@ -1,0 +1,57 @@
+
+subprojects {
+    version = "0.1.0-SNAPSHOT"
+    group = "de.abda.fhir"
+    apply{
+        plugin "java"
+        plugin "maven-publish"
+    }
+    repositories {
+        mavenLocal()
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+
+        maven {
+            url "https://repo.maven.apache.org/maven2/"
+        }
+    }
+    String hapiFhirVersion = "5.6.0-PRE2-SNAPSHOT"
+    dependencies{
+        implementation("org.apache.logging.log4j:log4j-api:2.14.1")
+        implementation("org.apache.logging.log4j:log4j-core:2.14.1")
+        implementation("org.slf4j:slf4j-log4j12:1.7.31")
+        implementation("ca.uhn.hapi.fhir:hapi-fhir-validation:$hapiFhirVersion")
+        implementation("ca.uhn.hapi.fhir:hapi-fhir-structures-r4:$hapiFhirVersion")
+        implementation("ca.uhn.hapi.fhir:hapi-fhir-validation-resources-r4:$hapiFhirVersion")
+        testImplementation("org.junit.jupiter:junit-jupiter:5.7.2")
+    }
+    java{
+        sourceCompatibility = JavaVersion.VERSION_11
+    }
+    test {
+        useJUnitPlatform()
+    }
+    publishing {
+        publications {
+            library(MavenPublication) {
+                from components.java
+            }
+        }
+        //TODO: Upload repository has to be specified
+    }
+}
+project(":core"){
+    dependencies{
+        testRuntimeOnly(project(":packages"))
+    }
+}
+project(":cli"){
+    dependencies {
+        implementation(project(":core"))
+        runtimeOnly(project(":packages"))
+        testRuntimeOnly(project(":packages"))
+    }
+}
+
+

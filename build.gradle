@@ -16,7 +16,7 @@ subprojects {
             url "https://repo.maven.apache.org/maven2/"
         }
     }
-    String hapiFhirVersion = "5.6.0-PRE2-SNAPSHOT"
+    String hapiFhirVersion = "5.6.0-PRE3-SNAPSHOT"
     dependencies{
         implementation("org.apache.logging.log4j:log4j-api:2.14.1")
         implementation("org.apache.logging.log4j:log4j-core:2.14.1")

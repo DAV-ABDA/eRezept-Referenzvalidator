@@ -55,12 +55,12 @@ public class Validator {
 
             // Create a support chain including the NPM Package Support
             ValidationSupportChain validationSupportChain = new ValidationSupportChain(
-                    new IgnoreMissingPznValueSetValidationSupport(ctx),
                     npmPackageSupport,
                     new DefaultProfileValidationSupport(ctx),
                     new SnapshotGeneratingValidationSupport(ctx),
                     new CommonCodeSystemsTerminologyService(ctx),
-                    new InMemoryTerminologyServerValidationSupport(ctx)
+                    new InMemoryTerminologyServerValidationSupport(ctx),
+                    new IgnoreMissingPznValueSetValidationSupport(ctx)
             );
             //        CachingValidationSupport validationSupport = new CachingValidationSupport(validationSupportChain);
 

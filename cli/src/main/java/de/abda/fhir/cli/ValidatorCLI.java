@@ -8,6 +8,7 @@ import de.abda.fhir.validator.core.util.FileHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -35,7 +36,7 @@ public class ValidatorCLI {
             String mapAsString = errors.keySet().stream()
                     .map(key -> key + ": " + errors.get(key).size())
                     .collect(Collectors.joining(","));
-            Boolean validatorInputIsValid = (errors.get(ResultSeverityEnum.ERROR).size() == 0 && errors.get(ResultSeverityEnum.FATAL).size() == 0) ? true : false;
+            Boolean validatorInputIsValid = (errors.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()).size() == 0 && errors.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()).size() == 0) ? true : false;
             logger.info("Validation result: " + validatorInputIsValid + " -- Error summary: " + mapAsString);
         } catch (Exception e){
             logger.error("Exception occured", e);

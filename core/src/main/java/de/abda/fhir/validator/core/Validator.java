@@ -7,16 +7,17 @@ import ca.uhn.fhir.validation.ResultSeverityEnum;
 import ca.uhn.fhir.validation.SingleValidationMessage;
 import ca.uhn.fhir.validation.ValidationResult;
 import de.abda.fhir.validator.core.exception.ValidatorInitializationException;
-import java.io.InputStream;
-import java.util.Properties;
+import de.abda.fhir.validator.core.support.IgnoreMissingPznValueSetValidationSupport;
 import org.hl7.fhir.common.hapi.validation.support.*;
 import org.hl7.fhir.common.hapi.validation.validator.FhirInstanceValidator;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.stream.Collectors;
 
 public class Validator {
@@ -53,16 +54,13 @@ public class Validator {
             }
 
             // Create a support chain including the NPM Package Support
-            UnknownCodeSystemWarningValidationSupport unknownCodeSystemWarningValidationSupport = new UnknownCodeSystemWarningValidationSupport(
-                ctx);
-            unknownCodeSystemWarningValidationSupport.setAllowNonExistentCodeSystem(true);
             ValidationSupportChain validationSupportChain = new ValidationSupportChain(
-                npmPackageSupport,
-                new DefaultProfileValidationSupport(ctx),
-                new CommonCodeSystemsTerminologyService(ctx),
-                new InMemoryTerminologyServerValidationSupport(ctx),
-                new SnapshotGeneratingValidationSupport(ctx),
-                unknownCodeSystemWarningValidationSupport
+                    new IgnoreMissingPznValueSetValidationSupport(ctx),
+                    npmPackageSupport,
+                    new DefaultProfileValidationSupport(ctx),
+                    new SnapshotGeneratingValidationSupport(ctx),
+                    new CommonCodeSystemsTerminologyService(ctx),
+                    new InMemoryTerminologyServerValidationSupport(ctx)
             );
             //        CachingValidationSupport validationSupport = new CachingValidationSupport(validationSupportChain);
 

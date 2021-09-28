@@ -8,7 +8,12 @@ import ca.uhn.fhir.validation.SingleValidationMessage;
 import ca.uhn.fhir.validation.ValidationResult;
 import de.abda.fhir.validator.core.exception.ValidatorInitializationException;
 import de.abda.fhir.validator.core.support.IgnoreMissingPznValueSetValidationSupport;
-import org.hl7.fhir.common.hapi.validation.support.*;
+import de.abda.fhir.validator.core.support.VersionIgnoringSnapshotGeneratingValidationSupport;
+import de.abda.fhir.validator.core.support.VersionRemovingNpmPackageValidationSupport;
+import org.hl7.fhir.common.hapi.validation.support.CommonCodeSystemsTerminologyService;
+import org.hl7.fhir.common.hapi.validation.support.InMemoryTerminologyServerValidationSupport;
+import org.hl7.fhir.common.hapi.validation.support.SnapshotGeneratingValidationSupport;
+import org.hl7.fhir.common.hapi.validation.support.ValidationSupportChain;
 import org.hl7.fhir.common.hapi.validation.validator.FhirInstanceValidator;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.slf4j.Logger;
@@ -37,7 +42,7 @@ public class Validator {
 //    private void init(ctx);
 
     private static FhirValidator getValidatorInstance(FhirContext ctx)  {
-        NpmPackageValidationSupport npmPackageSupport = new NpmPackageValidationSupport(ctx);
+        VersionRemovingNpmPackageValidationSupport npmPackageSupport = new VersionRemovingNpmPackageValidationSupport(ctx);
         try {
             //loading packages
             Properties packagesProps = new Properties();
@@ -58,6 +63,7 @@ public class Validator {
                     npmPackageSupport,
                     new DefaultProfileValidationSupport(ctx),
                     new SnapshotGeneratingValidationSupport(ctx),
+                    new VersionIgnoringSnapshotGeneratingValidationSupport(ctx),
                     new CommonCodeSystemsTerminologyService(ctx),
                     new InMemoryTerminologyServerValidationSupport(ctx),
                     new IgnoreMissingPznValueSetValidationSupport(ctx)

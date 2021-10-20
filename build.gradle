@@ -1,4 +1,7 @@
-
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.0' apply false
+    id "net.nemerosa.versioning" version "2.15.0"
+}
 subprojects {
     version = "0.1.0-SNAPSHOT"
     group = "de.abda.fhir"
@@ -43,13 +46,6 @@ subprojects {
 }
 project(":core"){
     dependencies{
-        testRuntimeOnly(project(":packages"))
-    }
-}
-project(":cli"){
-    dependencies {
-        implementation(project(":core"))
-        runtimeOnly(project(":packages"))
         testRuntimeOnly(project(":packages"))
     }
 }

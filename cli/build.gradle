@@ -1,0 +1,13 @@
+plugins {
+    id 'com.github.johnrengelman.shadow'
+}
+dependencies {
+    implementation(project(":core"))
+    runtimeOnly(project(":packages"))
+    testRuntimeOnly(project(":packages"))
+}
+jar {
+    manifest {
+        attributes["Main-Class"] = "de.abda.fhir.cli.ValidatorCLI"
+    }
+}

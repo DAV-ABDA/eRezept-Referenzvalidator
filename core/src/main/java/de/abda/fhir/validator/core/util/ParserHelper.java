@@ -17,6 +17,10 @@ public class ParserHelper {
     }
 
     public IBaseResource parseString(String xmlInput) {
+        return ParserHelper.parseString(xmlInput, this.ctx);
+    }
+
+    static public IBaseResource parseString(String xmlInput, FhirContext ctx) {
         IParser xmlParser = ctx.newXmlParser();
         IBaseResource resource = xmlParser.parseResource(xmlInput);
         return resource;

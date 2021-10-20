@@ -1,10 +1,14 @@
 plugins {
     id 'com.github.johnrengelman.shadow'
+    id "nebula.release"
 }
 dependencies {
     implementation(project(":core"))
     runtimeOnly(project(":packages"))
     testRuntimeOnly(project(":packages"))
+}
+nebulaRelease {
+    releaseBranchPatterns = ['release_with_fatjar']
 }
 jar {
     manifest {

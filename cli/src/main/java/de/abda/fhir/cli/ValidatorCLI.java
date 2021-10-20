@@ -6,6 +6,8 @@ import ca.uhn.fhir.validation.SingleValidationMessage;
 import de.abda.fhir.validator.core.Validator;
 import de.abda.fhir.validator.core.util.FileHelper;
 import de.abda.fhir.validator.core.util.ParserHelper;
+import de.abda.fhir.validator.core.util.Profile;
+import de.abda.fhir.validator.core.util.ProfileHelper;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,11 +33,13 @@ public class ValidatorCLI {
         try {
             String validatorInput = FileHelper.loadValidatorInputAsString(args[0]);
             logger.debug(validatorInput);
-//          IBaseResource validatorInput = FileHelper.loadValidatorInputAsResource(args[0],ctx);
             Validator validator = new Validator(ctx);
 
-            ParserHelper parserHelper = new ParserHelper(ctx);
-            IBaseResource resource = parserHelper.parseString(validatorInput);
+            if (false) { //TODO future code for version depended package loading
+                String validatorInputWithVersion = FileHelper.loadValidatorInputAsString(args[0], false);
+                IBaseResource resource = ParserHelper.parseString(validatorInputWithVersion, ctx);
+                Profile profile = ProfileHelper.getProfile(resource);
+            }
 
             Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validate(validatorInput);
             String mapAsString = errors.keySet().stream()

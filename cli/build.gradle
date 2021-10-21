@@ -1,17 +1,20 @@
 plugins {
     id 'com.github.johnrengelman.shadow'
-    id "nebula.release"
 }
 dependencies {
     implementation(project(":core"))
     runtimeOnly(project(":packages"))
     testRuntimeOnly(project(":packages"))
 }
-nebulaRelease {
-    releaseBranchPatterns = ['release_with_fatjar']
-}
 jar {
     manifest {
         attributes["Main-Class"] = "de.abda.fhir.cli.ValidatorCLI"
     }
 }
+shadowJar{
+    archiveBaseName.set('reference-validator-cli')
+    archiveClassifier.set('')
+}
+
+tasks.publish.dependsOn("shadowJar")
+tasks.publishToMavenLocal.dependsOn("shadowJar")

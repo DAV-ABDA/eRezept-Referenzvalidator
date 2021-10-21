@@ -12,3 +12,5 @@ Es gibt drei Submodule:
 Die drei Module werden in ein maven Repository hochgeladen:
 * `gradlew publishToMavenLocal` baut eine rein lokale Release, die sich im .m2 Ordner im Home Verzeichnis des Users
 * `gradlew publish` baut eine offizielle Release und lädt diese ins öffentliche Repository hoch
+
+Soll nur das cli

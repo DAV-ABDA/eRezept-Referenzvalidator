@@ -1,10 +1,9 @@
 plugins {
     id 'com.github.johnrengelman.shadow' version '7.1.0' apply false
-    id "nebula.release" version "16.0.0"
 }
 
 subprojects {
-//    version = "0.1.0-SNAPSHOT"
+    version = "0.1.0-SNAPSHOT"
     group = "de.abda.fhir"
     apply{
         plugin "java"

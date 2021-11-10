@@ -1,0 +1,31 @@
+---
+fhirPackages:
+  de.abda.erezeptabgabedaten:
+    packageName: "de.abda.erezeptabgabedaten"
+    versions:
+      1.0.3:
+        version: "1.0.3"
+        filename: "de.abda.erezeptabgabedaten-1.0.3.tgz"
+        dependencies:
+          - packageName: "de.basisprofil.r4"
+            packageVersion: "0.9.13"
+  de.basisprofil.r4:
+    packageName: "de.basisprofil.r4"
+    versions:
+      0.9.13:
+        version: "0.9.13"
+        filename: "de.basisprofil.r4-0.9.13.tgz"
+
+supportedProfiles:
+  "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle":
+    profileName: "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle"
+    versions:
+      1.0.3:
+        requiredPackage:
+          packageName: "de.abda.erezeptabgabedaten"
+          packageVersion: "1.0.3"
+      1.1.0:
+        requiredPackage:
+          packageName: "de.abda.erezeptabgabedaten"
+          packageVersion: "1.1.0"
+

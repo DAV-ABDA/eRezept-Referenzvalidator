@@ -1,5 +1,135 @@
 ---
 fhirPackages:
+
+  kbv.ita.erp:
+    packageName: "kbv.ita.erp"
+    versions:
+      1.0.1:
+        version: "1.0.1"
+        filename: "kbv.ita.erp-1.0.1.tgz"
+        dependencies:
+          - packageName: "dav.kbv.sfhir.cs.vs"
+            packageVersion: "1.0.2"
+          - packageName: "kbv.ita.for"
+            packageVersion: "1.0.3"
+          - packageName: "kbv.basis"
+            packageVersion: "1.1.3"
+          - packageName: "de.basisprofil.r4"
+            packageVersion: "0.9.13"
+      1.0.2:
+        version: "1.0.2"
+        filename: "kbv.ita.erp-1.0.2.tgz"
+        dependencies:
+          - packageName: "dav.kbv.sfhir.cs.vs"
+            packageVersion: "1.0.2"
+          - packageName: "kbv.ita.for"
+            packageVersion: "1.0.3"
+          - packageName: "kbv.basis"
+            packageVersion: "1.1.3"
+          - packageName: "de.basisprofil.r4"
+            packageVersion: "0.9.13"
+
+  kbv.ita.for:
+    packageName: "kbv.ita.for"
+    versions:
+      1.0.3:
+        version: "1.0.3"
+        filename: "kbv.ita.for-1.0.3.tgz"
+        dependencies:
+          - packageName: "kbv.basis"
+            packageVersion: "1.1.3"
+          - packageName: "de.basisprofil.r4"
+            packageVersion: "0.9.13"
+
+  kbv.basis:
+    packageName: "kbv.basis"
+    versions:
+      1.1.3:
+        version: "1.1.3"
+        filename: "kbv.basis-1.1.3.tgz"
+        dependencies:
+          - packageName: "de.basisprofil.r4"
+            packageVersion: "0.9.13"
+
+  dav.kbv.sfhir.cs.vs:
+    packageName: "dav.kbv.sfhir.cs.vs"
+    versions:
+      1.0.2:
+        version: "1.0.2"
+        filename: "dav.kbv.sfhir.cs.vs-1.0.2-json.tgz"
+
+  de.gematik.erezept-workflow.r4:
+    packageName: "de.gematik.erezept-workflow.r4"
+    versions:
+      1.0.3-1:
+        version: "1.0.3-1"
+        filename: "de.gematik.erezept-workflow.r4-1.0.3-1.tgz"
+        dependencies:
+          - packageName: "dav.kbv.sfhir.cs.vs"
+            packageVersion: "1.0.2"
+          - packageName: "kbv.ita.erp"
+            packageVersion: "1.0.1"
+          - packageName: "kbv.ita.for"
+            packageVersion: "1.0.3"
+          - packageName: "kbv.basis"
+            packageVersion: "1.1.3"
+          - packageName: "de.basisprofil.r4"
+            packageVersion: "0.9.13"
+      1.1.1:
+        version: "1.1.1"
+        filename: "de.gematik.erezept-workflow.r4-1.1.1.tgz"
+        dependencies:
+          - packageName: "dav.kbv.sfhir.cs.vs"
+            packageVersion: "1.0.2"
+          - packageName: "kbv.ita.erp"
+            packageVersion: "1.0.2"
+          - packageName: "de.basisprofil.r4"
+            packageVersion: "0.9.13"
+
+  de.gkvsv.erezeptabrechnungsdaten:
+    packageName: "de.gkvsv.erezeptabrechnungsdaten"
+    versions:
+#      1.0.4:
+#        version: "1.0.4"
+#        filename: "de.gkvsv.erezeptabrechnungsdaten-1.0.4.tgz"
+#        dependencies:
+#          - packageName: "de.basisprofil.r4"
+#            packageVersion: "0.9.13"
+#      1.0.5:
+#        version: "1.0.5"
+#        filename: "de.gkvsv.erezeptabrechnungsdaten-1.0.5.tgz"
+#        dependencies:
+#          - packageName: "de.basisprofil.r4"
+#            packageVersion: "0.9.13"
+      1.0.6:
+        version: "1.0.6"
+        filename: "de.gkvsv.erezeptabrechnungsdaten-1.0.6.tgz"
+        dependencies:
+          - packageName: "de.abda.erezeptabgabedaten"
+            packageVersion: "1.0.3"
+          - packageName: "dav.kbv.sfhir.cs.vs"
+            packageVersion: "1.0.2"
+          - packageName: "de.gematik.erezept-workflow.r4"
+            packageVersion: "1.0.3-1"
+          - packageName: "kbv.ita.erp"
+            packageVersion: "1.0.1"
+          - packageName: "kbv.ita.for"
+            packageVersion: "1.0.3"
+          - packageName: "kbv.basis"
+            packageVersion: "1.1.3"
+          - packageName: "de.basisprofil.r4"
+            packageVersion: "0.9.13"
+      1.1.0:
+        version: "1.1.0"
+        filename: "de.gkvsv.erezeptabrechnungsdaten-1.1.0.tgz"
+        dependencies:
+          - packageName: "de.abda.erezeptabgabedatenbasis"
+            packageVersion: "1.1.0"
+          - packageName: "de.gematik.erezept-workflow.r4"
+            packageVersion: "1.1.1"
+          - packageName: "de.basisprofil.r4"
+            packageVersion: "0.9.13"
+
   de.abda.erezeptabgabedaten:
     packageName: "de.abda.erezeptabgabedaten"
     versions:
@@ -9,6 +139,25 @@ fhirPackages:
         dependencies:
           - packageName: "de.basisprofil.r4"
             packageVersion: "0.9.13"
+      1.1.0:
+        version: "1.1.0"
+        filename: "de.abda.erezeptabgabedaten-1.1.0.tgz"
+        dependencies:
+          - packageName: "de.abda.erezeptabgabedatenbasis"
+            packageVersion: "1.1.0"
+          - packageName: "de.basisprofil.r4"
+            packageVersion: "0.9.13"
+
+  de.abda.erezeptabgabedatenbasis:
+    packageName: "de.abda.erezeptabgabedatenbasis"
+    versions:
+      1.1.0:
+        version: "1.1.0"
+        filename: "de.abda.erezeptabgabedatenbasis-1.1.0.tgz"
+        dependencies:
+          - packageName: "de.basisprofil.r4"
+            packageVersion: "0.9.13"
+
   de.basisprofil.r4:
     packageName: "de.basisprofil.r4"
     versions:
@@ -17,6 +166,50 @@ fhirPackages:
         filename: "de.basisprofil.r4-0.9.13.tgz"
 
 supportedProfiles:
+  "https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle":
+    profileName: "https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle"
+    versions:
+      1.0.1:
+        requiredPackage:
+          packageName: "kbv.ita.erp"
+          packageVersion: "1.0.1"
+      1.0.2:
+        requiredPackage:
+          packageName: "kbv.ita.erp"
+          packageVersion: "1.0.2"
+
+  "https://gematik.de/fhir/StructureDefinition/ErxMedicationDispense":
+    profileName: "https://gematik.de/fhir/StructureDefinition/ErxMedicationDispense"
+    versions:
+      0.0.0:  # TODO Test wenn keine Version
+        requiredPackage:
+          packageName: "de.gematik.erezept-workflow.r4"
+          packageVersion: "1.0.3-1"
+      1.0.3-1:
+        requiredPackage:
+          packageName: "de.gematik.erezept-workflow.r4"
+          packageVersion: "1.0.3-1"
+      1.1.1:
+        requiredPackage:
+          packageName: "de.gematik.erezept-workflow.r4"
+          packageVersion: "1.1.1"
+
+  "https://gematik.de/fhir/StructureDefinition/ErxReceipt":
+    profileName: "https://gematik.de/fhir/StructureDefinition/ErxReceipt"
+    versions:
+      0.0.0:  # TODO Test wenn keine Version
+        requiredPackage:
+          packageName: "de.gematik.erezept-workflow.r4"
+          packageVersion: "1.0.3-1"
+      1.0.3-1:
+        requiredPackage:
+          packageName: "de.gematik.erezept-workflow.r4"
+          packageVersion: "1.0.3-1"
+      1.1.1:
+        requiredPackage:
+          packageName: "de.gematik.erezept-workflow.r4"
+          packageVersion: "1.1.1"
+
   "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle":
     profileName: "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle"
     versions:
@@ -27,5 +220,25 @@ supportedProfiles:
       1.1.0:
         requiredPackage:
           packageName: "de.abda.erezeptabgabedaten"
+          packageVersion: "1.1.0"
+
+  "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle":
+    profileName: "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle"
+    versions:
+      1.0.4:
+        requiredPackage:
+          packageName: "de.gkvsv.erezeptabrechnungsdaten"
+          packageVersion: "1.0.6" # zur besseren Validierung da strukturgleich
+      1.0.5:
+        requiredPackage:
+          packageName: "de.gkvsv.erezeptabrechnungsdaten"
+          packageVersion: "1.0.6" # zur besseren Validierung da strukturgleich
+      1.0.6:
+        requiredPackage:
+          packageName: "de.gkvsv.erezeptabrechnungsdaten"
+          packageVersion: "1.0.6"
+      1.1.0:
+        requiredPackage:
+          packageName: "de.gkvsv.erezeptabrechnungsdaten"
           packageVersion: "1.1.0"
 

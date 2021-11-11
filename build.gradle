@@ -1,3 +1,6 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.0' apply false
+}
 
 subprojects {
     version = "0.1.0-SNAPSHOT"
@@ -44,13 +47,6 @@ subprojects {
 }
 project(":core"){
     dependencies{
-        testRuntimeOnly(project(":packages"))
-    }
-}
-project(":cli"){
-    dependencies {
-        implementation(project(":core"))
-        runtimeOnly(project(":packages"))
         testRuntimeOnly(project(":packages"))
     }
 }

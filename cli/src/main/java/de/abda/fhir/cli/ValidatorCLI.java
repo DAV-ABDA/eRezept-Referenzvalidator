@@ -25,6 +25,7 @@ public class ValidatorCLI {
     public static void main(String[] args) {
 
         if (args.length != 1) {
+            logger.warn("Usage: First argument must be a filename");
             logger.warn("No input file supplied! Exiting...");
             return;
         }

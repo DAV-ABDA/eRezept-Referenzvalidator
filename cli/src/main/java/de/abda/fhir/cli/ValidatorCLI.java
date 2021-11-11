@@ -4,6 +4,7 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.validation.ResultSeverityEnum;
 import ca.uhn.fhir.validation.SingleValidationMessage;
 import de.abda.fhir.validator.core.Validator;
+import de.abda.fhir.validator.core.ValidatorHolder;
 import de.abda.fhir.validator.core.util.FileHelper;
 import de.abda.fhir.validator.core.util.ParserHelper;
 import de.abda.fhir.validator.core.util.Profile;
@@ -30,18 +31,15 @@ public class ValidatorCLI {
         }
 
         FhirContext ctx = FhirContext.forR4();
+        ValidatorHolder validatorHolder = new ValidatorHolder(ctx);
 
         try {
-            String validatorInput = FileHelper.loadValidatorInputAsString(args[0]);
+            String validatorInputWithVersion = FileHelper.loadValidatorInputAsString(args[0], false);
+            IBaseResource resource = ParserHelper.parseString(validatorInputWithVersion, ctx);
+            Profile profile = ProfileHelper.getProfile(resource);
+            Validator validator = validatorHolder.getValidatorForProfile(profile);
+            String validatorInput = FileHelper.loadValidatorInputAsString(args[0], true);
             logger.debug(validatorInput);
-            Validator validator = new Validator(ctx);
-
-            if (false) { //TODO future code for version depended package loading
-                String validatorInputWithVersion = FileHelper.loadValidatorInputAsString(args[0], false);
-                IBaseResource resource = ParserHelper.parseString(validatorInputWithVersion, ctx);
-                Profile profile = ProfileHelper.getProfile(resource);
-            }
-
             Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validate(validatorInput);
             String mapAsString = errors.keySet().stream()
                     .map(key -> key + ": " + errors.get(key).size())

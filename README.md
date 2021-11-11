@@ -1,16 +1,24 @@
-# HAPI Referenz Validator
+# eRezept-Referenzvalidator auf Basis des HAPI-FHIR-Validators
 
 ## Build
 Es gibt drei Submodule:
-* core enth‰lt die eigentliche Validator Implementierung. Diese wird im CLI verwendet, kann aber auch 
-  direkt in Java Projekten als Bibliothek verwendet werden. Zur Laufzeit besteht eine Abh‰ngigkeit zum packages
+* core enth√§lt die eigentliche Validator Implementierung. Diese wird im CLI verwendet, kann aber auch 
+  direkt in Java Projekten als Bibliothek verwendet werden. Zur Laufzeit besteht eine Abh√§ngigkeit zum packages
   Modul
-* packages enth‰lt die zu ladenden Profile
-* cli enth‰lt eine Kommandozeilen Implementierung
+* packages enth√§lt die zu ladenden Profile
+* cli enth√§lt eine Kommandozeilen Implementierung
 
 ### Releasen
 Die drei Module werden in ein maven Repository hochgeladen:
 * `gradlew publishToMavenLocal` baut eine rein lokale Release, die sich im .m2 Ordner im Home Verzeichnis des Users
-* `gradlew publish` baut eine offizielle Release und l‰dt diese ins ˆffentliche Repository hoch
+* `gradlew publish` baut eine offizielle Release und l√§dt diese ins √∂ffentliche Repository hoch
 
-Soll nur das cli
+## Packages
+Anpassungen der Packages:
+ - Add Package dav.kbv.sfhir.cs.vs-1.0.2-json.tgz (KBV Schl√ºsseltabellen - externe CodeSytseme/ValueSets)
+ - Delete examples
+ - de.gematik.erezept-workflow.r4-1.0.3-1.tgz
+   - Delete ProFile StructureDefinition-ChargeItem-erxChargeItem.json (keine Relevanz - future use)
+ - kbv.ita.erp-1.0.1.tgz
+   - Change ProFile KBV_PR_ERP_Prescription.json (MedicationRequest.insurance = "type":[{"code":"Reference","targetProfile":["https://fhir.kbv.de/StructureDefinition/KBV_PR_FOR_Coverage|1.0.3"]}])
+

@@ -7,7 +7,15 @@ public class ProfileHelper {
     public static Profile getProfile(IBaseResource resource) {
         String metaProfile = resource.getMeta().getProfile().get(0).getValueAsString();
         String[] splittedString = metaProfile.split("\\|");
-        return new Profile(metaProfile, splittedString[0] ,splittedString[1]);
+        // TODO: Was wenn keine Version angegeben (gematik)?
+        if (splittedString.length < 2)
+        {
+            //String defaultVersion = "0.0.0";
+            return new Profile(metaProfile, splittedString[0], "0.0.0");
+        }
+        else
+        {
+            return new Profile(metaProfile, splittedString[0], splittedString[1]);
+        }
     }
-
 }

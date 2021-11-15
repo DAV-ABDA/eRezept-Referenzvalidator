@@ -11,11 +11,11 @@ public class InputHelper {
     static Logger logger = LoggerFactory.getLogger(InputHelper.class);
 
     public static String removeVersionInCanonicals(String validatorInput) {
-        String patternString = "(https?://.{1,100}(\\..{1,50}){1,10}(/.{1,50}){0,20}/StructureDefinition/.{1,50})(\\|\\d(.\\d+)+)"; // Identify canonical profile URLs
+        String patternString = "(['\"])(https?://[^'\"|<>]+/StructureDefinition/[^'\"|<>]+)(\\|[^'\"|<>]+)(['\"])"; // Identify canonical profile URLs
         Pattern pattern = Pattern.compile(patternString);
         Matcher matcher = pattern.matcher(validatorInput);
         validatorInput = matcher.replaceAll(matchResult -> { // remove version number
-            return matchResult.group(1);
+            return matchResult.group(1)+matchResult.group(2)+matchResult.group(4);
         });
         return validatorInput;
     }

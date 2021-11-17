@@ -40,7 +40,7 @@ class DynamicValidatorTest {
   @MethodSource
   void validateValidFile(Path path) {
     Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator
-        .validate(path);
+        .validateFile(path);
     String mapAsString = errors.keySet().stream()
         .map(key -> key + ": " + errors.get(key).size())
         .collect(Collectors.joining(","));
@@ -56,7 +56,7 @@ class DynamicValidatorTest {
   @MethodSource
   void validateInvalidFile(Pair<Path, String> arguments) {
     Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator
-        .validate(arguments.getKey());
+        .validateFile(arguments.getKey());
     String mapAsString = errors.keySet().stream()
         .map(key -> key + ": " + errors.get(key).size())
         .collect(Collectors.joining(","));
@@ -78,7 +78,7 @@ class DynamicValidatorTest {
   @ParameterizedTest
   @MethodSource
   void validateFileWithException(Pair<Path, Class<? extends Exception>> arguments) {
-    Assertions.assertThrows(arguments.getRight(), () -> validator.validate(arguments.getKey()));
+    Assertions.assertThrows(arguments.getRight(), () -> validator.validateFile(arguments.getKey()));
   }
 
   private static Stream<Pair<Path, Class<? extends Exception>>> validateFileWithException()

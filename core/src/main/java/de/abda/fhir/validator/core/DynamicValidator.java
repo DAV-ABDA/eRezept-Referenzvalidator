@@ -3,7 +3,6 @@ package de.abda.fhir.validator.core;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.validation.ResultSeverityEnum;
 import ca.uhn.fhir.validation.SingleValidationMessage;
-import ca.uhn.fhir.validation.ValidationResult;
 import de.abda.fhir.validator.core.util.FileHelper;
 import de.abda.fhir.validator.core.util.InputHelper;
 import de.abda.fhir.validator.core.util.ParserHelper;
@@ -18,8 +17,8 @@ import org.slf4j.LoggerFactory;
 
 /**
  * This is the default class to use the ABDA FHIR validator in your Java Application.
- * To validate a File, you can use the {@link #validate(Path)}, if the file content is
- * already read as String, you can use {@link #validate(String)}. The profile data is loaded
+ * To validate a File, you can use the {@link #validateFile(Path)}, if the file content is
+ * already read as String, you can use {@link #validateString(String)}. The profile data is loaded
  * on demand the first time a profile version is used. Further invocations use the already
  * loaded data.
  *
@@ -46,24 +45,31 @@ public class DynamicValidator {
         this.ctx = ctx;
         validatorHolder = new ValidatorHolder(ctx);
     }
-
     /**
      * Validates the given File
      * @param inputFile Path, not null
      * @return Map of {@link ResultSeverityEnum} as key and a List of {@link SingleValidationMessage} as key
      */
-    public Map<ResultSeverityEnum, List<SingleValidationMessage>> validate(Path inputFile) {
-        logger.debug("Start validating File {}", inputFile.toString());
+    public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateFile(String inputFile) {
+        logger.debug("Start validating File {}", inputFile);
         String validatorInputAsString = FileHelper
-            .loadValidatorInputAsString(inputFile.toString(), false);
+            .loadValidatorInputAsString(inputFile, false);
         return this.validateImpl(validatorInputAsString);
+    }
+    /**
+     * Validates the given File
+     * @param inputFile String path, not null or empty
+     * @return Map of {@link ResultSeverityEnum} as key and a List of {@link SingleValidationMessage} as key
+     */
+    public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateFile(Path inputFile) {
+        return validateFile(inputFile.toString());
     }
     /**
      * Validates the given String containing a FHIR resouce
      * @param validatorInputAsString String, not null or empty
      * @return Map of {@link ResultSeverityEnum} as key and a List of {@link SingleValidationMessage} as key
      */
-    public Map<ResultSeverityEnum, List<SingleValidationMessage>> validate(String validatorInputAsString) {
+    public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateString(String validatorInputAsString) {
         logger.debug("Start validating String input");
         return validateImpl(validatorInputAsString);
     }

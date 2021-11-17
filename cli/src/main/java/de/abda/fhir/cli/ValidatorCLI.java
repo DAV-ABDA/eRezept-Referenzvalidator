@@ -1,15 +1,9 @@
 package de.abda.fhir.cli;
 
-import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.validation.ResultSeverityEnum;
 import ca.uhn.fhir.validation.SingleValidationMessage;
-import de.abda.fhir.validator.core.Validator;
-import de.abda.fhir.validator.core.ValidatorHolder;
-import de.abda.fhir.validator.core.util.FileHelper;
-import de.abda.fhir.validator.core.util.ParserHelper;
-import de.abda.fhir.validator.core.util.Profile;
-import de.abda.fhir.validator.core.util.ProfileHelper;
-import org.hl7.fhir.instance.model.api.IBaseResource;
+import de.abda.fhir.validator.core.DynamicValidator;
+import java.nio.file.Paths;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,25 +24,40 @@ public class ValidatorCLI {
             return;
         }
 
-        FhirContext ctx = FhirContext.forR4();
-        ValidatorHolder validatorHolder = new ValidatorHolder(ctx);
-
         try {
-            String validatorInputWithVersion = FileHelper.loadValidatorInputAsString(args[0], false);
-            IBaseResource resource = ParserHelper.parseString(validatorInputWithVersion, ctx);
-            Profile profile = ProfileHelper.getProfile(resource);
-            Validator validator = validatorHolder.getValidatorForProfile(profile);
-            String validatorInput = FileHelper.loadValidatorInputAsString(args[0], true);
-            logger.debug(validatorInput);
-            Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validate(validatorInput);
+            DynamicValidator validator = new DynamicValidator();
+            Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(
+                Paths.get(args[0]));
             String mapAsString = errors.keySet().stream()
-                    .map(key -> key + ": " + errors.get(key).size())
-                    .collect(Collectors.joining(","));
-            Boolean validatorInputIsValid = (errors.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()).size() == 0 && errors.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()).size() == 0) ? true : false;
+                .map(key -> key + ": " + errors.get(key).size())
+                .collect(Collectors.joining(","));
+            boolean validatorInputIsValid =
+                errors.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()).size() == 0
+                    && errors.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()).size() == 0;
             logger.info("Validation result: " + validatorInputIsValid + " -- Error summary: " + mapAsString);
+            System.exit(validatorInputIsValid ? 0 : 1);
         } catch (Exception e){
             logger.error("Exception occured", e);
         }
+//        FhirContext ctx = FhirContext.forR4();
+//        ValidatorHolder validatorHolder = new ValidatorHolder(ctx);
+//
+//        try {
+//            String validatorInputWithVersion = FileHelper.loadValidatorInputAsString(args[0], false);
+//            IBaseResource resource = ParserHelper.parseString(validatorInputWithVersion, ctx);
+//            Profile profile = ProfileHelper.getProfile(resource);
+//            Validator validator = validatorHolder.getValidatorForProfile(profile);
+//            String validatorInput = FileHelper.loadValidatorInputAsString(args[0], true);
+//            logger.debug(validatorInput);
+//            Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validate(validatorInput);
+//            String mapAsString = errors.keySet().stream()
+//                    .map(key -> key + ": " + errors.get(key).size())
+//                    .collect(Collectors.joining(","));
+//            Boolean validatorInputIsValid = (errors.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()).size() == 0 && errors.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()).size() == 0) ? true : false;
+//            logger.info("Validation result: " + validatorInputIsValid + " -- Error summary: " + mapAsString);
+//        } catch (Exception e){
+//            logger.error("Exception occured", e);
+//        }
 
     }
 

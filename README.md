@@ -70,9 +70,22 @@ Es gibt folgende Gradle Tasks, die zum Releasen verwendet werden können:
 * Wir befinden uns auf dem `main` Branch, alle lokalen Änderungen wurden committed und gepushed.
 * Es wird `gradlew final` aufgerufen und damit die Artefakte gebaut und hochgeladen (das `cli` 
   Subprojekt wird NICHT zu Maven Central hochgeladen)
-* In einem Browser wird XXX geöffnet und sich dort eingelogged. Dort sieht man das hochgeladene
-  Release bei Maven Central und kann es entweder wiederrufen oder freigeben, letzteres ist der Normalfall. Erst nach 
-  der Freigabe können andere Nutzer auf dieses offizielle Release zugreifen!
+* Freigeben des Release für Maven Central:
+  * In einem Browser wird https://s01.oss.sonatype.org geöffnet und sich dort mit dem ABDA-FHIR-Team 
+    User eingelogged. 
+  * Wenn man links im Menü auf "Staging Repositories" klickt, dann sieht man in der 
+    Mitte in der Liste ein Repository mit Namen `deabda-1234` wobei 1234 eine laufende Nummer ist.
+  * Wenn man das Repository anklickt kann man unten im Tab "Content" sich die hochgeladenen Daten 
+    ansehen.
+  * Zur Freigabe wird in horizontalen Menüleiste in der Mitte oben auf "Close" geklickt. Dann läuft
+    eine interne, asynchrone Prüfung der hochgeladenen Artefakte an. Diese Prüfung dauert einige
+    Sekunden, evtl. muss man mehrmals "Refresh" klicken, bis man entweder den Status "Closed" oder
+    die Prüfung mit "Failed" geendet ist
+  * Ist die Prüfung fehlgeschlagen kann das Repository mit dem Punkt "Drop" aus der mittleren oberen
+    Menüleiste gelöscht werden, und es nochmal versucht werden.
+  * Ist die Prüfung erfolgreich, dann kann das Repository mit dem Punkt "Release" aus der mitteleren
+    oberen Menüleiste das Release freigegeben werden. Erst danach können andere Benutzer dieses
+    Release über Maven Central abrufen!
 * In GitHub unter "Releases" "Create a new Release" anklicken. In der Maske unter "Choose a tag" das
   erzeugte Versionstag auswählen, im Feld "Release title" die Versionsnummer nochmal eingeben
   und im Feld "Describe this release" die Release Notes eintragen. Darunter kann man Dateien

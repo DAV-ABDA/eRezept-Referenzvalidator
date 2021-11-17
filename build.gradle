@@ -4,8 +4,7 @@ plugins {
 }
 
 nebulaRelease {
-    //TODO: Has to be removed, only for testing
-    releaseBranchPatterns = ['main', 'release_maven_central']
+    releaseBranchPatterns = ['main']
 }
 tasks.prepare.dependsOn(":core:test")
 tasks.snapshot.dependsOn(":packages:publish", ":core:publish", ":bom:publish")

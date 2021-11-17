@@ -2,3 +2,4 @@ rootProject.name = "HAPI-Referenz-Validator"
 include("core")
 include("cli")
 include("packages")
+include("bom")

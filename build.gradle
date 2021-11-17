@@ -5,28 +5,38 @@ plugins {
 
 nebulaRelease {
     //TODO: Has to be removed, only for testing
-    releaseBranchPatterns = ['release_maven_central']
+    releaseBranchPatterns = ['/main', '/release_maven_central']
+}
+tasks.snapshot.dependsOn(":packages:publish", ":core:publish", ":bom:publish")
+tasks.final.dependsOn(":packages:publish", ":core:publish", ":bom:publish")
+
+String hapiFhirVersion = "5.7.0-PRE2-SNAPSHOT"
+allprojects{
+    group = "de.abda"
 }
 
-
-subprojects {
-//    version = "0.1.0-SNAPSHOT"
-    group = "de.abda"
+boolean shouldSign(){
+    gradle.taskGraph.hasTask("publish")
+}
+subprojects{
     apply{
-        plugin "java"
         plugin "maven-publish"
+        plugin "signing"
     }
     repositories {
         mavenLocal()
         maven {
             url "https://oss.sonatype.org/content/repositories/snapshots/"
         }
-
         maven {
             url "https://repo.maven.apache.org/maven2/"
         }
     }
-    String hapiFhirVersion = "5.7.0-PRE2-SNAPSHOT"
+}
+configure(subprojects.findAll {it.name != "bom"}) {
+    apply{
+        plugin "java-library"
+    }
     dependencies{
         implementation("org.apache.logging.log4j:log4j-api:2.14.1")
         implementation("org.apache.logging.log4j:log4j-core:2.14.1")
@@ -39,23 +49,127 @@ subprojects {
     }
     java{
         sourceCompatibility = JavaVersion.VERSION_11
+        withJavadocJar()
+        withSourcesJar()
     }
     test {
         useJUnitPlatform()
     }
-    publishing {
-        publications {
-            library(MavenPublication) {
-                from components.java
+}
+
+def customPom(String artifactId, String descriptionText) {
+    return {
+        name = artifactId
+        description = descriptionText;
+        url = "https://github.com/DAV-ABDA/eRezept-Referenzvalidator"
+        scm {
+            connection = 'scm:git:git://github.com/DAV-ABDA/eRezept-Referenzvalidator'
+            developerConnection = 'scm:git:ssh://github.com/DAV-ABDA/eRezept-Referenzvalidator'
+            url = 'https://github.com/DAV-ABDA/eRezept-Referenzvalidator'
+        }
+        licenses {
+            license {
+                name = 'The Apache License, Version 2.0'
+                url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
             }
         }
-        //TODO: Upload repository has to be specified
+        developers {
+            developer {
+                id = 'ABDA-FHIR-Team'
+                name = 'ABDA FHIR Team'
+                email = 'fhir@abda.de'
+            }
+        }
     }
 }
+
+def mavenRepo = {
+    url(version.toString().endsWith('SNAPSHOT') ? "https://s01.oss.sonatype.org/content/repositories/snapshots/" : "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+    credentials {
+        username = sonatypeUsername
+        password = sonatypePassword
+    }
+}
+project(":packages"){
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                artifactId='fhir-validator-packages'
+                from components.java
+                pom customPom(artifactId, "The FHIR Packages for the ABDA ePrescription FHIR reference validator")
+            }
+        }
+        repositories{
+            maven mavenRepo
+        }
+    }
+    signing {
+        required {shouldSign()}
+        sign publishing.publications.maven
+    }
+}
+
 project(":core"){
     dependencies{
+        api("ca.uhn.hapi.fhir:hapi-fhir-base:$hapiFhirVersion")
+        implementation(project(":packages"))
         testRuntimeOnly(project(":packages"))
     }
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                artifactId='fhir-validator-core'
+                from (components.java)
+                pom customPom(artifactId, "The ABDA ePrescription FHIR reference validator")
+            }
+        }
+
+        repositories{
+            maven mavenRepo
+        }
+    }
+    signing {
+        required {shouldSign()}
+        sign publishing.publications.maven
+    }
 }
+
+project(":bom"){
+    apply {
+        plugin 'java-platform'
+        plugin "maven-publish"
+        plugin "signing"
+    }
+    javaPlatform {
+        allowDependencies()
+    }
+    dependencies{
+        constraints{
+            runtime("ca.uhn.hapi.fhir:hapi-fhir-validation:$hapiFhirVersion")
+            runtime("ca.uhn.hapi.fhir:hapi-fhir-structures-r4:$hapiFhirVersion")
+            runtime("ca.uhn.hapi.fhir:hapi-fhir-validation-resources-r4:$hapiFhirVersion")
+            runtime(project(":packages"))
+            runtime(project(":core"))
+        }
+    }
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                artifactId='fhir-validator-bom'
+                from components.javaPlatform
+                pom customPom(artifactId, "The ABDA ePrescription FHIR reference validator BOM")
+            }
+        }
+        repositories{
+            maven mavenRepo
+        }
+    }
+    signing {
+        required {shouldSign()}
+        sign publishing.publications.maven
+    }
+}
+
 
 

@@ -17,7 +17,7 @@ public class VersionRemovingNpmPackageValidationSupport extends NpmPackageValida
     /**
      * Constructor
      *
-     * @param theFhirContext
+     * @param theFhirContext {@link FhirContext}, must not be null
      */
     public VersionRemovingNpmPackageValidationSupport(@Nonnull FhirContext theFhirContext) {
         super(theFhirContext);

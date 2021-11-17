@@ -86,8 +86,8 @@ def customPom(String artifactId, String descriptionText) {
 def mavenRepo = {
     url(version.toString().endsWith('SNAPSHOT') ? "https://s01.oss.sonatype.org/content/repositories/snapshots/" : "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
     credentials {
-        username = sonatypeUsername
-        password = sonatypePassword
+        username = project.hasProperty("sonatypeUsername") ? sonatypeUsername : ""
+        password = project.hasProperty("sonatypePassword") ? sonatypePassword : ""
     }
 }
 project(":packages"){

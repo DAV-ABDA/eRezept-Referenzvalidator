@@ -5,8 +5,9 @@ Der Referenzvalidator wird auf zwei Arten bereitgestellt: Als Fat-Jar und als Ar
 
 ### Fat-Jar
 Das Fat-Jar enthält alle Abhängigkeiten und kann daher standalone ohne das Nachladen von Ressourcen
-verwendet werden. Es dient als "Schiedsichter", mit dem ohne weitere Voraussetzungen FHIR Dateien
-auf Ihre Validität getestet werden können.
+verwendet werden. Es dient als "Schiedsrichter", mit dem ohne weitere Voraussetzungen FHIR Dateien
+auf Ihre Validität getestet werden können. Zum Starten ist lediglich ein Java 11 JRE (Java Runtime
+Environment) notwendig.
 
 `````shell
 java -jar reference-validator-cli.jar myFhirResource.xml
@@ -27,7 +28,7 @@ zugesicherte Korrektheit der Validierung ist nur gegeben, wenn zur Laufzeit auch
 Versionen verwendet werden. Bitte stellen Sie sicher, dass Ihr Maven oder Gradle Build entsprechend
 konfiguriert ist.
 
-Dafür können sie die ebenfalls veröffentlichte BOM (Bill of Materials) verwenden, ArtefaktId ist
+Dafür können Sie die ebenfalls veröffentlichte BOM (Bill of Materials) verwenden, ArtefaktId ist
 `fhir-validator-bom`. Bitte lesen Sie in der Maven bzw. Gradle Dokumentation nach, wie man diese
 BOM so einbindet, dass immer die korrekten Versionen verwendet werden.
 
@@ -52,7 +53,9 @@ gradlew build
 
 ### Releasen
                    
-Es gibt folgende Gradle Tasks, die zum Releasen verwendet werden können:
+Es gibt folgende Gradle Tasks, die zum Releasen verwendet werden können. Für diese Tasks sind
+die notwendigen Zugangsdaten für Sonatype und die Daten zum Signieren notwendig, diese sind nicht
+eingecheckt und werden von der ABDA nicht veröffentlicht.
 * `snapshot`: Erzeugt ein Snaphot Release. Dieses kennzeichnet sich durch ein `-SNAPSHOT` als Suffix 
   der Versionsnummer. Snapshot Releases werden auch als solche zu Maven Central hochgeladen und können
   dort abgerufen werden, wenn die korrekte Repository URL im Gradle oder Maven Build verwendet wird. Bei Snapshot
@@ -65,10 +68,12 @@ Es gibt folgende Gradle Tasks, die zum Releasen verwendet werden können:
     Parameter setzen: `gradlew final -Prelease.scope=patch`
   * Sollte nicht die Minor Number, sondern die Majir Number erhöht werden, dann bitte folgenden
     Parameter setzen: `gradlew final -Prelease.scope=major`    
+  * Soll exakt eine bestimmte Versionsnummer gesetzt werden, dann bitte folgenden Parameter setzen:
+    `gw final -Prelease.version=0.1.1`, wobei sie 0.1.1 durch die exakte neue Versionsnummer ersetzen
    
 #### Ablauf eines offiziellen Release:
-* Wir befinden uns auf dem `main` Branch, alle lokalen Änderungen wurden committed und gepushed.
-* Es wird `gradlew final` aufgerufen und damit die Artefakte gebaut und hochgeladen (das `cli` 
+* Sie befinden sich auf dem `main` Branch, alle lokalen Änderungen wurden committed und gepushed.
+* Es wird `gradlew clean final` aufgerufen und damit die Artefakte gebaut und hochgeladen (das `cli` 
   Subprojekt wird NICHT zu Maven Central hochgeladen)
 * Freigeben des Release für Maven Central:
   * In einem Browser wird https://s01.oss.sonatype.org geöffnet und sich dort mit dem ABDA-FHIR-Team 

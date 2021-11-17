@@ -27,9 +27,8 @@ public class FileHelper {
             }
             return inputString;
         } catch (IOException e) {
-            logger.error("Angegebene Datei \"" + inputPath + "\" konnte nicht gefunden werden.");
-            System.exit(404);
-            return null;
+            logger.error("Angegebene Datei \"" + inputPath + "\" konnte nicht gefunden werden.", e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -38,9 +37,8 @@ public class FileHelper {
             XmlParser parser = new XmlParser(ctx, new StrictErrorHandler());
             return parser.parseResource(Files.newInputStream(Path.of(inputPath)));
         } catch (IOException e) {
-            logger.error("Angegebene Datei \"" + inputPath + "\" konnte nicht gefunden werden.");
-            System.exit(404);
-            return null;
+            logger.error("Angegebene Datei \"" + inputPath + "\" konnte nicht gefunden werden.", e);
+            throw new RuntimeException(e);
         }
     }
 }

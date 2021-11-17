@@ -37,11 +37,18 @@ public class ValidatorFactory {
         VersionRemovingNpmPackageValidationSupport npmPackageSupport = new VersionRemovingNpmPackageValidationSupport(ctx);
         try {
 
-            Map<String, FhirProfileVersion> supportedProfileVersions = fhirPackageProperties.getSupportedProfiles().get(profile.getBaseCanonical()).getVersions();
-            if (supportedProfileVersions.isEmpty()) {
+            FhirProfile supportedProfile = fhirPackageProperties.getSupportedProfiles()
+                .get(profile.getBaseCanonical());
+            if (supportedProfile == null){
                 String msg = "Profile \"" + profile.getBaseCanonical() +"\" not supported";
                 logger.error(msg);
-                throw new Exception(msg);
+                throw new ValidatorInitializationException(msg);
+            }
+            Map<String, FhirProfileVersion> supportedProfileVersions = supportedProfile.getVersions();
+            if (supportedProfileVersions.isEmpty()) {
+                String msg = "Profile version \"" + profile.getBaseCanonical() +"\" not supported";
+                logger.error(msg);
+                throw new ValidatorInitializationException(msg);
             }
 
             FhirProfileVersion fhirProfileVersion = supportedProfileVersions.get(profile.getVersion());
@@ -49,7 +56,7 @@ public class ValidatorFactory {
             if (fhirProfileVersion == null) {
                 String msg = "Version \"" + profile.getVersion() + "\" for profile \"" + profile.getBaseCanonical() + "\" is not supported";
                 logger.error(msg);
-                throw new Exception(msg);
+                throw new ValidatorInitializationException(msg);
             }
 
             List<String> packageFilesToLoad = getPackageFilenameListToLoadFor(fhirProfileVersion);

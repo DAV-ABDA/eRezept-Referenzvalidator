@@ -11,7 +11,7 @@ public class InputHelper {
     static Logger logger = LoggerFactory.getLogger(InputHelper.class);
 
     public static String removeVersionInCanonicals(String validatorInput) {
-        String patternString = "(['\"])(https?://[^'\"|<>]+/StructureDefinition/[^'\"|<>]+)(\\|[^'\"|<>]+)(['\"])"; // Identify canonical profile URLs
+        String patternString = "(['\"])([Hh][Tt][Tt][Pp][Ss]?://[^|'\"<>\\s#]+/StructureDefinition/[^|'\"<>\\s#]+)(\\|[^'\"<>\\s#]+)(['\"])"; // Identify canonical profile URLs
         Pattern pattern = Pattern.compile(patternString);
         Matcher matcher = pattern.matcher(validatorInput);
         validatorInput = matcher.replaceAll(matchResult -> { // remove version number

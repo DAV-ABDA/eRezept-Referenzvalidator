@@ -10,7 +10,7 @@ nebulaRelease {
 tasks.snapshot.dependsOn(":packages:publish", ":core:publish", ":bom:publish")
 tasks.final.dependsOn(":packages:publish", ":core:publish", ":bom:publish")
 
-String hapiFhirVersion = "5.7.0-PRE2-SNAPSHOT"
+String hapiFhirVersion = "5.7.0-PRE3-SNAPSHOT"
 allprojects{
     group = "de.abda"
 }

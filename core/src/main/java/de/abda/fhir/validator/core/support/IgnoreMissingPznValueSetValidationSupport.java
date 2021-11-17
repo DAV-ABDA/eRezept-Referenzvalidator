@@ -38,7 +38,7 @@ public class IgnoreMissingPznValueSetValidationSupport extends BaseValidationSup
             result.setSeverity(IssueSeverity.INFORMATION);
             result.setCodeSystemName(theCodeSystem);
             result.setCode(theCode);
-            result.setMessage("PZN found. PZN validation is not supported.");
+            result.setMessage("PZN found. This validator has no PZN database and will not check if the provided PZN is valid.");
             return result;
         } else return null;
     }

@@ -54,6 +54,7 @@ configure(subprojects.findAll {it.name != "bom"}) {
     }
     test {
         useJUnitPlatform()
+        systemProperty "user.language","de"
     }
 }
 

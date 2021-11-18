@@ -28,7 +28,7 @@ jobs:
           files: "**/build/test-results/**/*.xml"
       - name: Archive test results
         uses: actions/upload-artifact@v2
+        if: always()
         with:
           name: Testresults
-          path: |
-            **/build/reports/tests/test/**/*
+          path: core/build/reports/tests/test/

@@ -30,7 +30,7 @@ public class ValidatorCLI {
             return;
         }
 
-        FhirContext ctx = FhirContext.forR4();
+        FhirContext ctx = FhirContext.forR4Cached();
         ValidatorHolder validatorHolder = new ValidatorHolder(ctx);
 
         try {

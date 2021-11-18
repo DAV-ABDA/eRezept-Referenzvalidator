@@ -24,17 +24,17 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 /**
- * Unittest for {@link DynamicValidator}
+ * Unittest for {@link ReferenceValidator}
  *
  * @author RupprechJo
  */
-class DynamicValidatorTest {
+class ReferenceValidatorTest {
 
   private static final Path VALID_BASE_DIR = Paths.get("src/test/resources/valid");
   private static final Path INVALID_BASE_DIR = Paths.get("src/test/resources/invalid");
   private static final Path EXCEPTION_BASE_DIR = Paths.get("src/test/resources/exception");
 
-  static DynamicValidator validator = new DynamicValidator();
+  static ReferenceValidator validator = new ReferenceValidator();
 
   @ParameterizedTest
   @MethodSource

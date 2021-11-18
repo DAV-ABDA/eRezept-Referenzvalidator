@@ -22,10 +22,10 @@ import org.slf4j.LoggerFactory;
  * on demand the first time a profile version is used. Further invocations use the already
  * loaded data.
  *
- * <p>Dynamic Validator is currently NOT threadsafe, but it can be reused for validating
+ * <p>ReferenceValidator is currently NOT threadsafe, but it can be reused for validating
  * further FHIR resources in the same or another thread.</p>
  */
-public class DynamicValidator {
+public class ReferenceValidator {
     static Logger logger = LoggerFactory.getLogger(Validator.class);
     private FhirContext ctx ;
     private ValidatorHolder validatorHolder;
@@ -33,7 +33,7 @@ public class DynamicValidator {
     /**
      * Creates a new instance without parameters.
      */
-    public DynamicValidator() {
+    public ReferenceValidator() {
         this(FhirContext.forR4());
     }
 
@@ -41,7 +41,7 @@ public class DynamicValidator {
      * Creates a new instance using an existing FhirContext.
      * @param ctx {@link FhirContext}, not null
      */
-    public DynamicValidator(FhirContext ctx) {
+    public ReferenceValidator(FhirContext ctx) {
         this.ctx = ctx;
         validatorHolder = new ValidatorHolder(ctx);
     }

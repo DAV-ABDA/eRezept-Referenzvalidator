@@ -2,7 +2,7 @@ package de.abda.fhir.cli;
 
 import ca.uhn.fhir.validation.ResultSeverityEnum;
 import ca.uhn.fhir.validation.SingleValidationMessage;
-import de.abda.fhir.validator.core.DynamicValidator;
+import de.abda.fhir.validator.core.ReferenceValidator;
 import java.nio.file.Paths;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ public class ValidatorCLI {
         }
 
         try {
-            DynamicValidator validator = new DynamicValidator();
+            ReferenceValidator validator = new ReferenceValidator();
             Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(
                 Paths.get(args[0]));
             String mapAsString = errors.keySet().stream()

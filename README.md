@@ -32,6 +32,20 @@ Dafür können Sie die ebenfalls veröffentlichte BOM (Bill of Materials) verwen
 `fhir-validator-bom`. Bitte lesen Sie in der Maven bzw. Gradle Dokumentation nach, wie man diese
 BOM so einbindet, dass immer die korrekten Versionen verwendet werden.
 
+Die Klasse ReferenceValidator stellt das API dar und sollte in Applikationen verwendet werden:
+
+````java
+//An existing FhirContext can optionally be passed to the constructor for performance reasons
+ReferenceValidator validator = new ReferenceValidator(); 
+
+//path can be a String or a Path object
+Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(path);
+
+//If the file content is already read to a String, you can use validateString
+Map<ResultSeverityEnum, List<SingleValidationMessage>> errors2 = validator.validateString(stringContent);
+
+````
+
 # Contribution
    
 In diesem Kapitel finden sich Informationen für alle, die den Validator entweder selbst bauen

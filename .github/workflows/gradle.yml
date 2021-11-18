@@ -26,7 +26,8 @@ jobs:
         if: always()
         with:
           files: "**/build/test-results/**/*.xml"
-      - uses: actions/upload-artifact@v2
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v2
         with:
           name: Testresults
           path: core/build/reports/tests/test

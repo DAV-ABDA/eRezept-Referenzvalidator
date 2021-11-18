@@ -3,6 +3,7 @@ package de.abda.fhir.cli;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.validation.ResultSeverityEnum;
 import ca.uhn.fhir.validation.SingleValidationMessage;
+import ch.qos.logback.classic.Level;
 import de.abda.fhir.validator.core.Validator;
 import de.abda.fhir.validator.core.ValidatorHolder;
 import de.abda.fhir.validator.core.util.FileHelper;
@@ -21,9 +22,10 @@ import java.util.stream.Collectors;
 public class ValidatorCLI {
 
     static Logger logger = LoggerFactory.getLogger(ValidatorCLI.class);
+    static ch.qos.logback.classic.Logger rootLogger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 
     public static void main(String[] args) {
-
+        rootLogger.setLevel(Level.ERROR);
         if (args.length != 1) {
             logger.warn("Usage: First argument must be a filename");
             logger.warn("No input file supplied! Exiting...");

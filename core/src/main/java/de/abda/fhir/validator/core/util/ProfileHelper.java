@@ -53,6 +53,7 @@ public class ProfileHelper {
             Matcher matcher;
             while (foundProfile == false) {
                 input = brTest.readLine();
+                if (input == null) return null;
                 matcher = pattern.matcher(input);
                 if (matcher.find()) {
                     return new Profile(

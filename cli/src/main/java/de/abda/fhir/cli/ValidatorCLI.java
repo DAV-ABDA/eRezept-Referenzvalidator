@@ -1,18 +1,13 @@
 package de.abda.fhir.cli;
 
-import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.validation.ResultSeverityEnum;
 import ca.uhn.fhir.validation.SingleValidationMessage;
 import ch.qos.logback.classic.Level;
-import de.abda.fhir.validator.core.Validator;
-import de.abda.fhir.validator.core.ValidatorHolder;
-import de.abda.fhir.validator.core.util.FileHelper;
-import de.abda.fhir.validator.core.util.Profile;
-import de.abda.fhir.validator.core.util.ProfileHelper;
+import de.abda.fhir.validator.core.ReferenceValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +28,23 @@ public class ValidatorCLI {
             return;
         }
 
-        File inputFile = new File(args[0]);
+        try {
+            ReferenceValidator validator = new ReferenceValidator();
+            Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(
+                    Paths.get(args[0]));
+            String mapAsString = errors.keySet().stream()
+                    .map(key -> key + ": " + errors.get(key).size())
+                    .collect(Collectors.joining(","));
+            boolean validatorInputIsValid =
+                    errors.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()).size() == 0
+                            && errors.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()).size() == 0;
+            logger.info("Validation result: " + validatorInputIsValid + " -- Error summary: " + mapAsString);
+            System.exit(validatorInputIsValid ? 0 : 1);
+        } catch (Exception e){
+            logger.error("Exception occured", e);
+        }
+
+        /*File inputFile = new File(args[0]);
 
         FhirContext ctx = FhirContext.forR4Cached();
         ValidatorHolder validatorHolder = new ValidatorHolder(ctx);
@@ -52,7 +63,7 @@ public class ValidatorCLI {
             logger.info("Validation result: " + validatorInputIsValid + " -- Error summary: " + mapAsString);
         } catch (Exception e){
             logger.error("Exception occured", e);
-        }
+        }*/
 
     }
 

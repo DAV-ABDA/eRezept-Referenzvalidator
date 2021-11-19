@@ -44,7 +44,7 @@ public class ProfileHelper {
     }
 
     public static Profile getProfileFromFile(File file) {
-        String patternString = "(<meta>[\\w\\d\\s\\W]*<profile value=['\"])([Hh][Tt][Tt][Pp][Ss]?://[^|'\"<>\\s#]+/StructureDefinition/[^|'\"<>\\s#]+)(\\|)([^'\"<>\\s#]+)(['\"]>[\\w\\d\\s\\W]*</meta>)"; // Identify canonical profile URLs
+        String patternString = "(<profile\\s*value=['\"])([Hh][Tt][Tt][Pp][Ss]?://[^|'\"<>\\s#]+/StructureDefinition/[^|'\"<>\\s#]+)(\\|)([^'\"<>\\s#]+)(['\"]\\s*/?>)"; // Identify canonical profile URLs
         Pattern pattern = Pattern.compile(patternString);
         try {
             BufferedReader brTest = new BufferedReader(new FileReader(file));

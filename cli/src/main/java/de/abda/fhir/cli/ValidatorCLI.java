@@ -7,13 +7,12 @@ import ch.qos.logback.classic.Level;
 import de.abda.fhir.validator.core.Validator;
 import de.abda.fhir.validator.core.ValidatorHolder;
 import de.abda.fhir.validator.core.util.FileHelper;
-import de.abda.fhir.validator.core.util.ParserHelper;
 import de.abda.fhir.validator.core.util.Profile;
 import de.abda.fhir.validator.core.util.ProfileHelper;
-import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -25,20 +24,23 @@ public class ValidatorCLI {
     static ch.qos.logback.classic.Logger rootLogger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 
     public static void main(String[] args) {
+
         rootLogger.setLevel(Level.ERROR);
+
         if (args.length != 1) {
             logger.warn("Usage: First argument must be a filename");
             logger.warn("No input file supplied! Exiting...");
             return;
         }
 
+        File inputFile = new File(args[0]);
+
         FhirContext ctx = FhirContext.forR4Cached();
         ValidatorHolder validatorHolder = new ValidatorHolder(ctx);
 
         try {
-            String validatorInputWithVersion = FileHelper.loadValidatorInputAsString(args[0], false);
-            IBaseResource resource = ParserHelper.parseString(validatorInputWithVersion, ctx);
-            Profile profile = ProfileHelper.getProfile(resource);
+            Profile profile = ProfileHelper.getProfileFromFile(inputFile);
+            logger.debug("Profile identified: " + profile.getCanonical());
             Validator validator = validatorHolder.getValidatorForProfile(profile);
             String validatorInput = FileHelper.loadValidatorInputAsString(args[0], true);
             logger.debug(validatorInput);

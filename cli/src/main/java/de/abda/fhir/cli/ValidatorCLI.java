@@ -4,6 +4,7 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.validation.ResultSeverityEnum;
 import ca.uhn.fhir.validation.SingleValidationMessage;
 import ch.qos.logback.classic.Level;
+import de.abda.fhir.validator.core.TA7.TA7Handler;
 import de.abda.fhir.validator.core.Validator;
 import de.abda.fhir.validator.core.ValidatorHolder;
 import de.abda.fhir.validator.core.util.FileHelper;
@@ -25,7 +26,7 @@ public class ValidatorCLI {
 
     public static void main(String[] args) {
 
-        rootLogger.setLevel(Level.ERROR);
+        rootLogger.setLevel(Level.INFO);
 
         if (args.length != 1) {
             logger.warn("Usage: First argument must be a filename");
@@ -37,6 +38,8 @@ public class ValidatorCLI {
 
         FhirContext ctx = FhirContext.forR4Cached();
         ValidatorHolder validatorHolder = new ValidatorHolder(ctx);
+
+        TA7Handler.handleTA7(inputFile, validatorHolder);
 
         try {
             Profile profile = ProfileHelper.getProfileFromFile(inputFile);

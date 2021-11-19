@@ -43,7 +43,7 @@ public class ProfileHelper {
         return null;
     }
 
-    public static Profile getProfileFromFile(File file) {
+    public static Profile getProfileFromFile(File file) { //TODO XMLBufferReader based implementation?
         String patternString = "(<profile\\s*value=['\"])([Hh][Tt][Tt][Pp][Ss]?://[^|'\"<>\\s#]+/StructureDefinition/[^|'\"<>\\s#]+)(\\|)([^'\"<>\\s#]+)(['\"]\\s*/?>)"; // Identify canonical profile URLs
         Pattern pattern = Pattern.compile(patternString);
         try {

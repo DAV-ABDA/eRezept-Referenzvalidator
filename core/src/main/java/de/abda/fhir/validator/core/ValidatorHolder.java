@@ -16,7 +16,7 @@ public class ValidatorHolder {
     private ValidatorFactory validatorFactory;
 
     public ValidatorHolder() {
-        new ValidatorHolder(FhirContext.forR4());
+        new ValidatorHolder(FhirContext.forR4Cached());
     }
 
     public ValidatorHolder(FhirContext ctx) {

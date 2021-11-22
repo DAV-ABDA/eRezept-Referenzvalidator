@@ -91,7 +91,7 @@ public class ProfileHelper {
                     while (xmlEventReader.hasNext()) {
                         nextTag = xmlEventReader.nextTag();
                         if (nextTag.isStartElement() && "profile".equals(nextTag.asStartElement().getName().getLocalPart().toLowerCase())) {
-                            Attribute valueAttribute = nextTag.asStartElement().getAttributeByName(new QName("aaa", "value", ""));
+                            Attribute valueAttribute = nextTag.asStartElement().getAttributeByName(new QName("", "value", ""));
                             if (valueAttribute == null) {
                                 logger.error("Could not read value attribute from meta/profile tag.");
                                 return null;

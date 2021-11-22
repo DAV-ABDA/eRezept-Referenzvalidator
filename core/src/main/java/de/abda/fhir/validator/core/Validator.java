@@ -4,6 +4,7 @@ import ca.uhn.fhir.validation.FhirValidator;
 import ca.uhn.fhir.validation.ResultSeverityEnum;
 import ca.uhn.fhir.validation.SingleValidationMessage;
 import ca.uhn.fhir.validation.ValidationResult;
+import de.abda.fhir.validator.core.util.WhiteListHelper;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,12 +35,15 @@ public class Validator {
     private Map<ResultSeverityEnum, List<SingleValidationMessage>> handleValidationResults(
         ValidationResult result) {
 
+        List<SingleValidationMessage> messages = result.getMessages().stream().collect(Collectors.toList());
+        WhiteListHelper.applyWhiteLists(messages);
+
         // The result object now contains the validation results
-        for (SingleValidationMessage next : result.getMessages()) {
+        for (SingleValidationMessage next : messages) {
             logger.info(
                 "Validator message: " + next.getSeverity() + " " + next.getLocationString() + " " + next.getMessage());
         }
-        return result.getMessages().stream().collect(
+        return messages.stream().collect(
                 Collectors.groupingBy(SingleValidationMessage::getSeverity, Collectors.toList()));
     }
 }

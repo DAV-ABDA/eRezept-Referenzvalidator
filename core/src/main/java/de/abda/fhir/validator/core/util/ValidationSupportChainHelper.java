@@ -2,7 +2,7 @@ package de.abda.fhir.validator.core.util;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.support.DefaultProfileValidationSupport;
-import de.abda.fhir.validator.core.support.IgnoreMissingPznValueSetValidationSupport;
+import de.abda.fhir.validator.core.support.IgnoreMissingValueSetValidationSupport;
 import de.abda.fhir.validator.core.support.VersionIgnoringSnapshotGeneratingValidationSupport;
 import de.abda.fhir.validator.core.support.VersionRemovingNpmPackageValidationSupport;
 import org.hl7.fhir.common.hapi.validation.support.CommonCodeSystemsTerminologyService;
@@ -22,7 +22,7 @@ public class ValidationSupportChainHelper {
                 new VersionIgnoringSnapshotGeneratingValidationSupport(ctx),
                 new CommonCodeSystemsTerminologyService(ctx),
                 new InMemoryTerminologyServerValidationSupport(ctx),
-                new IgnoreMissingPznValueSetValidationSupport(ctx)
+                new IgnoreMissingValueSetValidationSupport(ctx)
         );
     }
 

@@ -46,7 +46,7 @@ public class ValidatorCLI {
         ValidatorHolder validatorHolder = new ValidatorHolder(ctx);
 
         try {
-            Profile profile = ProfileHelper.getProfileFromFile(inputFile);
+            Profile profile = ProfileHelper.getProfileFromXmlStream(new FileInputStream(inputFile));
             logger.debug("Profile identified: " + profile.getCanonical());
             Validator validator = validatorHolder.getValidatorForProfile(profile);
             String validatorInput = FileHelper.loadValidatorInputAsString(args[0], true);

@@ -83,7 +83,7 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
   * Sollte nicht die Minor Number, sondern die Majir Number erhöht werden, dann bitte folgenden
     Parameter setzen: `gradlew final -Prelease.scope=major`    
   * Soll exakt eine bestimmte Versionsnummer gesetzt werden, dann bitte folgenden Parameter setzen:
-    `gw final -Prelease.version=0.1.1`, wobei sie 0.1.1 durch die exakte neue Versionsnummer ersetzen
+    `gradlew final -Prelease.version=0.1.1`, wobei sie 0.1.1 durch die exakte neue Versionsnummer ersetzen
    
 #### Ablauf eines offiziellen Release:
 * Sie befinden sich auf dem `main` Branch, alle lokalen Änderungen wurden committed und gepushed.

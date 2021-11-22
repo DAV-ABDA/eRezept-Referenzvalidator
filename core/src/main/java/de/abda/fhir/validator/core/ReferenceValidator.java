@@ -3,11 +3,16 @@ package de.abda.fhir.validator.core;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.validation.ResultSeverityEnum;
 import ca.uhn.fhir.validation.SingleValidationMessage;
-import de.abda.fhir.validator.core.util.*;
-import org.hl7.fhir.instance.model.api.IBaseResource;
+import de.abda.fhir.validator.core.util.FileHelper;
+import de.abda.fhir.validator.core.util.InputHelper;
+import de.abda.fhir.validator.core.util.Profile;
+import de.abda.fhir.validator.core.util.ProfileHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
@@ -73,8 +78,8 @@ public class ReferenceValidator {
 
     private Map<ResultSeverityEnum, List<SingleValidationMessage>> validateImpl(
         String validatorInputAsString) {
-        IBaseResource resource = ParserHelper.parseString(validatorInputAsString, ctx);
-        Profile profile = ProfileHelper.getProfile(resource);
+        InputStream validatorInputStream = new ByteArrayInputStream(validatorInputAsString.getBytes(StandardCharsets.UTF_8));
+        Profile profile = ProfileHelper.getProfileFromXmlStream(validatorInputStream);
         Validator validator = validatorHolder.getValidatorForProfile(profile);
         String validatorInputWithoutVersion = InputHelper.removeVersionInCanonicals(
             validatorInputAsString);

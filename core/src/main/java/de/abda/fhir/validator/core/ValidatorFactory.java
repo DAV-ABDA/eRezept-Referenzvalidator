@@ -103,7 +103,7 @@ public class ValidatorFactory {
         }
 
         packageFilenameList.add(requiredFhirPackageVersion.getFilename());
-        var dependencies = requiredFhirPackageVersion.getDependencies();
+        List<FhirPackage> dependencies = requiredFhirPackageVersion.getDependencies();
         if (dependencies != null && dependencies.isEmpty() == false) {
             packageFilenameList.addAll(getFilenamesFromPackageDependencies(dependencies));
         }

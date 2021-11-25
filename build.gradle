@@ -41,7 +41,9 @@ configure(subprojects.findAll {it.name != "bom"}) {
         implementation("org.apache.logging.log4j:log4j-api:2.14.1")
         implementation("org.apache.logging.log4j:log4j-core:2.14.1")
         implementation("org.slf4j:slf4j-log4j12:1.7.32")
-        implementation("ca.uhn.hapi.fhir:hapi-fhir-validation:$hapiFhirVersion")
+        implementation("ca.uhn.hapi.fhir:hapi-fhir-validation:$hapiFhirVersion") {
+            exclude group:"ca.uhn.hapi.fhir", module:"hapi-fhir-jpaserver-model"
+        }
         implementation("ca.uhn.hapi.fhir:hapi-fhir-structures-r4:$hapiFhirVersion")
         implementation("ca.uhn.hapi.fhir:hapi-fhir-validation-resources-r4:$hapiFhirVersion")
         implementation("com.fasterxml.woodstox:woodstox-core:6.2.7")

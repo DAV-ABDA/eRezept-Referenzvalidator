@@ -8,6 +8,8 @@ import de.abda.fhir.validator.core.support.VersionRemovingNpmPackageValidationSu
 import de.abda.fhir.validator.core.util.FhirPackagePropertiesHelper;
 import de.abda.fhir.validator.core.util.Profile;
 import de.abda.fhir.validator.core.util.ValidationSupportChainHelper;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.tuple.Pair;
 import org.hl7.fhir.common.hapi.validation.support.ValidationSupportChain;
 import org.hl7.fhir.common.hapi.validation.validator.FhirInstanceValidator;
 import org.slf4j.Logger;
@@ -34,9 +36,6 @@ public class ValidatorFactory {
     }
 
     public Validator createValidatorForProfile(Profile profile) {
-        VersionRemovingNpmPackageValidationSupport npmPackageSupport = new VersionRemovingNpmPackageValidationSupport(ctx);
-        try {
-
             FhirProfile supportedProfile = fhirPackageProperties.getSupportedProfiles()
                 .get(profile.getBaseCanonical());
             if (supportedProfile == null){
@@ -58,28 +57,50 @@ public class ValidatorFactory {
                 logger.error(msg);
                 throw new ValidatorInitializationException(msg);
             }
+        Validator validator = loadValidator(profile.getBaseCanonical(), fhirProfileVersion);
+        logger.debug("Validator initialization succeeded for profile \"" + profile.getBaseCanonical() + "\" version \"" + profile
+            .getVersion() + "\"");
+        return validator;
+    }
 
+    Validator loadValidator(String canonical, FhirProfileVersion fhirProfileVersion) {
+        VersionRemovingNpmPackageValidationSupport npmPackageSupport = new VersionRemovingNpmPackageValidationSupport(ctx);
+        try{
             List<String> packageFilesToLoad = getPackageFilenameListToLoadFor(fhirProfileVersion);
             for(String packageFilename : packageFilesToLoad) {
                 npmPackageSupport.loadPackageFromClasspath("classpath:package/" + packageFilename);
             }
 
-            ValidationSupportChain validationSupportChain = ValidationSupportChainHelper.createValidationSupportChain(npmPackageSupport, ctx);
+            ValidationSupportChain validationSupportChain = ValidationSupportChainHelper.createValidationSupportChain(
+                npmPackageSupport, ctx);
 
             FhirValidator fhirValidator = ctx.newValidator();
             FhirInstanceValidator instanceValidator = new FhirInstanceValidator(
                     validationSupportChain);
             // instanceValidator.setNoTerminologyChecks(true); //TODO check if this needs to be configured
             fhirValidator.registerValidatorModule(instanceValidator);
-            logger.debug("Validator initialization succeeded for profile \"" + profile.getBaseCanonical() + "\" version \"" + profile.getVersion() + "\"");
             return new Validator(fhirValidator);
         } catch (ValidatorInitializationException e){
             logger.error(e.getMessage(), e);
             throw e;
         } catch (Exception e) {
             logger.error(e.getMessage(),e);
-            throw new ValidatorInitializationException("Validator could not be initialized correctly for profile \"" + profile.getBaseCanonical() + "\" version \"" + profile.getVersion() + "\"", e);
+            throw new ValidatorInitializationException("Validator could not be initialized correctly for profile \"" +
+               canonical + "\" version \"" + fhirProfileVersion.getRequiredPackage().getPackageVersion() + "\"", e);
         }
+    }
+
+    /**
+     * Returns all supported {@link FhirProfileVersion}s
+     * @return List of {@link FhirProfileVersion}
+     */
+    List<Pair<String,FhirProfileVersion>> getAllSupportedProfiles(){
+        return fhirPackageProperties.getSupportedProfiles().values().stream()
+            .flatMap(profile-> profile.getVersions().entrySet().stream().map(entry-> Pair.of(profile.getProfileName(), entry)))
+            .map(entryPair-> Pair.of(entryPair.getLeft(), new FhirProfileVersion(entryPair.getValue().getKey(), entryPair.getValue().getValue()
+                .getRequiredPackage())))
+            .distinct()
+            .collect(Collectors.toList());
     }
 
 

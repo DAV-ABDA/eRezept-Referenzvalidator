@@ -76,6 +76,10 @@ public class ReferenceValidator {
         return validateImpl(validatorInputAsString);
     }
 
+    public void preloadAllSupportedValidators(){
+        validatorHolder.preloadAllSupportedValidators();
+    }
+
     private Map<ResultSeverityEnum, List<SingleValidationMessage>> validateImpl(
         String validatorInputAsString) {
         InputStream validatorInputStream = new ByteArrayInputStream(validatorInputAsString.getBytes(StandardCharsets.UTF_8));

@@ -3,6 +3,7 @@ package de.abda.fhir.validator.core.support;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.support.ConceptValidationOptions;
 import ca.uhn.fhir.context.support.ValidationSupportContext;
+import java.util.HashMap;
 import org.hl7.fhir.common.hapi.validation.support.BaseValidationSupport;
 import org.hl7.fhir.common.hapi.validation.support.ValidationSupportChain;
 
@@ -17,10 +18,7 @@ import java.util.Map;
  */
 public class IgnoreMissingValueSetValidationSupport extends BaseValidationSupport {
 
-    private final Map<String, String> supportedCodeSystemMap = Map.ofEntries(
-            new AbstractMap.SimpleEntry<>("http://fhir.de/CodeSystem/ifa/pzn", "PZN found. This validator has no PZN database and will not check if the provided PZN is valid."),
-            new AbstractMap.SimpleEntry<>("http://fhir.de/CodeSystem/ask", "ASK entry found. This validator has no ASK database and will not check if the provided entry is valid")
-    );
+    private final Map<String, String> supportedCodeSystemMap = new HashMap<>();
 
     /**
      * Constructor
@@ -28,6 +26,8 @@ public class IgnoreMissingValueSetValidationSupport extends BaseValidationSuppor
      */
     public IgnoreMissingValueSetValidationSupport(FhirContext theFhirContext) {
         super(theFhirContext);
+        supportedCodeSystemMap.put("http://fhir.de/CodeSystem/ifa/pzn", "PZN found. This validator has no PZN database and will not check if the provided PZN is valid.");
+        supportedCodeSystemMap.put("http://fhir.de/CodeSystem/ask", "ASK entry found. This validator has no ASK database and will not check if the provided entry is valid");
     }
 
     @Override

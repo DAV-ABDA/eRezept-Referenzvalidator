@@ -23,25 +23,32 @@ public class Validator {
     }
 
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validate(String input) {
+        return validate(input, true);
+    }
+
+    public Map<ResultSeverityEnum, List<SingleValidationMessage>> validate(String input, boolean logErrors) {
         ValidationResult result = fhirValidator.validateWithResult(input);
-        return handleValidationResults(result);
+        return handleValidationResults(result, true);
     }
 
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validate(IBaseResource input) {
         ValidationResult result = fhirValidator.validateWithResult(input);
-        return handleValidationResults(result);
+        return handleValidationResults(result, true);
     }
 
     private Map<ResultSeverityEnum, List<SingleValidationMessage>> handleValidationResults(
-        ValidationResult result) {
+        ValidationResult result, boolean logErrors) {
 
         List<SingleValidationMessage> messages = result.getMessages().stream().collect(Collectors.toList());
         WhiteListHelper.applyWhiteLists(messages);
 
-        // The result object now contains the validation results
-        for (SingleValidationMessage next : messages) {
-            logger.info(
-                "Validator message: " + next.getSeverity() + " " + next.getLocationString() + " " + next.getMessage());
+        if(logErrors) {
+            // The result object now contains the validation results
+            for (SingleValidationMessage next : messages) {
+                logger.info(
+                    "Validator message: " + next.getSeverity() + " " + next.getLocationString()
+                        + " " + next.getMessage());
+            }
         }
         return messages.stream().collect(
                 Collectors.groupingBy(SingleValidationMessage::getSeverity, Collectors.toList()));

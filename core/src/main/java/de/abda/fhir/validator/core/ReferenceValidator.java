@@ -76,6 +76,11 @@ public class ReferenceValidator {
         return validateImpl(validatorInputAsString);
     }
 
+    /**
+     * The first validation in a new validator is very slow. So this method creates validators
+     * for all supported profiles and loads all necessary data, so the calls to the validator
+     * will be fast afterwards.
+     */
     public void preloadAllSupportedValidators(){
         validatorHolder.preloadAllSupportedValidators();
     }

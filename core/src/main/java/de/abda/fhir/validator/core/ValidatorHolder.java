@@ -34,6 +34,10 @@ public class ValidatorHolder {
         return validatorMap.get(profile);
     }
 
+    /**
+     * Takes all supported profiles and their versions, creates a Validator instance and validates
+     * an empty bundle to load the snapshots.
+     */
     public void preloadAllSupportedValidators(){
         List<Pair<String,FhirProfileVersion>> profiles = validatorFactory.getAllSupportedProfiles();
         logger.info("Preloading all supported profiles: {}", profiles);

@@ -56,4 +56,11 @@ public class Profile {
         return result;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Profile{");
+        sb.append("canonical='").append(canonical).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

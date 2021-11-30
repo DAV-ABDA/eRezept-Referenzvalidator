@@ -80,9 +80,11 @@ public class ReferenceValidator {
      * The first validation in a new validator is very slow. So this method creates validators
      * for all supported profiles and loads all necessary data, so the calls to the validator
      * will be fast afterwards.
+     * @param profileToPreload a varags array of profiles, that will be preloaded. If this is null or
+     *                         empty, then all profiles will be preloaded
      */
-    public void preloadAllSupportedValidators(){
-        validatorHolder.preloadAllSupportedValidators();
+    public void preloadAllSupportedValidators(ProfileForPreloading... profileToPreload){
+        validatorHolder.preloadAllSupportedValidators(profileToPreload);
     }
 
     private Map<ResultSeverityEnum, List<SingleValidationMessage>> validateImpl(

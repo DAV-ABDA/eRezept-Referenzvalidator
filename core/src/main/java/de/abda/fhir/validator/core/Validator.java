@@ -28,7 +28,7 @@ public class Validator {
 
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validate(String input, boolean logErrors) {
         ValidationResult result = fhirValidator.validateWithResult(input);
-        return handleValidationResults(result, true);
+        return handleValidationResults(result, logErrors);
     }
 
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validate(IBaseResource input) {

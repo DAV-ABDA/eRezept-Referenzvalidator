@@ -8,7 +8,6 @@ import de.abda.fhir.validator.core.support.VersionRemovingNpmPackageValidationSu
 import de.abda.fhir.validator.core.util.FhirPackagePropertiesHelper;
 import de.abda.fhir.validator.core.util.Profile;
 import de.abda.fhir.validator.core.util.ValidationSupportChainHelper;
-import java.util.stream.Collectors;
 import org.apache.commons.lang3.tuple.Pair;
 import org.hl7.fhir.common.hapi.validation.support.ValidationSupportChain;
 import org.hl7.fhir.common.hapi.validation.validator.FhirInstanceValidator;
@@ -18,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ValidatorFactory {
 
@@ -105,7 +105,7 @@ public class ValidatorFactory {
 
 
     public List<String> getPackageFilenameListToLoadFor(FhirProfileVersion fhirProfileVersion) throws Exception {
-        ArrayList<String> packageFilenameList = new ArrayList<>();
+        List<String> packageFilenameList = new ArrayList<>();
         String requiredPackageName = fhirProfileVersion.getRequiredPackage().getPackageName();
         String requiredPackageVersion = fhirProfileVersion.getRequiredPackage().getPackageVersion();
 
@@ -128,7 +128,7 @@ public class ValidatorFactory {
         if (dependencies != null && dependencies.isEmpty() == false) {
             packageFilenameList.addAll(getFilenamesFromPackageDependencies(dependencies));
         }
-
+        packageFilenameList = packageFilenameList.stream().distinct().collect(Collectors.toList());
         return packageFilenameList;
     }
 

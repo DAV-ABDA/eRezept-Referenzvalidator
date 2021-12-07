@@ -165,7 +165,9 @@ fhirPackages:
         version: "0.9.13"
         filename: "de.basisprofil.r4-0.9.13.tgz"
 
+### unterstütze Profile....
 supportedProfiles:
+# KBV Profile des eRezept (https://simplifier.net/eRezept/)
   "https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle":
     profileName: "https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle"
     versions:
@@ -178,6 +180,22 @@ supportedProfiles:
           packageName: "kbv.ita.erp"
           packageVersion: "1.0.2"
 
+  # TODO: add? Umgang mit Referenzen?
+  # https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Composition
+  # https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Medication_Compounding
+  # https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Medication_FreeText
+  # https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Medication_Ingredient
+  # https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Medication_PZN
+  # https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_PracticeSupply
+  # https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Prescription
+  ## Formularübergreifende Vorgaben für Digitale Muster
+  ## https://fhir.kbv.de/StructureDefinition/KBV_PR_FOR_Coverage
+  ## https://fhir.kbv.de/StructureDefinition/KBV_PR_FOR_Organization
+  ## https://fhir.kbv.de/StructureDefinition/KBV_PR_FOR_Patient
+  ## https://fhir.kbv.de/StructureDefinition/KBV_PR_FOR_Practitioner
+  ## https://fhir.kbv.de/StructureDefinition/KBV_PR_FOR_PractitionerRole
+
+# gematik Profile des E-Rezept-Workflow (https://simplifier.net/erezept-workflow)
   "https://gematik.de/fhir/StructureDefinition/ErxMedicationDispense":
     profileName: "https://gematik.de/fhir/StructureDefinition/ErxMedicationDispense"
     versions:
@@ -210,6 +228,12 @@ supportedProfiles:
           packageName: "de.gematik.erezept-workflow.r4"
           packageVersion: "1.1.1"
 
+  # TODO: add? Umgang mit Referenzen?
+  # https://gematik.de/fhir/StructureDefinition/ErxComposition
+  # https://gematik.de/fhir/StructureDefinition/ErxTask
+  # https://gematik.de/fhir/StructureDefinition/ErxChargeItem -> ACHTUNG: PKV Kontext
+
+# DAV Profile des eAbgabedatensatzes (https://simplifier.net/erezeptabgabedaten)
   "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle":
     profileName: "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle"
     versions:
@@ -222,6 +246,15 @@ supportedProfiles:
           packageName: "de.abda.erezeptabgabedaten"
           packageVersion: "1.1.0"
 
+  # TODO: add? Umgang mit Referenzen?
+  # http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-Apotheke
+  # http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenComposition
+  # http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-Abgabeinformationen
+  # http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-Abrechnungszeilen
+  # http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-ZusatzdatenHerstellung
+  # http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-ZusatzdatenEinheitGKVSV_PR_ERP_eAbrechnungsdatenGKVSV_PR_ERP_eAbrechnungsdaten
+
+# GKV-SV Profile des eAbrechnungsdatensatzes (https://simplifier.net/erezeptabrechnungsdaten)
   "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle":
     profileName: "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle"
     versions:
@@ -242,3 +275,8 @@ supportedProfiles:
           packageName: "de.gkvsv.erezeptabrechnungsdaten"
           packageVersion: "1.1.0"
 
+  # TODO: add? Umgang mit Referenzen?
+  # https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Composition
+  # https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_RezeptBundle
+  # https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung
+  # https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten

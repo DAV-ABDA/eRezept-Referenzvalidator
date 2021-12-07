@@ -24,6 +24,7 @@ public class WhiteListHelper {
         });
     }
 
+    //TODO This ain't failsafe. A better solution has to be found for the long term as this might ignore more errors than just the bad identifier definition in the profile (or better make a better/correct profile)
     public static void removeDAVActorIdentifierErrors(List<SingleValidationMessage> messages) {
         messages.removeIf(singleValidationMessage -> {
             if (singleValidationMessage.getSeverity() == ResultSeverityEnum.ERROR &&

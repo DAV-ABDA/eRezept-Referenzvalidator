@@ -34,7 +34,7 @@ public class ValidatorCLI {
             boolean validatorInputIsValid =
                     errors.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()).size() == 0
                             && errors.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()).size() == 0;
-            logger.info("Validation result: " + validatorInputIsValid + " -- Error summary: " + mapAsString);
+            logger.info("Validation result: " + validatorInputIsValid + " -- Result summary: " + mapAsString);
             System.exit(validatorInputIsValid ? 0 : 1);
         } catch (Exception e){
             logger.error("Exception occured", e);

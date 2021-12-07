@@ -1,5 +1,36 @@
 # eRezept-Referenzvalidator auf Basis des HAPI-FHIR-Validators
 
+### Inhaltsverzeichnis
+* Projektziele
+  * NICHT-Projektziele
+* Verwendung
+  * Fat-Jar
+  * Einbindung in Maven oder Gradle Builds
+* Contribution
+  * Build
+    * Releasen
+      * Ablauf eines offiziellen Release
+* Packages & Profile & Versionen
+  * unterstütze Profile und Versionen
+  * eingebundene Packages (R4)
+    * Anpassungen der Packages
+
+## Projektziele
+
+* Der Referenzvalidator dient als "Schiedsrichter", mit dem ohne weitere Voraussetzungen FHIR Dateien auf Ihre Validität (valid oder nicht valid) getestet werden können. Die einzig relevante Ausgabe ist 'Validation result: true' oder 'Validation result: false'. Zusätzlich ausgegebene Warnings sind ausschließlich informell und haben keinen Einfluss auf das Ergebnis. Das positive Testergebnis ist __eine__ Voraussetzung für die Annahme von Datenlieferungen zwischen Apothekenrechenzentren und Krankenkassen(-Annahmestellen). __Alle__ weitern Akzeptanzkriterien werden werden in der TA7 Spezifikation festgelegt.
+* Es werden ausschließlich in den entsprechenden FHIR-Profilen enthaltene Constraints geprüft.
+* Es wird immer nur genau eine FHIR-XML-Datei geprüft. Als Base64-eingebettete weitere FHIR-Daten müssen durch separate Schritte/Aufrufe extrahiert und geprüft werden.
+
+### NICHT-Projektziele
+
+* Falsche oder fehlende Constraints in den FHIR-Profilen werden __nicht__ mit dem Validator nachkorrigiert sondern durch versionierte Änderung der Profile.
+* Der Referenzvalidator __kann__ in produktiven Umgebungen eingesetzt werden, der gibt aber derzeit __keine__ Garantie für Stabilität oder Optimierungen im Bezug auf Performance, Speicherverbrauch und Laufzeit.
+* Eine Signaturvalidierung oder Zertifikatsprüfung findet __nicht__ statt.
+* Das Ergebnis des Validators ist __keine__ Garantie für ein retaxierungsfreies E-Rezept.
+
+Die Projektziele können sich zukünftig ändern.
+Fehler werden über Issues gemeldet und nach den Projektzielen priorisiert bzw. akzeptiert oder abgelehnt.
+
 ## Verwendung
 Der Referenzvalidator wird auf zwei Arten bereitgestellt: Als Fat-Jar und als Artefakt auf Maven Central
 
@@ -111,12 +142,41 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
   hochladen, das unter `cli/build/libs` erzeugte Fat-Jar damit hochladen und "Publish release"
   anklicken.
 
-## Packages
-Anpassungen der Packages:
+## Packages & Profile & Versionen
+### unterstütze Profile und Versionen
+* https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle
+  * 1.0.1
+  * 1.0.2
+* https://gematik.de/fhir/StructureDefinition/ErxMedicationDispense
+  * 1.0.3-1 (Instancen ohne Versionsangaben werden gegen die Version 1.0.3-1 validiert)
+  * 1.1.1
+* https://gematik.de/fhir/StructureDefinition/ErxReceipt
+* http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle
+  * 1.0.3
+  * 1.1.0
+* https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle
+  * 1.0.4 & 1.0.5 & 1.0.6 (validieren gegen Package-Version 1.0.6)
+  * 1.1.0
+
+### eingebundene Packages (R4)
+* de.basisprofil.r4-0.9.13.tgz
+* kbv.basis-1.1.3.tgz
+* kbv.ita.for-1.0.3.tgz
+* kbv.ita.erp-1.0.1.tgz
+* kbv.ita.erp-1.0.2.tgz 
+* de.gematik.erezept-workflow.r4-1.0.3-1.tgz
+* de.gematik.erezept-workflow.r4-1.1.1.tgz
+* de.abda.erezeptabgabedaten-1.0.3.tgz
+* de.abda.erezeptabgabedatenbasis-1.1.0.tgz
+* de.abda.erezeptabgabedaten-1.1.0.tgz
+* de.gkvsv.erezeptabrechnungsdaten-1.0.6.tgz
+* de.gkvsv.erezeptabrechnungsdaten-1.1.0.tgz
+
+#### Anpassungen der Packages
  - Add Package dav.kbv.sfhir.cs.vs-1.0.2-json.tgz (KBV Schlüsseltabellen - externe CodeSytseme/ValueSets)
- - Delete examples
+ - delete examples in Packages
  - de.gematik.erezept-workflow.r4-1.0.3-1.tgz
    - Delete ProFile StructureDefinition-ChargeItem-erxChargeItem.json (keine Relevanz - future use)
  - kbv.ita.erp-1.0.1.tgz
-   - Change ProFile KBV_PR_ERP_Prescription.json (MedicationRequest.insurance = "type":[{"code":"Reference","targetProfile":["https://fhir.kbv.de/StructureDefinition/KBV_PR_FOR_Coverage|1.0.3"]}])
+   - Change Profile KBV_PR_ERP_Prescription.json (MedicationRequest.insurance = "type":[{"code":"Reference","targetProfile":["https://fhir.kbv.de/StructureDefinition/KBV_PR_FOR_Coverage|1.0.3"]}])
 

@@ -57,6 +57,7 @@ configure(subprojects.findAll {it.name != "bom"}) {
     }
     test {
         useJUnitPlatform()
+        maxHeapSize("2G")
         systemProperty "user.language","de"
     }
 }

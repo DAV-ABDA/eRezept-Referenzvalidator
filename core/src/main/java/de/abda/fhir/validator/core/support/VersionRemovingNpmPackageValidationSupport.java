@@ -2,7 +2,6 @@ package de.abda.fhir.validator.core.support;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.util.ClasspathUtil;
-import de.abda.fhir.validator.core.util.InputHelper;
 import org.hl7.fhir.common.hapi.validation.support.NpmPackageValidationSupport;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.utilities.npm.NpmPackage;
@@ -33,7 +32,7 @@ public class VersionRemovingNpmPackageValidationSupport extends NpmPackageValida
                 for (String nextFile : packageFolder.listFiles()) {
                     if (nextFile.toLowerCase(Locale.US).endsWith(".json")) {
                         String input = new String(packageFolder.getContent().get(nextFile), StandardCharsets.UTF_8);
-                        input = InputHelper.removeVersionInCanonicals(input);
+//                        input = InputHelper.removeVersionInCanonicals(input);
                         IBaseResource resource = getFhirContext().newJsonParser().parseResource(input);
                         super.addResource(resource);
                     }

@@ -7,7 +7,6 @@ import de.abda.fhir.validator.core.support.VersionIgnoringSnapshotGeneratingVali
 import de.abda.fhir.validator.core.support.VersionRemovingNpmPackageValidationSupport;
 import org.hl7.fhir.common.hapi.validation.support.CommonCodeSystemsTerminologyService;
 import org.hl7.fhir.common.hapi.validation.support.InMemoryTerminologyServerValidationSupport;
-import org.hl7.fhir.common.hapi.validation.support.SnapshotGeneratingValidationSupport;
 import org.hl7.fhir.common.hapi.validation.support.ValidationSupportChain;
 
 public class ValidationSupportChainHelper {
@@ -18,7 +17,6 @@ public class ValidationSupportChainHelper {
         return new ValidationSupportChain(
                 npmPackageSupport,
                 new DefaultProfileValidationSupport(ctx),
-                new SnapshotGeneratingValidationSupport(ctx),
                 new VersionIgnoringSnapshotGeneratingValidationSupport(ctx),
                 new CommonCodeSystemsTerminologyService(ctx),
                 new InMemoryTerminologyServerValidationSupport(ctx),

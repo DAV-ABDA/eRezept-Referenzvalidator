@@ -151,6 +151,8 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
   * 1.0.3-1 (Instancen ohne Versionsangaben werden gegen die Version 1.0.3-1 validiert)
   * 1.1.1
 * https://gematik.de/fhir/StructureDefinition/ErxReceipt
+  * 1.0.3-1 (Instancen ohne Versionsangaben werden gegen die Version 1.0.3-1 validiert)
+  * 1.1.1
 * http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle
   * 1.0.3
   * 1.1.0

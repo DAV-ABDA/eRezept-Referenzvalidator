@@ -33,14 +33,12 @@ subprojects{
         }
     }
 }
-configure(subprojects.findAll {it.name != "bom"}) {
+configure(subprojects.findAll {it.name == "core" || it.name == "cli"}) {
     apply{
         plugin "java-library"
     }
     dependencies{
-        implementation("org.apache.logging.log4j:log4j-api:2.15.0")
-        implementation("org.apache.logging.log4j:log4j-core:2.15.0")
-        implementation("org.slf4j:slf4j-log4j12:1.7.32")
+        implementation("org.slf4j:slf4j-api:1.7.32")
         implementation("ca.uhn.hapi.fhir:hapi-fhir-validation:$hapiFhirVersion") {
             exclude group:"ca.uhn.hapi.fhir", module:"hapi-fhir-jpaserver-model"
         }
@@ -96,6 +94,14 @@ def mavenRepo = {
     }
 }
 project(":packages"){
+    apply{
+        plugin "java-library"
+    }
+    java{
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        withJavadocJar()
+        withSourcesJar()
+    }
     publishing {
         publications {
             maven(MavenPublication) {
@@ -119,6 +125,7 @@ project(":core"){
         api("ca.uhn.hapi.fhir:hapi-fhir-base:$hapiFhirVersion")
         implementation(project(":packages"))
         testRuntimeOnly(project(":packages"))
+        testImplementation 'org.slf4j:slf4j-log4j12:1.7.32'
     }
 
     publishing {

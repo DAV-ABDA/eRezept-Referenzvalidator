@@ -57,11 +57,12 @@ public class VersionIgnoringSnapshotGeneratingValidationSupport extends Snapshot
             theValidationSupportContext.getCurrentlyGeneratingSnapshots().add(inputUrl);
 
             String baseDefinition = inputCanonical.getBaseDefinition();
-            if (baseDefinition.contains("|")) {
-                String[] splittedBaseDefinition = baseDefinition.split("\\|");
-                log.info("Removed version " + splittedBaseDefinition[1] + " from canonical " + baseDefinition );
-                baseDefinition = splittedBaseDefinition[0];
-            }
+            //TODO check version handling
+//            if (baseDefinition.contains("|")) {
+//                String[] splittedBaseDefinition = baseDefinition.split("\\|");
+//                log.info("Removed version " + splittedBaseDefinition[1] + " from canonical " + baseDefinition );
+//                baseDefinition = splittedBaseDefinition[0];
+//            }
             if (isBlank(baseDefinition)) {
                 throw new PreconditionFailedException("StructureDefinition[id=" + inputCanonical.getIdElement().getId() + ", url=" + inputCanonical.getUrl() + "] has no base");
             }

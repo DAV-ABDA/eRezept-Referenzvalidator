@@ -52,6 +52,7 @@ public class VersionIgnoringSnapshotGeneratingValidationSupport extends Snapshot
             inputUrl = inputCanonical.getUrl();
             if (theValidationSupportContext.getCurrentlyGeneratingSnapshots().contains(inputUrl)) {
                 log.warn("Detected circular dependency, already generating snapshot for: {}", inputUrl);
+                inputUrl = null; // diese Zeile verhindert das Entfernen des schon in Verarbeitung/Generierung befindlichen Profils
                 return theInput;
             }
             theValidationSupportContext.getCurrentlyGeneratingSnapshots().add(inputUrl);

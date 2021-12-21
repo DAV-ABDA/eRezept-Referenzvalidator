@@ -16,9 +16,14 @@ public class WhiteListHelper {
     public static void removeKBVIdentifierWarnings(List<SingleValidationMessage> messages) {
         messages.removeIf(singleValidationMessage -> {
             if(singleValidationMessage.getSeverity() == ResultSeverityEnum.WARNING && (
-                    (singleValidationMessage.getMessage().contains("http://fhir.de/CodeSystem/identifier-type-de-basis#GKV")) ||
-                    (singleValidationMessage.getMessage().contains("http://terminology.hl7.org/CodeSystem/v2-0203#LANR")) ||
-                    (singleValidationMessage.getMessage().contains("http://terminology.hl7.org/CodeSystem/v2-0203#BSNR"))
+                    (singleValidationMessage.getMessage().contains("http://fhir.de/CodeSystem/identifier-type-de-basis#GKV")) || //versichertenId_GKV
+                    (singleValidationMessage.getMessage().contains("http://fhir.de/CodeSystem/identifier-type-de-basis#PKV")) || //versichertenId_pkv
+                    (singleValidationMessage.getMessage().contains("http://fhir.de/CodeSystem/identifier-type-de-basis#kvk")) || //versichertennummer_kvk
+                    (singleValidationMessage.getMessage().contains("http://fhir.de/CodeSystem/identifier-type-de-basis#ZANR")) || //ZANR
+                    (singleValidationMessage.getMessage().contains("http://fhir.de/CodeSystem/identifier-type-de-basis#KZVA")) || //KZV-Abrechnungsnummer
+                    (singleValidationMessage.getMessage().contains("http://terminology.hl7.org/CodeSystem/v2-0203#LANR")) || //ANR
+                    (singleValidationMessage.getMessage().contains("http://terminology.hl7.org/CodeSystem/v2-0203#BSNR")) || //Betriebsstaettennummer
+                    (singleValidationMessage.getMessage().contains("http://terminology.hl7.org/CodeSystem/v2-0203#XX")) //Institutionskennzeichen
             )) return true;
             else return false;
         });

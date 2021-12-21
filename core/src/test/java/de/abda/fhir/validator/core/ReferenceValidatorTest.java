@@ -31,6 +31,7 @@ class ReferenceValidatorTest {
 
   private static final Path VALID_BASE_DIR = Paths.get("src/test/resources/valid");
   private static final Path INVALID_BASE_DIR = Paths.get("src/test/resources/invalid");
+  private static final Path INVALID_BULK_DIR = Paths.get("src/test/resources/invalid/bulk");
   private static final Path EXCEPTION_BASE_DIR = Paths.get("src/test/resources/exception");
 
   static ReferenceValidator validator = new ReferenceValidator();
@@ -71,6 +72,22 @@ class ReferenceValidatorTest {
         of(INVALID_BASE_DIR.resolve("InvalidEprescriptionBundle1.xml"),
             "Der Wert ist \"https://fhir.kbv.de/CodeSystem/Wrong\", muss aber \"https://fhir.kbv.de/CodeSystem/KBV_CS_ERP_Section_Type\" sein")
     );
+  }
+
+  @ParameterizedTest
+  @MethodSource
+  void validateInvalidFileBulk(Path path) {
+    Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator
+            .validateFile(path);
+    String mapAsString = errors.keySet().stream()
+            .map(key -> key + ": " + errors.get(key).size())
+            .collect(Collectors.joining(","));
+    System.out.println(mapAsString);
+    assertNotEquals(0, getFatalAndErrorMessages(errors).size());
+  }
+
+  private static Stream<Path> validateInvalidFileBulk() throws IOException {
+    return Files.walk(INVALID_BULK_DIR).filter(path -> path.toString().endsWith(".xml"));
   }
 
   @ParameterizedTest

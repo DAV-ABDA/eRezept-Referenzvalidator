@@ -31,6 +31,7 @@ public class WhiteListHelper {
                     (
                         (singleValidationMessage.getMessage().contains("http://fhir.abda.de/Identifier/DAV-Herstellerschluessel") && singleValidationMessage.getMessage().contains("http://fhir.de/NamingSystem/arge-ik/iknr")) ||
                         singleValidationMessage.getMessage().contains("http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-ZusatzdatenEinheit") ||
+                        singleValidationMessage.getMessage().contains("http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-ZusatzdatenHerstellung") ||
                         singleValidationMessage.getMessage().contains("http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-Base-ZusatzdatenHerstellung")
                     )
             ) return true;

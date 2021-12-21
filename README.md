@@ -148,16 +148,20 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
   * 1.0.1
   * 1.0.2
 * https://gematik.de/fhir/StructureDefinition/ErxMedicationDispense
+  * 1.0.3
   * 1.0.3-1 (Instancen ohne Versionsangaben werden gegen die Version 1.0.3-1 validiert)
   * 1.1.1
 * https://gematik.de/fhir/StructureDefinition/ErxReceipt
+  * 1.0.3 
   * 1.0.3-1 (Instancen ohne Versionsangaben werden gegen die Version 1.0.3-1 validiert)
   * 1.1.1
 * http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle
   * 1.0.3
   * 1.1.0
 * https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle
-  * 1.0.4 & 1.0.5 & 1.0.6 (validieren gegen Package-Version 1.0.6)
+  * 1.0.4
+  * 1.0.5
+  * 1.0.6
   * 1.1.0
 
 ### eingebundene Packages (R4)
@@ -165,12 +169,15 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
 * kbv.basis-1.1.3.tgz
 * kbv.ita.for-1.0.3.tgz
 * kbv.ita.erp-1.0.1.tgz
-* kbv.ita.erp-1.0.2.tgz 
+* kbv.ita.erp-1.0.2.tgz
+* de.gematik.erezept-workflow.r4-1.0.3.tgz
 * de.gematik.erezept-workflow.r4-1.0.3-1.tgz
 * de.gematik.erezept-workflow.r4-1.1.1.tgz
 * de.abda.erezeptabgabedaten-1.0.3.tgz
 * de.abda.erezeptabgabedatenbasis-1.1.0.tgz
 * de.abda.erezeptabgabedaten-1.1.0.tgz
+* de.gkvsv.erezeptabrechnungsdaten-1.0.4.tgz
+* de.gkvsv.erezeptabrechnungsdaten-1.0.5.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.0.6.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.1.0.tgz
 

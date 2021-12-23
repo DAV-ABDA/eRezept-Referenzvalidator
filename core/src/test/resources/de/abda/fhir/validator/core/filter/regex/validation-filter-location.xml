@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<filterlist>
+    <filter>
+        <severityPattern>.*</severityPattern>
+        <locationPattern>testLocationWarning</locationPattern>
+        <messagePattern>.*</messagePattern>
+    </filter>
+</filterlist>

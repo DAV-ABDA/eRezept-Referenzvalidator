@@ -3,6 +3,7 @@
 ### Inhaltsverzeichnis
 * Projektziele
   * NICHT-Projektziele
+  * Was der Validator nicht prüft
 * Verwendung
   * Fat-Jar
   * Einbindung in Maven oder Gradle Builds
@@ -30,6 +31,21 @@
 
 Die Projektziele können sich zukünftig ändern.
 Fehler werden über Issues gemeldet und nach den Projektzielen priorisiert bzw. akzeptiert oder abgelehnt.
+
+### Was der Validator nicht prüft:
+* Referenzen [type]/[id] <p>
+  relative URL "[type]/[id]" when resource has fullUrl "urn:uuid:[id]"
+* fehlerhafte UUIDs<p>
+  * UUIDs werden momentan nicht auf Konformität nach RFC4122 geprüft. 
+* Kontrolle ob die Profilversion (nach TA7) einer Instance zum Zeitpunkt dessen Erstellung gültig war<p>
+    Eine Validierung der korrekten Profilversion wird "momentan" nicht umgesetzt.   
+  * Verordnung, Datum der Ausstellung (KBV_PR_ERP_Prescription: MedicationRequest.authoredOn)
+  * MedicationDispense, Abgabedatum (Gem_erxMedicationDispense: MedicationDispense.whenHandedOver)
+  * Quittung, Ausstellungsdatum (Gem_erxComposition: Composition.date)
+  * Abgabedaten, Abgabedatum (DAV_PR_ERP_Abgabeinformationen: MedicationDispense.whenHandedOver)
+  * Abrechnungsdaten, Abrechnungsmonat (GKVSV_PR_TA7_Sammelrechnung_Composition: Composition.date)
+* UTF-8-BOM <p>
+  Das Format für alle E-Rezept-Dateien ist XML im UTF8 ohne BOM-Zeichensatz. Dieser Zeichensatz ist von der gematik für alle E-Rezept-Daten vorgegeben.
 
 ## Verwendung
 Der Referenzvalidator wird auf zwei Arten bereitgestellt: Als Fat-Jar und als Artefakt auf Maven Central

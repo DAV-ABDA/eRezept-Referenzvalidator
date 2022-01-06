@@ -1,4 +1,25 @@
 # eRezept-Referenzvalidator ChangeLog
+## 0.9.6 - 2022-01-06
+- FIX Constraint Issue in "de.abda.erezeptabgabedatenbasis-1.1.0.tgz"
+  - Error: Datatype (string) is case sensitiv but used with "Sting" in constraint
+    - replace with "exists()" because string must have a value
+  - DAV_EX_ERP_Rezeptaenderung - Rezeptaenderung-1 (on extention)
+    - error Expression: "(extension('ArtRezeptaenderung').value as CodeableConcept).coding.code.matches('2|3|4|12') implies ((extension('DokumentationRezeptaenderung').value as String).length() > 0)"
+    - new Expression: "(extension('ArtRezeptaenderung').value as CodeableConcept).coding.code.matches('2|3|4|12') implies extension('DokumentationRezeptaenderung').exists()"
+  - DAV-EX-ERP-Zusatzattribute - PreisguenstigesFAM-1 (on Extension.extension:ZusatzattributFAM.extension:PreisguenstigesFAM)
+    - error Expression: "(extension('Schluessel').value as CodeableConcept).coding.code.matches('4') implies ((extension('DokumentationFreitext').value as String).length() > 0)"
+    - new Expression: "(extension('Schluessel').value as CodeableConcept).coding.code.matches('4') implies extension('DokumentationFreitext').exists()"
+  - DAV-EX-ERP-Zusatzattribute - ImportFAM-1 (on Extension.extension:ZusatzattributFAM.extension:ImportFAM)
+    - error Expression: "(extension('Schluessel').value as CodeableConcept).coding.code.matches('4') implies ((extension('DokumentationFreitext').value as String).length() > 0)"
+    - new Expression: "(extension('Schluessel').value as CodeableConcept).coding.code.matches('4') implies extension('DokumentationFreitext').exists()"
+  - DAV-EX-ERP-Zusatzattribute - Rabattvertragserfuellung-1 (on Extension.extension:ZusatzattributFAM.extension:Rabattvertragserfuellung)
+    - error Expression: "(extension('Schluessel').value as CodeableConcept).coding.code.matches('4') implies ((extension('DokumentationFreitext').value as String).length() > 0)"
+    - new Expression: "(extension('Schluessel').value as CodeableConcept).coding.code.matches('4') implies extension('DokumentationFreitext').exists()"
+  + additional fix (DAV-PR-Base-ZusatzdatenHerstellung)
+    - Fix identifier for actor in ZusatzdatenHerstellung by removing not-allowed multiple profiles in type definition and adding constraints
+      - Expression: "conformsTo("http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-DAVHerstellerSchluessel") or conformsTo("http://fhir.de/StructureDefinition/identifier-iknr")"
+      - Expression: "conformsTo("http://fhir.de/StructureDefinition/identifier-iknr") implies value.matches('[0-9]{9}')
+
 
 ## 0.9.5 - 2021-12-28
 - Add fix for circular dependencies

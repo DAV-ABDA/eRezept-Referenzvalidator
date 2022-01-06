@@ -190,7 +190,7 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
 * de.gematik.erezept-workflow.r4-1.0.3-1.tgz
 * de.gematik.erezept-workflow.r4-1.1.1.tgz
 * de.abda.erezeptabgabedaten-1.0.3.tgz
-* de.abda.erezeptabgabedatenbasis-1.1.0.tgz
+* de.abda.erezeptabgabedatenbasis-1.1.0.tgz (ACHTUNG! fix issue)
 * de.abda.erezeptabgabedaten-1.1.0.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.0.4.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.0.5.tgz
@@ -204,4 +204,5 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
    - Delete ProFile StructureDefinition-ChargeItem-erxChargeItem.json (keine Relevanz - future use)
  - kbv.ita.erp-1.0.1.tgz
    - Change Profile KBV_PR_ERP_Prescription.json (MedicationRequest.insurance = "type":[{"code":"Reference","targetProfile":["https://fhir.kbv.de/StructureDefinition/KBV_PR_FOR_Coverage|1.0.3"]}])
+ - ACHTUNG! FIX Issue in de.abda.erezeptabgabedatenbasis-1.1.0.tgz -> siehe ChangeLog.md - Version 0.9.6 
 

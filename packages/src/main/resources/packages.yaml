@@ -1,6 +1,7 @@
 ---
+### Definition unterstützer FHIR-Packages:
 fhirPackages:
-
+# https://simplifier.net/eRezept/~packages
   kbv.ita.erp:
     packageName: "kbv.ita.erp"
     versions:
@@ -29,6 +30,7 @@ fhirPackages:
           - packageName: "de.basisprofil.r4"
             packageVersion: "0.9.13"
 
+# https://simplifier.net/FOR/~packages
   kbv.ita.for:
     packageName: "kbv.ita.for"
     versions:
@@ -41,6 +43,7 @@ fhirPackages:
           - packageName: "de.basisprofil.r4"
             packageVersion: "0.9.13"
 
+# https://simplifier.net/Base1x0/~packages
   kbv.basis:
     packageName: "kbv.basis"
     versions:
@@ -51,6 +54,8 @@ fhirPackages:
           - packageName: "de.basisprofil.r4"
             packageVersion: "0.9.13"
 
+# vom DAV erstelltes Package der externen Schlüsseltabellen https://applications.kbv.de/ oder https://update.kbv.de/ita-update/DigitaleMuster/ERP/KBV_FHIR_eRP_V1.0.2_zur_Validierung.zip DIR: _Codesystem_ST
+# KBV anvisiert externes TerminologiePackage
   dav.kbv.sfhir.cs.vs:
     packageName: "dav.kbv.sfhir.cs.vs"
     versions:
@@ -58,6 +63,7 @@ fhirPackages:
         version: "1.0.2"
         filename: "dav.kbv.sfhir.cs.vs-1.0.2-json.tgz"
 
+# https://simplifier.net/erezept-workflow/~packages
   de.gematik.erezept-workflow.r4:
     packageName: "de.gematik.erezept-workflow.r4"
     versions:
@@ -100,6 +106,7 @@ fhirPackages:
           - packageName: "de.basisprofil.r4"
             packageVersion: "0.9.13"
 
+# https://simplifier.net/eRezeptAbrechnungsdaten/~packages
   de.gkvsv.erezeptabrechnungsdaten:
     packageName: "de.gkvsv.erezeptabrechnungsdaten"
     versions:
@@ -160,6 +167,7 @@ fhirPackages:
           - packageName: "de.basisprofil.r4"
             packageVersion: "0.9.13"
 
+# https://simplifier.net/eRezeptAbgabedaten/~packages
   de.abda.erezeptabgabedaten:
     packageName: "de.abda.erezeptabgabedaten"
     versions:
@@ -169,15 +177,16 @@ fhirPackages:
         dependencies:
           - packageName: "de.basisprofil.r4"
             packageVersion: "0.9.13"
-      1.1.0:
-        version: "1.1.0"
-        filename: "de.abda.erezeptabgabedaten-1.1.0.tgz"
+      1.1.1: #KorrekturRelease
+        version: "1.1.1"
+        filename: "de.abda.erezeptabgabedaten-1.1.1.tgz"
         dependencies:
           - packageName: "de.abda.erezeptabgabedatenbasis"
-            packageVersion: "1.1.0"
+            packageVersion: "1.1.2"
           - packageName: "de.basisprofil.r4"
             packageVersion: "0.9.13"
 
+# https://simplifier.net/eRezeptAbgabedatenBasis/~packages
   de.abda.erezeptabgabedatenbasis:
     packageName: "de.abda.erezeptabgabedatenbasis"
     versions:
@@ -187,7 +196,14 @@ fhirPackages:
         dependencies:
           - packageName: "de.basisprofil.r4"
             packageVersion: "0.9.13"
+      1.1.2: #KorrekturRelease
+        version: "1.1.2"
+        filename: "de.abda.erezeptabgabedatenbasis-1.1.2.tgz"
+        dependencies:
+          - packageName: "de.basisprofil.r4"
+            packageVersion: "0.9.13"
 
+# https://simplifier.net/Basisprofil-DE-R4/~packages
   de.basisprofil.r4:
     packageName: "de.basisprofil.r4"
     versions:
@@ -195,7 +211,7 @@ fhirPackages:
         version: "0.9.13"
         filename: "de.basisprofil.r4-0.9.13.tgz"
 
-### unterstütze Profile....
+### Definition unterstützer Profile:
 supportedProfiles:
 # KBV Profile des eRezept (https://simplifier.net/eRezept/)
   "https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle":
@@ -282,7 +298,7 @@ supportedProfiles:
       1.1.0:
         requiredPackage:
           packageName: "de.abda.erezeptabgabedaten"
-          packageVersion: "1.1.0"
+          packageVersion: "1.1.1" #KorrekturRelease
 
   # TODO: add? Umgang mit Referenzen?
   # http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-Apotheke

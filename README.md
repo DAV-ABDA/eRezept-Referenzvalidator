@@ -191,7 +191,9 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
 * de.gematik.erezept-workflow.r4-1.1.1.tgz
 * de.abda.erezeptabgabedaten-1.0.3.tgz
 * de.abda.erezeptabgabedatenbasis-1.1.0.tgz (ACHTUNG! fix issue)
-* de.abda.erezeptabgabedaten-1.1.0.tgz
+* de.abda.erezeptabgabedatenbasis-1.1.2.tgz (KorrekturRelease)
+* ~~de.abda.erezeptabgabedaten-1.1.0.tgz~~  (entfernt v0.9.7)
+* de.abda.erezeptabgabedaten-1.1.1.tgz (KorrekturRelease)
 * de.gkvsv.erezeptabrechnungsdaten-1.0.4.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.0.5.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.0.6.tgz

@@ -53,7 +53,7 @@ Der Referenzvalidator wird auf zwei Arten bereitgestellt: Als Fat-Jar und als Ar
 ### Fat-Jar
 Das Fat-Jar enthält alle Abhängigkeiten und kann daher standalone ohne das Nachladen von Ressourcen
 verwendet werden. Es dient als "Schiedsrichter", mit dem ohne weitere Voraussetzungen FHIR Dateien
-auf Ihre Validität getestet werden können. Zum Starten ist lediglich ein Java 11 JRE (Java Runtime
+auf Ihre Validität getestet werden können. Zum Starten ist lediglich (mindestens) ein Java 8 JRE (Java Runtime
 Environment) notwendig.
 
 `````shell
@@ -186,14 +186,16 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
 * kbv.ita.for-1.0.3.tgz
 * kbv.ita.erp-1.0.1.tgz
 * kbv.ita.erp-1.0.2.tgz
-* de.gematik.erezept-workflow.r4-1.0.3.tgz
+* ~~de.gematik.erezept-workflow.r4-1.0.3.tgz~~ (entfernt v0.9.8)
 * de.gematik.erezept-workflow.r4-1.0.3-1.tgz
 * de.gematik.erezept-workflow.r4-1.1.1.tgz
 * de.abda.erezeptabgabedaten-1.0.3.tgz
 * de.abda.erezeptabgabedatenbasis-1.1.0.tgz (ACHTUNG! fix issue)
-* de.abda.erezeptabgabedatenbasis-1.1.2.tgz (KorrekturRelease)
+* ~~de.abda.erezeptabgabedatenbasis-1.1.2.tgz~~ (entfernt v0.9.8)
+* de.abda.erezeptabgabedatenbasis-1.1.3.tgz (KorrekturRelease für v1.1.0) 
 * ~~de.abda.erezeptabgabedaten-1.1.0.tgz~~  (entfernt v0.9.7)
-* de.abda.erezeptabgabedaten-1.1.1.tgz (KorrekturRelease)
+* ~~de.abda.erezeptabgabedaten-1.1.1.tgz~~ (entfernt v0.9.8)
+* de.abda.erezeptabgabedaten-1.1.2.tgz (KorrekturRelease für v1.1.0)
 * de.gkvsv.erezeptabrechnungsdaten-1.0.4.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.0.5.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.0.6.tgz

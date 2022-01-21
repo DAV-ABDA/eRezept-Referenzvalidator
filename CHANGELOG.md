@@ -1,9 +1,13 @@
 # eRezept-Referenzvalidator ChangeLog
 
+# 0.9.8 - 2022-01-21
+- Exchange Package de.abda.erezeptabgabedatenbasis-1.1.2.tgz with de.abda.erezeptabgabedatenbasis-1.1.3.tgz (KorrekturRelease) 
+- Exchange Package de.abda.erezeptabgabedaten-1.1.1.tgz with de.abda.erezeptabgabedaten-1.1.2.tgz (KorrekturRelease)
+
 # 0.9.7 - 2022-01-20
-+ Add valid & invalid TestBsp
-+ Add Package de.abda.erezeptabgabedatenbasis-1.1.2.tgz (KorrekturRelease)
-* Exchange Package de.abda.erezeptabgabedaten-1.1.0.tgz with de.abda.erezeptabgabedaten-1.1.1.tgz (KorrekturRelease)
+- Add valid & invalid TestBsp
+- Add Package de.abda.erezeptabgabedatenbasis-1.1.2.tgz (KorrekturRelease)
+- Exchange Package de.abda.erezeptabgabedaten-1.1.0.tgz with de.abda.erezeptabgabedaten-1.1.1.tgz (KorrekturRelease)
 
 ## 0.9.6 - 2022-01-06
 - FIX Constraint Issue in "de.abda.erezeptabgabedatenbasis-1.1.0.tgz"

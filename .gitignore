@@ -2,3 +2,6 @@
 build/
 out/
 /.idea/
+**/.project
+**/.classpath
+**/.settings/

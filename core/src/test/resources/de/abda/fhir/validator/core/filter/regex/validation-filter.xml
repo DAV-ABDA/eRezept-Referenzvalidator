@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<filterlist>
+    <filter>
+        <severityPattern>information</severityPattern>
+        <locationPattern>testLocationInformation</locationPattern>
+        <messagePattern>testInformationMessage</messagePattern>
+    </filter>
+    <filter>
+        <severityPattern>warning</severityPattern>
+        <locationPattern>testLocationWarning</locationPattern>
+        <messagePattern>testWarningMessage</messagePattern>
+    </filter>
+    <filter>
+        <severityPattern>error</severityPattern>
+        <locationPattern>testLocationError</locationPattern>
+        <messagePattern>testErrorMessage</messagePattern>
+    </filter>
+    <filter>
+        <severityPattern>fatal</severityPattern>
+        <locationPattern>testLocationFatal</locationPattern>
+        <messagePattern>testFatalMessage</messagePattern>
+    </filter>
+</filterlist>

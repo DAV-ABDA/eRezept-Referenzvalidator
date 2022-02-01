@@ -210,3 +210,16 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
    - Change Profile KBV_PR_ERP_Prescription.json (MedicationRequest.insurance = "type":[{"code":"Reference","targetProfile":["https://fhir.kbv.de/StructureDefinition/KBV_PR_FOR_Coverage|1.0.3"]}])
  - ACHTUNG! FIX Issue in de.abda.erezeptabgabedatenbasis-1.1.0.tgz -> siehe ChangeLog.md - Version 0.9.6 
 
+### Copyright 2022 Deutscher Apothekerverband (DAV)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

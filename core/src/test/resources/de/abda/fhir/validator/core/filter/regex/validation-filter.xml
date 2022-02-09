@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <filterlist>
-    <filter>
+    <filter issueId="test-001">
         <severityPattern>information</severityPattern>
         <locationPattern>testLocationInformation</locationPattern>
         <messagePattern>testInformationMessage</messagePattern>
     </filter>
-    <filter>
+    <filter issueId="test-002">
         <severityPattern>warning</severityPattern>
         <locationPattern>testLocationWarning</locationPattern>
         <messagePattern>testWarningMessage</messagePattern>
     </filter>
-    <filter>
+    <filter issueId="test-003">
         <severityPattern>error</severityPattern>
         <locationPattern>testLocationError</locationPattern>
         <messagePattern>testErrorMessage</messagePattern>
     </filter>
-    <filter>
+    <filter issueId="test-004">
         <severityPattern>fatal</severityPattern>
         <locationPattern>testLocationFatal</locationPattern>
         <messagePattern>testFatalMessage</messagePattern>

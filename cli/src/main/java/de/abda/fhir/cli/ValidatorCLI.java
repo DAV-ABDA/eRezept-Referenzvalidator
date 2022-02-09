@@ -3,11 +3,15 @@ package de.abda.fhir.cli;
 import ca.uhn.fhir.validation.ResultSeverityEnum;
 import ca.uhn.fhir.validation.SingleValidationMessage;
 import de.abda.fhir.validator.core.ReferenceValidator;
+import de.abda.fhir.validator.core.ValidationResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import java.io.StringWriter;
 import java.nio.file.Paths;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -26,16 +30,13 @@ public class ValidatorCLI {
 
         try {
             ReferenceValidator validator = new ReferenceValidator();
-            Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(
+            ValidationResult validationResult = validator.validateFile(
                     Paths.get(args[0]));
-            String mapAsString = errors.keySet().stream()
-                    .map(key -> key + ": " + errors.get(key).size())
-                    .collect(Collectors.joining(","));
-            boolean validatorInputIsValid =
-                    errors.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()).size() == 0
-                            && errors.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()).size() == 0;
-            logger.info("Validation result: " + validatorInputIsValid + " -- Result summary: " + mapAsString);
-            System.exit(validatorInputIsValid ? 0 : 1);
+//            String mapAsString = validationResult.keySet().stream()
+//                    .map(key -> key + ": " + validationResult.get(key).size())
+//                    .collect(Collectors.joining(","));
+            logger.info("Validation success: " + validationResult.isValid() + " -- Result summary: " + getSummary(validationResult));
+            System.exit(validationResult.isValid() ? 0 : 1);
         } catch (Exception e){
             logger.error("Exception occured", e);
         }
@@ -63,4 +64,13 @@ public class ValidatorCLI {
 
     }
 
+    private static String getSummary(ValidationResult validationResult) {
+        Map<ResultSeverityEnum, List<SingleValidationMessage>> messages = validationResult.getSingleValidationMessages().stream().collect(
+                Collectors.groupingBy(SingleValidationMessage::getSeverity, Collectors.toList()));
+        String numMessagesBySeverity = messages.keySet().stream()
+                    .map(key -> key + ": " + messages.get(key).size())
+                    .collect(Collectors.joining(","));
+        int numFilteredMessages = validationResult.getFilteredMessages().size();
+        return numMessagesBySeverity + ", numberOfFilteredMessages:" + numFilteredMessages;
+    }
 }

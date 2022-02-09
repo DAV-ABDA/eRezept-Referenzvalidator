@@ -3,7 +3,6 @@ package de.abda.fhir.validator.core;
 import ca.uhn.fhir.context.FhirContext;
 import de.abda.fhir.validator.core.configuration.FhirProfileVersion;
 import de.abda.fhir.validator.core.util.Profile;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -16,7 +15,7 @@ import java.util.Map;
 
 public class ValidatorHolder {
 
-    static Logger logger = LoggerFactory.getLogger(ValidatorHolder.class);
+    static final Logger logger = LoggerFactory.getLogger(ValidatorHolder.class);
 
     private Map<Profile, Validator> validatorMap;
     private ValidatorFactory validatorFactory;
@@ -26,7 +25,7 @@ public class ValidatorHolder {
     }
 
     public ValidatorHolder(FhirContext ctx) {
-        this.validatorMap = new HashMap<Profile, Validator>();
+        this.validatorMap = new HashMap<>();
         this.validatorFactory = new ValidatorFactory(ctx);
     }
 
@@ -69,13 +68,13 @@ public class ValidatorHolder {
                 validatorMap.put(profile, validator);
 
                 //We validate an empty bundle, so that the validator generates the snapshots and loads all internal data
-                validator.validate("<Bundle xmlns=\"http://hl7.org/fhir\">\n"
+                validator.validateWithResult("<Bundle xmlns=\"http://hl7.org/fhir\">\n"
                     + "    <id value=\"fb16b9fb-eca9-4a64-b257-083ac87c9c9c\"/>\n"
                     + "    <meta>\n"
                     + "        <profile value=\"" + profile.getCanonical() + "\"/>\n"
                     + "        \n"
                     + "    </meta>\n"
-                    + "</Bundle>", false);
+                    + "</Bundle>");
             }
         }
     }

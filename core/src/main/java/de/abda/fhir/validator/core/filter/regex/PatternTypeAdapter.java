@@ -6,31 +6,32 @@ import java.util.regex.Pattern;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 /**
- * Die Klasse wird mit der Methode {@linkplain PatternTypeAdapter#marshal(Optional)} ein Pattern zum String konvertieren.
- * Mit der Methode {@linkplain PatternTypeAdapter#unmarshal(String)} wird ein String ('Case_Insensitive') zum Pattern konvertieren. 
+ * This class is responsible for marshalling and unmarshalling Patterns to Strings and vice versa.
+ * All Patterns are compiled <em>case insensitive</em>
+ *
  * @author Dzmitry Liashenka
  */
-public class PatternTypeAdapter extends XmlAdapter<String,Optional<Pattern>> {
+public class PatternTypeAdapter extends XmlAdapter<String, Pattern> {
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Optional<Pattern> unmarshal(String value) throws Exception {
-	    if (null == value) {
-	        return Optional.empty();
-	    }
-		return Optional.of( Pattern.compile(value, Pattern.CASE_INSENSITIVE));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String marshal(Optional<Pattern> value) throws Exception {
-        if (null == value || false == value.isPresent()) {
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Pattern unmarshal(String value) {
+        if (null == value) {
             return null;
         }
-		return value.get().pattern();
-	}
+        return Pattern.compile(value, Pattern.CASE_INSENSITIVE);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String marshal(Pattern value) {
+        if (null == value) {
+            return null;
+        }
+        return value.pattern();
+    }
 }

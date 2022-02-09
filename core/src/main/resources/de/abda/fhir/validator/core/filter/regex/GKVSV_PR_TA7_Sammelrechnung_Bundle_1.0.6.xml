@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<filterlist>
+    <filter issueId="ERX-001">
+        <severityPattern>information</severityPattern>
+        <locationPattern>Bundle\.entry\[\d+\]\.resource\.entry\[1\]\.resource\.ofType\(Bundle\)\.entry\[1\]</locationPattern>
+        <messagePattern>.*(Slice defined in the profile https://gematik\.de/fhir/StructureDefinition/ErxReceipt).*</messagePattern>
+    </filter>
+</filterlist>

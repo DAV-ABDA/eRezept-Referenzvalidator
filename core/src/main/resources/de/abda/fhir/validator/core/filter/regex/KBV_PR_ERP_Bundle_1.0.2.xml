@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<filterlist>
+    <filter issueId="KBV-001">
+        <severityPattern>warning</severityPattern>
+        <locationPattern>Bundle\.entry\[\d+\]\.resource\.ofType\(Patient\)\.identifier\[\d+\]\.type</locationPattern>
+        <messagePattern>.*http://fhir\.de/CodeSystem/identifier-type-de-basis#GKV.*</messagePattern>
+    </filter>
+    <filter issueId="KBV-002">
+        <severityPattern>warning</severityPattern>
+        <locationPattern>Bundle\.entry\[\d+\]\.resource\.ofType\(Practitioner\)\.identifier\[\d+\]\.type</locationPattern>
+        <messagePattern>.*http://terminology\.hl7\.org/CodeSystem/v2-0203#LANR.*</messagePattern>
+    </filter>
+    <filter issueId="KBV-003">
+        <severityPattern>warning</severityPattern>
+        <locationPattern>Bundle\.entry\[\d+\]\.resource\.ofType\(Organization\)\.identifier\[\d+\]\.type</locationPattern>
+        <messagePattern>.*http://terminology\.hl7\.org/CodeSystem/v2-0203#BSNR.*</messagePattern>
+    </filter>
+</filterlist>

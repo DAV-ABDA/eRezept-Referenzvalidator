@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<filterlist>
+    <!--
+    SingleValidationMessage[col=17,row=199,
+    locationString=Bundle.entry[3].resource.ofType(Patient).identifier[0].type,
+    message=Keiner der angegebenen Codes ist im Valueset http://hl7.org/fhir/ValueSet/identifier-type (http://hl7.org/fhir/ValueSet/identifier-type, und ein Code sollte aus diesem Valueset stammen, es sei denn, er enthält keinen geeigneten Code) (Codes = http://fhir.de/CodeSystem/identifier-type-de-basis#GKV),severity=warning]
+    -->
+
+    <filter issueId="KBV-001">
+        <severityPattern>warning</severityPattern>
+         <locationPattern>Bundle\.entry\[\d+\]\.resource\.ofType\(Patient\)\.identifier\[\d+\]\.type</locationPattern>
+        <messagePattern>.*http://fhir\.de/CodeSystem/identifier-type-de-basis#GKV.*</messagePattern>
+    </filter>
+
+    <!--
+    SingleValidationMessage[col=17,row=250,
+    locationString=Bundle.entry[4].resource.ofType(Practitioner).identifier[0].type,
+    message=Keiner der angegebenen Codes ist im Valueset http://hl7.org/fhir/ValueSet/identifier-type (http://hl7.org/fhir/ValueSet/identifier-type, und ein Code sollte aus diesem Valueset stammen, es sei denn, er enthält keinen geeigneten Code) (Codes = http://terminology.hl7.org/CodeSystem/v2-0203#LANR),
+    severity=warning]
+    -->
+    <filter issueId="KBV-002">
+        <severityPattern>warning</severityPattern>
+        <locationPattern>Bundle\.entry\[\d+\]\.resource\.ofType\(Practitioner\)\.identifier\[\d+\]\.type</locationPattern>
+        <messagePattern>.*http://terminology\.hl7\.org/CodeSystem/v2-0203#LANR.*</messagePattern>
+    </filter>
+
+    <!--
+    SingleValidationMessage[col=17,row=298,
+    locationString=Bundle.entry[5].resource.ofType(Organization).identifier[0].type,
+    message=Keiner der angegebenen Codes ist im Valueset http://hl7.org/fhir/ValueSet/identifier-type (http://hl7.org/fhir/ValueSet/identifier-type, und ein Code sollte aus diesem Valueset stammen, es sei denn, er enthält keinen geeigneten Code) (Codes = http://terminology.hl7.org/CodeSystem/v2-0203#BSNR),
+    severity=warning]
+    -->
+    <filter issueId="KBV-003">
+        <severityPattern>warning</severityPattern>
+        <locationPattern>Bundle\.entry\[\d+\]\.resource\.ofType\(Organization\)\.identifier\[\d+\]\.type</locationPattern>
+        <messagePattern>.*http://terminology\.hl7\.org/CodeSystem/v2-0203#BSNR.*</messagePattern>
+    </filter>
+</filterlist>

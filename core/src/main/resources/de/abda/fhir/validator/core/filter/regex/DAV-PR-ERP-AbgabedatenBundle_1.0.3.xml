@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<filterlist>
+    <filter issueId="DAV-001">
+        <!--Fehler im Abgabedaten Verison 1.0.3 ....-->
+        <severityPattern>information</severityPattern>
+        <locationPattern>Bundle\.entry\[\d+\]\.resource\.ofType\(MedicationDispense\)\.extension\[\d+\]\.value\.ofType\(Reference\)</locationPattern>
+        <messagePattern>.*http://fhir\.abda\.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-ZusatzdatenHerstellung.*</messagePattern>
+    </filter>
+
+    <!--
+    SingleValidationMessage[col=102,row=329,
+    locationString=Bundle.entry[6].resource.performer[0].actor.identifier.system,
+    message=Der Wert ist "http://fhir.abda.de/Identifier/DAV-Herstellerschluessel", muss aber "http://fhir.de/NamingSystem/arge-ik/iknr" sein.,
+    severity=error]
+    -->
+    <filter issueId="DAV-002">
+        <severityPattern>error</severityPattern>
+        <locationPattern>Bundle\.entry\[\d+\]\.resource\.performer\[\d+\]\.actor\.identifier\.system</locationPattern>
+        <messagePattern>.*http://fhir\.abda\.de/Identifier/DAV-Herstellerschluessel.*http://fhir\.de/NamingSystem/arge-ik/iknr.*</messagePattern>
+    </filter>
+
+    <!--
+    SingleValidationMessage[col=37,row=107
+    locationString=Bundle.entry[2].resource.ofType(MedicationDispense).extension[3].value.ofType(Reference),
+    message=Es konnte kein passendes Profil für urn:uuid:0cfa6ede-c883-4aaf-957b-9b27e9d31c4d unter den Auswahlmöglichkeiten
+    [http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-ZusatzdatenHerstellung] gefunden werden,
+    severity=error]
+    -->
+    <filter issueId="DAV-003">
+        <severityPattern>error</severityPattern>
+        <locationPattern>Bundle\.entry\[\d+\]\.resource\.ofType\(MedicationDispense\)\.extension\[\d+\]\.value\.ofType\(Reference\)</locationPattern>
+        <messagePattern>.*http://fhir\.abda\.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-ZusatzdatenHerstellung.*</messagePattern>
+    </filter>
+    <!--
+    SingleValidationMessage[col=12,row=297,
+    locationString=Bundle.entry[6],
+    message=Dieses Element stimmt mit keinem bekannten Slice  defined in the profile http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle überein,
+    und das Slicing ist CLOSED: Bundle.entry[6]: Stimmt nicht mit Slice "ERezeptAbgabedaten" überein,
+    Bundle.entry[6]: Details für Bundle Abgleich gegen Profilhttp://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenComposition,
+    Bundle.entry[6]: Stimmt nicht mit Slice "Apotheke" überein, Bundle.entry[6]: Details für Bundle Abgleich gegen Profilhttp://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-Apotheke,
+    Bundle.entry[6]: Stimmt nicht mit Slice "Abgabeinformationen" überein,
+    Bundle.entry[6]: Details für Bundle Abgleich gegen Profilhttp://fhir.abda.de/eRezeptAbgabadaten/StructureDefinition/DAV-PR-ERP-Abgabeinformationen,
+    Bundle.entry[6]: Stimmt nicht mit Slice "Abrechnungszeilen" überein,
+    Bundle.entry[6]: Details für Bundle Abgleich gegen Profilhttp://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-Abrechnungszeilen,
+    Bundle.entry[6]: Stimmt nicht mit Slice "ZusatzdatenHerstellung" überein,
+    Bundle.entry[6]: Details für Bundle Abgleich gegen Profilhttp://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-ZusatzdatenHerstellung,
+    Bundle.entry[6]: Stimmt nicht mit Slice "ZusatzdatenEinheit" überein,
+    Bundle.entry[6]: Details für Bundle Abgleich gegen Profilhttp://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-ZusatzdatenEinheit,
+    severity=error]
+    -->
+    <filter issueId="DAV-004">
+        <severityPattern>error</severityPattern>
+        <locationPattern>Bundle\.entry\[\d+\]</locationPattern>
+        <messagePattern>.*http://fhir\.abda\.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-Zusatzdaten.*</messagePattern>
+    </filter>
+</filterlist>

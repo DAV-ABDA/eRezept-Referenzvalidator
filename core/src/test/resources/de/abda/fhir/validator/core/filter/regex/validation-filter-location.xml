@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <filterlist>
-    <filter>
-        <severityPattern>.*</severityPattern>
+    <filter issueId="test">
+<!--        <severityPattern>.*</severityPattern>-->
         <locationPattern>testLocationWarning</locationPattern>
-        <messagePattern>.*</messagePattern>
+<!--        <messagePattern>.*</messagePattern>-->
     </filter>
 </filterlist>

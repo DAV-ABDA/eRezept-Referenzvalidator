@@ -199,7 +199,7 @@
             </coding>
           </type>
           <system value="http://fhir.de/NamingSystem/gkv/kvid-10" />
-          <value value="K220645129" />
+          <value value="K220645122" />
         </identifier>
         <name>
           <use value="official" />
@@ -210,7 +210,7 @@
           </family>
           <given value="Sahra" />
         </name>
-        <birthDate value="1970-12-24" />
+        <birthDate value="1984-12-24" />
         <address>
           <type value="both" />
           <line value="Berliner Straße 1">

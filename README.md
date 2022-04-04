@@ -174,13 +174,13 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
 * http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle
   * 1.0.3
   * 1.1.0
-  * 1.2.0
+  * 1.2
 * https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle
   * 1.0.4
   * 1.0.5
   * 1.0.6
   * 1.1.0
-  * 1.2.0
+  * 1.2
 
 ### eingebundene Packages (R4)
 * de.basisprofil.r4-0.9.13.tgz

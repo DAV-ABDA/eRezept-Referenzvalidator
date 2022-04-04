@@ -40,7 +40,7 @@
             <display value="Sammelrechnung"></display>
           </coding>
         </type>
-        <date value="2021-07-31T21:59:00Z"></date>                <!-- IK des Absenders -->
+        <date value="2021-07-31"></date>                <!-- IK des Absenders -->
         <author>
           <identifier>
             <system value="http://fhir.de/NamingSystem/arge-ik/iknr"></system>
@@ -102,7 +102,7 @@
           <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung|1.0.6"></profile>
         </meta>                <!-- Abrechnungszeitraum - Datum bis wann abgerechnet worden sein muss. -->
         <extension url="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_TA7_Abrechnungszeitraum">
-          <valueDateTime value="2021-03-31"></valueDateTime>
+          <valueDateTime value="2021-07-31"></valueDateTime>
         </extension>
         <extension url="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_RezeptBundleReferenz">
           <extension url="lineItem">

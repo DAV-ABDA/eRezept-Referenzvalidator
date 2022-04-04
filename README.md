@@ -18,7 +18,7 @@
 
 ## Projektziele
 
-* Der Referenzvalidator dient als "Schiedsrichter", mit dem ohne weitere Voraussetzungen FHIR Dateien auf Ihre Validität (valid oder nicht valid) getestet werden können. Die einzig relevante Ausgabe ist 'Validation result: true' oder 'Validation result: false'. Zusätzlich ausgegebene Warnings sind ausschließlich informell und haben keinen Einfluss auf das Ergebnis. Das positive Testergebnis ist __eine__ Voraussetzung für die Annahme von Datenlieferungen zwischen Apothekenrechenzentren und Krankenkassen(-Annahmestellen). __Alle__ weitern Akzeptanzkriterien werden werden in der TA7 Spezifikation festgelegt.
+* Der Referenzvalidator dient als "Schiedsrichter", mit dem ohne weitere Voraussetzungen FHIR Dateien auf Ihre Validität (valid oder nicht valid) getestet werden können. Die einzig relevante Ausgabe ist 'Validation result: true' oder 'Validation result: false'. Zusätzlich ausgegebene Warnings sind ausschließlich informell und haben keinen Einfluss auf das Ergebnis. Das positive Testergebnis ist __eine__ Voraussetzung für die Annahme von Datenlieferungen zwischen Apothekenrechenzentren und Krankenkassen(-Annahmestellen). __Alle__ weiteren Akzeptanzkriterien werden in der TA7 Spezifikation festgelegt.
 * Es werden ausschließlich in den entsprechenden FHIR-Profilen enthaltene Constraints geprüft.
 * Es wird immer nur genau eine FHIR-XML-Datei geprüft. Als Base64-eingebettete weitere FHIR-Daten müssen durch separate Schritte/Aufrufe extrahiert und geprüft werden.
 
@@ -192,17 +192,22 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
 * de.abda.erezeptabgabedaten-1.0.3.tgz
 * de.abda.erezeptabgabedatenbasis-1.1.0.tgz (ACHTUNG! fix issue)
 * ~~de.abda.erezeptabgabedatenbasis-1.1.2.tgz~~ (entfernt v0.9.8)
-* de.abda.erezeptabgabedatenbasis-1.1.3.tgz (KorrekturRelease für v1.1.0) 
+* de.abda.erezeptabgabedatenbasis-1.1.3.tgz (KorrekturRelease für v1.1.0)
+* de.abda.erezeptabgabedatenbasis-1.2.0.tgz
 * ~~de.abda.erezeptabgabedaten-1.1.0.tgz~~  (entfernt v0.9.7)
 * ~~de.abda.erezeptabgabedaten-1.1.1.tgz~~ (entfernt v0.9.8)
 * de.abda.erezeptabgabedaten-1.1.2.tgz (KorrekturRelease für v1.1.0)
+* de.abda.erezeptabgabedaten-1.2.0.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.0.4.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.0.5.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.0.6.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.1.0.tgz
+* de.gkvsv.erezeptabrechnungsdaten-1.2.0.tgz
 
 #### Anpassungen der Packages
  - Add Package dav.kbv.sfhir.cs.vs-1.0.2-json.tgz (KBV Schlüsseltabellen - externe CodeSytseme/ValueSets)
+ - Add Package dav.kbv.sfhir.cs.vs-1.0.3-json.tgz (KBV Schlüsseltabellen - externe CodeSytseme/ValueSets)
+   - für Anpassung DARREICHUNGSFORM v1.09 ab 01.04.2022
  - delete examples in Packages
  - de.gematik.erezept-workflow.r4-1.0.3-1.tgz
    - Delete ProFile StructureDefinition-ChargeItem-erxChargeItem.json (keine Relevanz - future use)

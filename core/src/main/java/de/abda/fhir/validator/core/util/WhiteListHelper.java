@@ -13,7 +13,7 @@ public class WhiteListHelper {
         //add custom whitelist filters here
     }
 
-    /***
+    /*
     public static void removeKBVIdentifierWarnings(List<SingleValidationMessage> messages) {
         messages.removeIf(singleValidationMessage -> {
             if(singleValidationMessage.getSeverity() == ResultSeverityEnum.WARNING && (
@@ -30,7 +30,7 @@ public class WhiteListHelper {
                 return false;
         });
     }
-    ***/
+    */
 
     //TODO This ain't failsafe. A better solution has to be found for the long term as this might ignore more errors than just the bad identifier definition in the profile (or better make a better/correct profile)
     public static void removeDAVActorIdentifierErrors(List<SingleValidationMessage> messages) {

@@ -1,5 +1,18 @@
 # eRezept-Referenzvalidator ChangeLog
 
+# 0.9.9 - 2022-04-04
+- Update HAPI version from 5.6.0 to 5.7.2
+- Set HAPI options
+  - setAnyExtensionsAllowed(false)
+  - setErrorForUnknownProfiles(true)
+  - setNoExtensibleWarnings(true)
+- Update externe ValueSets & Codesysteme (KBV) -> new package dav.kbv.sfhir.cs.vs-1.0.3-json.tgz
+- Add new packages 
+  - de.abda.erezeptabgabedatenbasis-1.2.0.tgz
+  - de.abda.erezeptabgabedaten-1.2.0.tgz
+  - de.gkvsv.erezeptabrechnungsdaten-1.2.0.tgz
+
+
 # 0.9.8 - 2022-01-21
 - Exchange Package de.abda.erezeptabgabedatenbasis-1.1.2.tgz with de.abda.erezeptabgabedatenbasis-1.1.3.tgz (KorrekturRelease) 
 - Exchange Package de.abda.erezeptabgabedaten-1.1.1.tgz with de.abda.erezeptabgabedaten-1.1.2.tgz (KorrekturRelease)

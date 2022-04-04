@@ -85,6 +85,10 @@ public class ValidatorFactory {
             FhirInstanceValidator instanceValidator = new FhirInstanceValidator(
                     validationSupportChain);
             // instanceValidator.setNoTerminologyChecks(true); //TODO check if this needs to be configured
+            instanceValidator.setErrorForUnknownProfiles(true);
+            instanceValidator.setNoExtensibleWarnings(true);
+            instanceValidator.setAnyExtensionsAllowed(false);
+
             fhirValidator.registerValidatorModule(instanceValidator);
             return new Validator(fhirValidator);
         } catch (ValidatorInitializationException e){

@@ -87,7 +87,7 @@
         <mode value="working"></mode>
         <entry>
           <item>
-            <reference value="urn:uuid:4711"></reference>
+            <reference value="Bundle/4711"></reference>
           </item>
         </entry>
       </List>

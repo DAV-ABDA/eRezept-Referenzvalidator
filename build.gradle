@@ -10,7 +10,7 @@ tasks.prepare.dependsOn(":core:test", "cli:shadowJar")
 tasks.snapshot.dependsOn(":packages:publish", ":core:publish", ":bom:publish")
 tasks.final.dependsOn(":packages:publish", ":core:publish", ":bom:publish")
 
-String hapiFhirVersion = "5.7.2"
+String hapiFhirVersion = "6.1.0"
 allprojects{
     group = "de.abda"
 }

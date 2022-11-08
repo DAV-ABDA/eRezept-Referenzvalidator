@@ -45,8 +45,7 @@ public class Validator {
         if(logErrors) {
             // The result object now contains the validation results
             for (SingleValidationMessage next : messages) {
-                logger.info(
-                    "Validator message: " + next.getSeverity() + " " + next.getLocationString()
+                logger.info("Validator message: " + next.getSeverity() + " " + next.getLocationString()
                         + " " + next.getMessage());
             }
         }

@@ -35,8 +35,7 @@ public class NpmPackageValidationSupportCache {
 	public PrePopulatedValidationSupport createPrePopulatedValidationSupport(List<String> packageFilesToLoad) throws IOException {
 
 		final PrePopulatedValidationSupport result = new PrePopulatedValidationSupport(this.fhirContext);
-		
-		
+
 		for(String packagePath : packageFilesToLoad) {
 			PrePopulatedValidationSupport fragment = this.packageCache.get(packagePath);
 			
@@ -51,22 +50,17 @@ public class NpmPackageValidationSupportCache {
 						this.packageCache.put(packagePath, fragment);
 					}
 				}
-
 				for(IBaseResource resource : fragment.fetchAllConformanceResources()) {
 					result.addResource(resource);
 				}
 			}
 		}
-		
 		/*
 		 * Scheinbar gibt es Abhängigkeiten oder die erzeugten Instanzen werden nachträglich manipuliert.
 		 * Wenn diese Instanzen wiederverwendet werden, führt dies zu Fehlern wenn unterschiedliche 
 		 * Profilversionen hintereinander validiert werden. 
 		 */
 		this.packageCache.clear();
-		
 		return result;
 	}
-
-
 }

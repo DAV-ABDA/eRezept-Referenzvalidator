@@ -26,8 +26,7 @@ public class ValidatorCLI {
 
         try {
             ReferenceValidator validator = new ReferenceValidator();
-            Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(
-                    Paths.get(args[0]));
+            Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(Paths.get(args[0]));
             String mapAsString = errors.keySet().stream()
                     .map(key -> key + ": " + errors.get(key).size())
                     .collect(Collectors.joining(","));
@@ -39,28 +38,5 @@ public class ValidatorCLI {
         } catch (Exception e){
             logger.error("Exception occured", e);
         }
-
-        /*File inputFile = new File(args[0]);
-
-        FhirContext ctx = FhirContext.forR4Cached();
-        ValidatorHolder validatorHolder = new ValidatorHolder(ctx);
-
-        try {
-            Profile profile = ProfileHelper.getProfileFromXmlStream(new FileInputStream(inputFile));
-            logger.debug("Profile identified: " + profile.getCanonical());
-            Validator validator = validatorHolder.getValidatorForProfile(profile);
-            String validatorInput = FileHelper.loadValidatorInputAsString(args[0], true);
-            logger.debug(validatorInput);
-            Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validate(validatorInput);
-            String mapAsString = errors.keySet().stream()
-                    .map(key -> key + ": " + errors.get(key).size())
-                    .collect(Collectors.joining(","));
-            Boolean validatorInputIsValid = (errors.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()).size() == 0 && errors.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()).size() == 0) ? true : false;
-            logger.info("Validation result: " + validatorInputIsValid + " -- Error summary: " + mapAsString);
-        } catch (Exception e){
-            logger.error("Exception occured", e);
-        }*/
-
     }
-
 }

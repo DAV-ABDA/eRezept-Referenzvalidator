@@ -22,16 +22,16 @@ import java.util.ArrayList;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
-public class VersionIgnoringSnapshotGeneratingValidationSupport extends SnapshotGeneratingValidationSupport {
+public class FixedSnapshotGeneratingValidationSupport extends SnapshotGeneratingValidationSupport {
 
-    private static final Logger log = LoggerFactory.getLogger(VersionIgnoringSnapshotGeneratingValidationSupport.class);
+    private static final Logger log = LoggerFactory.getLogger(FixedSnapshotGeneratingValidationSupport.class);
     private final FhirContext myCtx;
 
     /**
      * Constructor
      * @param theCtx {@link FhirContext}
      */
-    public VersionIgnoringSnapshotGeneratingValidationSupport(FhirContext theCtx) {
+    public FixedSnapshotGeneratingValidationSupport(FhirContext theCtx) {
         super(theCtx);
         myCtx = theCtx;
     }

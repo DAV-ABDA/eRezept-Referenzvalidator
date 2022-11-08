@@ -21,15 +21,8 @@ public class FileHelper {
     static Logger logger = LoggerFactory.getLogger(FileHelper.class);
 
     public static String loadValidatorInputAsString(String inputPath) {
-        return loadValidatorInputAsString(inputPath, true);
-    }
-
-    public static String loadValidatorInputAsString(String inputPath, Boolean removeVersion) {
         try {
             String inputString = FileUtils.readFileToString(new File(inputPath), StandardCharsets.UTF_8);
-            if (removeVersion) {
-                inputString = InputHelper.removeVersionInCanonicals(inputString);
-            }
             return inputString;
         } catch (IOException e) {
             logger.error("Angegebene Datei \"" + inputPath + "\" konnte nicht gefunden werden.", e);

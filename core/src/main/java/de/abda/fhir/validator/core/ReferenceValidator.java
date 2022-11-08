@@ -4,7 +4,6 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.validation.ResultSeverityEnum;
 import ca.uhn.fhir.validation.SingleValidationMessage;
 import de.abda.fhir.validator.core.util.FileHelper;
-import de.abda.fhir.validator.core.util.InputHelper;
 import de.abda.fhir.validator.core.util.Profile;
 import de.abda.fhir.validator.core.util.ProfileHelper;
 import org.slf4j.Logger;
@@ -54,8 +53,7 @@ public class ReferenceValidator {
      */
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateFile(String inputFile) {
         logger.debug("Start validating File {}", inputFile);
-        String validatorInputAsString = FileHelper
-            .loadValidatorInputAsString(inputFile, false);
+        String validatorInputAsString = FileHelper.loadValidatorInputAsString(inputFile);
         return this.validateImpl(validatorInputAsString);
     }
     /**
@@ -87,13 +85,10 @@ public class ReferenceValidator {
         validatorHolder.preloadAllSupportedValidators(profileToPreload);
     }
 
-    private Map<ResultSeverityEnum, List<SingleValidationMessage>> validateImpl(
-        String validatorInputAsString) {
+    private Map<ResultSeverityEnum, List<SingleValidationMessage>> validateImpl(String validatorInputAsString) {
         InputStream validatorInputStream = new ByteArrayInputStream(validatorInputAsString.getBytes(StandardCharsets.UTF_8));
         Profile profile = ProfileHelper.getProfileFromXmlStream(validatorInputStream);
         Validator validator = validatorHolder.getValidatorForProfile(profile);
-        String validatorInputWithoutVersion = InputHelper.removeVersionInCanonicals(
-            validatorInputAsString);
-        return validator.validate(validatorInputWithoutVersion);
+        return validator.validate(validatorInputAsString);
     }
 }

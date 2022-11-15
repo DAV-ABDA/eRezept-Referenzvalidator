@@ -45,7 +45,7 @@ configure(subprojects.findAll {it.name == "core" || it.name == "cli"}) {
         implementation("ca.uhn.hapi.fhir:hapi-fhir-structures-r4:$hapiFhirVersion")
         implementation("ca.uhn.hapi.fhir:hapi-fhir-validation-resources-r4:$hapiFhirVersion")
         implementation("com.fasterxml.woodstox:woodstox-core:6.2.7")
-        implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.0")
+        implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.3")
         testImplementation("org.junit.jupiter:junit-jupiter:5.7.2")
     }
     java{

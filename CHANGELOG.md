@@ -1,5 +1,26 @@
 # eRezept-Referenzvalidator ChangeLog
 
+TODO: suche nach TODO -> auch in README & packages 
+
+# 1.0.0 - 2022-11-15
+- Add instance validity check
+
+- Remove unused function
+- Update HAPI version from 5.7.2 to 5.7.9 (last Java 8)
+- Update externe ValueSets & Codesysteme (KBV) -> new package dav.kbv.sfhir.cs.vs-1.0.4-json.tgz
+- Update externe ValueSets & Codesysteme (KBV) -> new package dav.kbv.sfhir.cs.vs-1.0.5-json.tgz
+- Add new packages
+  - de.basisprofil.r4-1.3.2.tgz
+  - de.gematik.erezept-workflow.r4-1.2.0.tgz
+  - de.gematik.erezept-workflow.r4-1.2.0-rc4.tgz
+  - de.abda.erezeptabgabedatenbasis-1.3.0-rc1.tgz
+  - de.abda.erezeptabgabedaten-1.3.0-rc1.tgz
+  - de.abda.erezeptabgabedatenpkv-1.1.0-rc10.tgz
+  - de.gkvsv.erezeptabrechnungsdaten-1.3.0-rc2.tgz
+  - kbv.basis-1.3.0.tgz
+  - kbv.ita.for-1.1.0.tgz
+  - kbv.ita.erp-1.1.0.tgz
+
 # 0.9.9 - 2022-04-04
 - Update HAPI version from 5.6.0 to 5.7.2
 - Set HAPI options

@@ -233,9 +233,8 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
   - Edit DARREICHUNGSFORM v1.09 ab 01.04.2022
 - Add Package dav.kbv.sfhir.cs.vs-1.0.4-json.tgz (KBV Schlüsseltabellen - externe CodeSytseme/ValueSets)
   - Edit DARREICHUNGSFORM v1.10 ab 01.07.2022
-  - Add SFHIR_EAU_AU_ERROR_KASSE, "status": "draft", "date": "2023-01-01" // TODO: raus da draft !!!
 - Add Package dav.kbv.sfhir.cs.vs-1.0.5-json.tgz (KBV Schlüsseltabellen - externe CodeSytseme/ValueSets)
-  - Edit SFHIR_EAU_AU_ERROR_KASSE, "status": "active", "date": "2023-07-01"
+  - Add SFHIR_EAU_AU_ERROR_KASSE v1.00 ab 01.07.2023
   
 - delete examples in Packages
 - de.gematik.erezept-workflow.r4-1.0.3-1.tgz

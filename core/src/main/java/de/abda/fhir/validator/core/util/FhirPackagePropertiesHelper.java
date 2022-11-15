@@ -2,6 +2,7 @@ package de.abda.fhir.validator.core.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import de.abda.fhir.validator.core.configuration.FhirPackageProperties;
 import de.abda.fhir.validator.core.exception.ValidatorInitializationException;
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ public class FhirPackagePropertiesHelper {
 
     public static FhirPackageProperties loadFhirPackageProperties() {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+        mapper.registerModule(new JavaTimeModule());
         FhirPackageProperties fhirPackageProperties;
         try {
             InputStream packagesConfigFile = FhirPackagePropertiesHelper.class.getClassLoader().getResourceAsStream("packages.yaml");

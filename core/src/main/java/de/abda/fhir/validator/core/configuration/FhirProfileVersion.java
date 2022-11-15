@@ -3,14 +3,15 @@ package de.abda.fhir.validator.core.configuration;
 public class FhirProfileVersion {
 
     private String version;
+    private FhirPackageValidityPeriod validityPeriod;
     private FhirPackage requiredPackage;
 
     public FhirProfileVersion() {
     }
 
-    public FhirProfileVersion(String version,
-        FhirPackage requiredPackage) {
+    public FhirProfileVersion(String version, FhirPackageValidityPeriod validityPeriod, FhirPackage requiredPackage) {
         this.version = version;
+        this.validityPeriod = validityPeriod;
         this.requiredPackage = requiredPackage;
     }
 
@@ -30,6 +31,14 @@ public class FhirProfileVersion {
         this.requiredPackage = requiredPackage;
     }
 
+    public FhirPackageValidityPeriod getValidityPeriod() {
+        return validityPeriod;
+    }
+
+    public void setValidityPeriod(FhirPackageValidityPeriod validityPeriod) {
+        this.validityPeriod = validityPeriod;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -44,13 +53,17 @@ public class FhirProfileVersion {
         if (version != null ? !version.equals(that.version) : that.version != null) {
             return false;
         }
-        return requiredPackage.equals(that.requiredPackage);
+        if (!requiredPackage.equals(that.requiredPackage)) {
+            return false;
+        }
+        return validityPeriod.equals(that.validityPeriod);
     }
 
     @Override
     public int hashCode() {
         int result = version != null ? version.hashCode() : 0;
         result = 31 * result + requiredPackage.hashCode();
+        result = 31 * result + validityPeriod.hashCode();
         return result;
     }
 

@@ -39,30 +39,28 @@ public class ValidatorFactory {
     }
 
     public Validator createValidatorForProfile(Profile profile) {
-            FhirProfile supportedProfile = fhirPackageProperties.getSupportedProfiles()
-                .get(profile.getBaseCanonical());
-            if (supportedProfile == null){
-                String msg = "Profile \"" + profile.getBaseCanonical() +"\" not supported";
-                logger.error(msg);
-                throw new ValidatorInitializationException(msg);
-            }
-            Map<String, FhirProfileVersion> supportedProfileVersions = supportedProfile.getVersions();
-            if (supportedProfileVersions.isEmpty()) {
-                String msg = "Profile version \"" + profile.getBaseCanonical() +"\" not supported";
-                logger.error(msg);
-                throw new ValidatorInitializationException(msg);
-            }
+        FhirProfile supportedProfile = fhirPackageProperties.getSupportedProfiles().get(profile.getBaseCanonical());
+        if (supportedProfile == null){
+            String msg = "Profile \"" + profile.getBaseCanonical() +"\" not supported";
+            logger.error(msg);
+            throw new ValidatorInitializationException(msg);
+        }
+        Map<String, FhirProfileVersion> supportedProfileVersions = supportedProfile.getVersions();
+        if (supportedProfileVersions.isEmpty()) {
+            String msg = "Profile version \"" + profile.getBaseCanonical() +"\" not supported";
+            logger.error(msg);
+            throw new ValidatorInitializationException(msg);
+        }
 
-            FhirProfileVersion fhirProfileVersion = supportedProfileVersions.get(profile.getVersion());
+        FhirProfileVersion fhirProfileVersion = supportedProfileVersions.get(profile.getVersion());
 
-            if (fhirProfileVersion == null) {
-                String msg = "Version \"" + profile.getVersion() + "\" for profile \"" + profile.getBaseCanonical() + "\" is not supported";
-                logger.error(msg);
-                throw new ValidatorInitializationException(msg);
-            }
+        if (fhirProfileVersion == null) {
+            String msg = "Version \"" + profile.getVersion() + "\" for profile \"" + profile.getBaseCanonical() + "\" is not supported";
+            logger.error(msg);
+            throw new ValidatorInitializationException(msg);
+        }
         Validator validator = loadValidator(profile.getBaseCanonical(), fhirProfileVersion);
-        logger.debug("Validator initialization succeeded for profile \"" + profile.getBaseCanonical() + "\" version \"" + profile
-            .getVersion() + "\"");
+        logger.debug("Validator initialization succeeded for profile \"" + profile.getBaseCanonical() + "\" version \"" + profile.getVersion() + "\"");
         return validator;
     }
 
@@ -72,16 +70,14 @@ public class ValidatorFactory {
             List<String> correctedURIs = new ArrayList<>(packageFilesToLoad.size());
 
             for(String packageFilename : packageFilesToLoad) {
-            	correctedURIs.add("classpath:package/" + packageFilename);
+                correctedURIs.add("classpath:package/" + packageFilename);
             }
             PrePopulatedValidationSupport npmPackageSupport = this.npmCache.createPrePopulatedValidationSupport(correctedURIs);
 
-            IValidationSupport validationSupportChain = ValidationSupportChainHelper.createValidationSupportChain(
-                npmPackageSupport, ctx);
+            IValidationSupport validationSupportChain = ValidationSupportChainHelper.createValidationSupportChain(npmPackageSupport, ctx);
 
             FhirValidator fhirValidator = ctx.newValidator();
-            FhirInstanceValidator instanceValidator = new FhirInstanceValidator(
-                    validationSupportChain);
+            FhirInstanceValidator instanceValidator = new FhirInstanceValidator(validationSupportChain);
             // instanceValidator.setNoTerminologyChecks(true); //TODO check if this needs to be configured
             instanceValidator.setErrorForUnknownProfiles(true);
             instanceValidator.setNoExtensibleWarnings(true);
@@ -95,7 +91,7 @@ public class ValidatorFactory {
         } catch (Exception e) {
             logger.error(e.getMessage(),e);
             throw new ValidatorInitializationException("Validator could not be initialized correctly for profile \"" +
-               canonical + "\" version \"" + fhirProfileVersion.getRequiredPackage().getPackageVersion() + "\"", e);
+                    canonical + "\" version \"" + fhirProfileVersion.getRequiredPackage().getPackageVersion() + "\"", e);
         }
     }
 
@@ -105,13 +101,11 @@ public class ValidatorFactory {
      */
     List<Pair<String,FhirProfileVersion>> getAllSupportedProfiles(){
         return fhirPackageProperties.getSupportedProfiles().values().stream()
-            .flatMap(profile-> profile.getVersions().entrySet().stream().map(entry-> Pair.of(profile.getProfileName(), entry)))
-            .map(entryPair-> Pair.of(entryPair.getLeft(), new FhirProfileVersion(entryPair.getValue().getKey(), entryPair.getValue().getValue()
-                .getRequiredPackage())))
-            .distinct()
-            .collect(Collectors.toList());
+                .flatMap(profile-> profile.getVersions().entrySet().stream().map(entry-> Pair.of(profile.getProfileName(), entry)))
+                .map(entryPair-> Pair.of(entryPair.getLeft(), new FhirProfileVersion(entryPair.getValue().getKey(), entryPair.getValue().getValue().getValidityPeriod(),
+                        entryPair.getValue().getValue().getRequiredPackage()))).distinct()
+                .collect(Collectors.toList());
     }
-
 
     public List<String> getPackageFilenameListToLoadFor(FhirProfileVersion fhirProfileVersion) throws Exception {
         List<String> packageFilenameList = new ArrayList<>();
@@ -176,4 +170,7 @@ public class ValidatorFactory {
         return packageFilenameList;
     }
 
+    public FhirPackageValidityPeriod getProfileValidityPeriod(Profile profile){
+        return fhirPackageProperties.getProfileValidityPeriod(profile);
+    }
 }

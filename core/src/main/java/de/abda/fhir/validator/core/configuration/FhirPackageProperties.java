@@ -1,5 +1,6 @@
 package de.abda.fhir.validator.core.configuration;
 
+import de.abda.fhir.validator.core.util.Profile;
 import java.util.Map;
 
 public class FhirPackageProperties {
@@ -23,4 +24,14 @@ public class FhirPackageProperties {
         this.supportedProfiles = supportedProfiles;
     }
 
+    public FhirPackageValidityPeriod getProfileValidityPeriod(Profile profile){
+        FhirProfile myProfile = this.supportedProfiles.get(profile.getBaseCanonical());
+        if (myProfile != null) {
+            FhirProfileVersion myProfileVersion = myProfile.getVersions().get(profile.getVersion());
+            if (myProfileVersion != null) {
+                return myProfileVersion.getValidityPeriod();
+            }
+        }
+        return null;
+    }
 }

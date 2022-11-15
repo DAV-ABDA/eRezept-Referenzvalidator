@@ -1,9 +1,9 @@
 package de.abda.fhir.validator.core;
 
 import ca.uhn.fhir.context.FhirContext;
+import de.abda.fhir.validator.core.configuration.FhirPackageValidityPeriod;
 import de.abda.fhir.validator.core.configuration.FhirProfileVersion;
 import de.abda.fhir.validator.core.util.Profile;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -80,4 +80,7 @@ public class ValidatorHolder {
         }
     }
 
+    public FhirPackageValidityPeriod getProfileValidityPeriod(Profile profile){
+        return validatorFactory.getProfileValidityPeriod(profile);
+    }
 }

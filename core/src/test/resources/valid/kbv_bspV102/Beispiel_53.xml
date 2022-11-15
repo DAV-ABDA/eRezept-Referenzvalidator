@@ -118,6 +118,9 @@
 				<insurance>
 					<reference value="Coverage/2ad99325-406a-42b1-8126-a96b5fa7b0c5"/>
 				</insurance>
+				<dosageInstruction>
+					<patientInstruction value="Ad libitum"/>
+				</dosageInstruction>
 				<dispenseRequest>
 					<quantity>
 						<value value="1"/>
@@ -385,7 +388,7 @@
 					</coding>
 				</type>
 				<beneficiary>
-					<reference value="Patient/c9e9eeb8-e397-4d62-a977-656a18027f90" />
+					<reference value="Patient/d7723237-c01f-4e35-8482-1272d0b3fcf5" />
 				</beneficiary>
 				<payor>
 					<identifier>

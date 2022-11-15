@@ -104,7 +104,7 @@
 					<extension url="Nummerierung">
 						<valueRatio>
 							<numerator>
-								<value value="1"/>
+								<value value="2"/>
 							</numerator>
 							<denominator>
 								<value value="2"/>

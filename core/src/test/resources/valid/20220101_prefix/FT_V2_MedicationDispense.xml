@@ -1,0 +1,82 @@
+<fhir:MedicationDispense xmlns:fhir="http://hl7.org/fhir">
+  <fhir:id value="5b829135-17d8-4534-9240-3ba68f96829f"/>
+  <fhir:meta>
+    <fhir:profile value="https://gematik.de/fhir/StructureDefinition/ErxMedicationDispense|1.1.1"/>
+    <fhir:tag>
+      <fhir:display value="Beispiel MedicationDispense Freitext Bsp V2 -&gt; PZN Abgabe"/>
+    </fhir:tag>
+    <fhir:tag>
+      <fhir:display value="ACHTUNG! Der fachlich korrekte Inhalt der Beispielinstanz kann nicht gewährleistet werden. Wir sind jederzeit dankbar für Hinweise auf Fehler oder für Verbesserungsvorschläge."/>
+    </fhir:tag>
+  </fhir:meta>
+  <fhir:contained>
+    <fhir:Medication>
+      <fhir:id value="2fd1eaa4-364b-4bb2-8247-49fc0c4fb805"/>
+      <fhir:meta>
+        <fhir:profile value="https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Medication_PZN|1.0.2"/>
+      </fhir:meta>
+      <fhir:extension url="https://fhir.kbv.de/StructureDefinition/KBV_EX_ERP_Medication_Category">
+        <fhir:valueCoding>
+          <fhir:system value="https://fhir.kbv.de/CodeSystem/KBV_CS_ERP_Medication_Category"/>
+          <fhir:code value="00"/>
+        </fhir:valueCoding>
+      </fhir:extension>
+      <fhir:extension url="https://fhir.kbv.de/StructureDefinition/KBV_EX_ERP_Medication_Vaccine">
+        <fhir:valueBoolean value="false"/>
+      </fhir:extension>
+      <fhir:extension url="http://fhir.de/StructureDefinition/normgroesse">
+        <fhir:valueCode value="N3"/>
+      </fhir:extension>
+      <fhir:code>
+        <fhir:coding>
+          <fhir:system value="http://fhir.de/CodeSystem/ifa/pzn"/>
+          <fhir:code value="08999233"/>
+        </fhir:coding>
+        <fhir:text value="METFORMIN STADA 850 mg Filmtabletten 180 Stk"/>
+      </fhir:code>
+      <fhir:form>
+        <fhir:coding>
+          <fhir:system value="https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_KBV_DARREICHUNGSFORM"/>
+          <fhir:code value="FTA"/>
+        </fhir:coding>
+      </fhir:form>
+      <fhir:amount>
+        <fhir:numerator>
+          <fhir:value value="180"/>
+          <fhir:unit value="Tabletten"/>
+        </fhir:numerator>
+        <fhir:denominator>
+          <fhir:value value="1"/>
+        </fhir:denominator>
+      </fhir:amount>
+      <fhir:batch>
+        <fhir:lotNumber value="P987654321-8"/>
+        <fhir:expirationDate value="2022-12-31"/>
+      </fhir:batch>
+    </fhir:Medication>
+  </fhir:contained>
+  <fhir:identifier>
+    <fhir:system value="https://gematik.de/fhir/NamingSystem/PrescriptionID"/>
+    <fhir:value value="160.100.000.000.023.70"/>
+  </fhir:identifier>
+  <fhir:status value="completed"/>
+  <fhir:medicationReference>
+    <fhir:reference value="#2fd1eaa4-364b-4bb2-8247-49fc0c4fb805"/>
+    <fhir:display value="METFORMIN STADA 850 mg Filmtabletten 180 Stk"/>
+  </fhir:medicationReference>
+  <fhir:subject>
+    <fhir:identifier>
+      <fhir:system value="http://fhir.de/NamingSystem/gkv/kvid-10"/>
+      <fhir:value value="S040464113"/>
+    </fhir:identifier>
+  </fhir:subject>
+  <fhir:performer>
+    <fhir:actor>
+      <fhir:identifier>
+        <fhir:system value="https://gematik.de/fhir/NamingSystem/TelematikID"/>
+        <fhir:value value="3-07.2.1234560000.10.789"/>
+      </fhir:identifier>
+    </fhir:actor>
+  </fhir:performer>
+  <fhir:whenHandedOver value="2021-05-27"/>
+</fhir:MedicationDispense>

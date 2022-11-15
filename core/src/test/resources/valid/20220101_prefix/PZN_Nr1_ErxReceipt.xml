@@ -1,0 +1,107 @@
+<fhir:Bundle xmlns:fhir="http://hl7.org/fhir">
+    <fhir:id value="9b2a3432-eb78-4712-aa89-d4f5f18b677d"/>
+    <fhir:meta>
+        <fhir:profile value="https://gematik.de/fhir/StructureDefinition/ErxReceipt|1.1.1" />
+        <fhir:tag>
+            <fhir:display value="Beispiel Quittung für erfolgreich durchlaufenen E-Rezept-Workflow = dispensiertes E-Rezept" />
+        </fhir:tag>
+    </fhir:meta>
+    <fhir:identifier>
+        <fhir:system value="https://gematik.de/fhir/NamingSystem/PrescriptionID" />
+        <fhir:value value="160.000.764.737.300.50" />
+    </fhir:identifier>
+    <fhir:type value="document" />
+    <fhir:timestamp value="2021-03-30T10:40:00.000+00:00" />
+    <fhir:link>
+        <fhir:relation value="self" />
+        <fhir:url value="https://erp-ref.zentral.erp.splitdns.ti-dienste.de/Task/160.000.764.737.300.50/$close/" />
+    </fhir:link>
+    <fhir:entry>
+        <fhir:fullUrl value="https://erp.zentral.erp.splitdns.ti-dienste.de/Composition/2d63978355-8925-46db-9c44-817bc64bcd40" />
+        <fhir:resource>
+            <fhir:Composition>
+                <fhir:id value="2d63978355-8925-46db-9c44-817bc64bcd40" />
+                <fhir:meta>
+                    <fhir:profile value="https://gematik.de/fhir/StructureDefinition/ErxComposition|1.1.1" />
+                </fhir:meta>
+                <fhir:extension url="https://gematik.de/fhir/StructureDefinition/BeneficiaryExtension">
+                    <fhir:valueIdentifier>
+                        <fhir:system value="https://gematik.de/fhir/NamingSystem/TelematikID" />
+                        <fhir:value value="606358757" />
+                    </fhir:valueIdentifier>
+                </fhir:extension>
+                <fhir:status value="final" />
+                <fhir:type>
+                    <fhir:coding>
+                        <fhir:system value="https://gematik.de/fhir/CodeSystem/Documenttype" />
+                        <fhir:code value="3" />
+                        <fhir:display value="Receipt" />
+                    </fhir:coding>
+                </fhir:type>
+                <fhir:date value="2021-03-30T10:40:00.000+00:00" />
+                <fhir:author>
+                    <fhir:reference value="Device/1" />
+                </fhir:author>
+                <fhir:title value="Quittung" />
+                <fhir:event>
+                    <fhir:period>
+                        <fhir:start value="2021-03-30T10:20:00.000+00:00" />
+                        <fhir:end value="2021-03-30T10:40:00.000+00:00" />
+                    </fhir:period>
+                </fhir:event>
+                <fhir:section>
+                    <fhir:entry>
+                        <fhir:reference value="Binary/Prescription123" />
+                        <fhir:type value="Binary"/>
+                    </fhir:entry>
+                </fhir:section>
+            </fhir:Composition>
+        </fhir:resource>
+    </fhir:entry>
+    <fhir:entry>
+        <fhir:fullUrl value="https://erp.zentral.erp.splitdns.ti-dienste.de/Device/1" />
+        <fhir:resource>
+            <fhir:Device>
+                <fhir:id value="1" />
+                <fhir:meta>
+                    <fhir:profile value="https://gematik.de/fhir/StructureDefinition/ErxDevice|1.1.1" />
+                </fhir:meta>
+                <fhir:status value="active"/>
+                <fhir:serialNumber value="1.0.0"/>
+                <fhir:deviceName>
+                    <fhir:name value="E-Rezept Fachdienst"/>
+                    <fhir:type value="user-friendly-name"/>
+                </fhir:deviceName>
+                <fhir:version>
+                    <fhir:value value="1.0.0"/>
+                </fhir:version>
+                <fhir:contact>
+                    <fhir:system value="email"/>
+                    <fhir:value value="betrieb@gematik.de"/>
+                </fhir:contact>
+            </fhir:Device>
+        </fhir:resource>
+    </fhir:entry>
+    <fhir:entry>
+        <fhir:fullUrl value="https://erp.zentral.erp.splitdns.ti-dienste.de/Binary/Prescription123" />
+        <fhir:resource>
+            <fhir:Binary>
+                <fhir:id value="Prescription123"/>
+                <fhir:contentType value="application/octet-stream"/>
+                <fhir:data value="Y2RjMTVjNThkMzlkMjllNDdjMTk1MjIzNDlkODRjMThiNTliYTZkMGFhZmI5NGYyZjM2NDFkNGJiZTk1ODhiMQ=="/>
+            </fhir:Binary>
+        </fhir:resource>
+    </fhir:entry>
+    <fhir:signature>
+        <fhir:type>
+            <fhir:system value="urn:iso-astm:E1762-95:2013" />
+            <fhir:code value="1.2.840.10065.1.12.1.1" />
+        </fhir:type>
+        <fhir:when value="2021-03-30T10:40:00.000+00:00" />
+        <fhir:who>
+            <fhir:reference value="https://erp-ref.zentral.erp.splitdns.ti-dienste.de/Device/1" />
+        </fhir:who>
+        <fhir:sigFormat value="application/pkcs7-mime" />
+        <fhir:data value="U2lnbmF0dXIgZGVyIFRJLVF1aXR0dW5n" />
+    </fhir:signature>
+</fhir:Bundle>

@@ -1,0 +1,82 @@
+<fhir:MedicationDispense xmlns:fhir="http://hl7.org/fhir">
+  <fhir:id value="22871e5b-7404-43b9-ac6f-a1addd635931"/>
+  <fhir:meta>
+    <fhir:profile value="https://gematik.de/fhir/StructureDefinition/ErxMedicationDispense|1.1.1"/>
+    <fhir:tag>
+      <fhir:display value="Beispiel MedicationDispense PZN Bsp künstliche Befruchtung V2"/>
+    </fhir:tag>
+    <fhir:tag>
+      <fhir:display value="ACHTUNG! Der fachlich korrekte Inhalt der Beispielinstanz kann nicht gewährleistet werden. Wir sind jederzeit dankbar für Hinweise auf Fehler oder für Verbesserungsvorschläge."/>
+    </fhir:tag>
+  </fhir:meta>
+  <fhir:contained>
+    <fhir:Medication>
+      <fhir:id value="3cf35263-531b-4fe5-8282-858c3c3a35c4"/>
+      <fhir:meta>
+        <fhir:profile value="https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Medication_PZN|1.0.2"/>
+      </fhir:meta>
+      <fhir:extension url="https://fhir.kbv.de/StructureDefinition/KBV_EX_ERP_Medication_Category">
+        <fhir:valueCoding>
+          <fhir:system value="https://fhir.kbv.de/CodeSystem/KBV_CS_ERP_Medication_Category"/>
+          <fhir:code value="00"/>
+        </fhir:valueCoding>
+      </fhir:extension>
+      <fhir:extension url="https://fhir.kbv.de/StructureDefinition/KBV_EX_ERP_Medication_Vaccine">
+        <fhir:valueBoolean value="false"/>
+      </fhir:extension>
+      <fhir:extension url="http://fhir.de/StructureDefinition/normgroesse">
+        <fhir:valueCode value="N1"/>
+      </fhir:extension>
+      <fhir:code>
+        <fhir:coding>
+          <fhir:system value="http://fhir.de/CodeSystem/ifa/pzn"/>
+          <fhir:code value="16938263"/>
+        </fhir:coding>
+        <fhir:text value="GONAL-f 150 I.E./0,25 ml Inj.Lsg."/>
+      </fhir:code>
+      <fhir:form>
+        <fhir:coding>
+          <fhir:system value="https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_KBV_DARREICHUNGSFORM"/>
+          <fhir:code value="PEN"/>
+        </fhir:coding>
+      </fhir:form>
+      <fhir:amount>
+        <fhir:numerator>
+          <fhir:value value="1"/>
+          <fhir:unit value="St"/>
+        </fhir:numerator>
+        <fhir:denominator>
+          <fhir:value value="1"/>
+        </fhir:denominator>
+      </fhir:amount>
+      <fhir:batch>
+        <fhir:lotNumber value="A9876543210-78"/>
+        <fhir:expirationDate value="2022-12-31"/>
+      </fhir:batch>
+    </fhir:Medication>
+  </fhir:contained>
+  <fhir:identifier>
+    <fhir:system value="https://gematik.de/fhir/NamingSystem/PrescriptionID"/>
+    <fhir:value value="160.100.000.000.013.03"/>
+  </fhir:identifier>
+  <fhir:status value="completed"/>
+  <fhir:medicationReference>
+    <fhir:reference value="#3cf35263-531b-4fe5-8282-858c3c3a35c4"/>
+    <fhir:display value="GONAL-f 150 I.E./0,25 ml Inj.Lsg."/>
+  </fhir:medicationReference>
+  <fhir:subject>
+    <fhir:identifier>
+      <fhir:system value="http://fhir.de/NamingSystem/gkv/kvid-10"/>
+      <fhir:value value="K220645122"/>
+    </fhir:identifier>
+  </fhir:subject>
+  <fhir:performer>
+    <fhir:actor>
+      <fhir:identifier>
+        <fhir:system value="https://gematik.de/fhir/NamingSystem/TelematikID"/>
+        <fhir:value value="3-07.2.1234560000.10.789"/>
+      </fhir:identifier>
+    </fhir:actor>
+  </fhir:performer>
+  <fhir:whenHandedOver value="2021-05-27"/>
+</fhir:MedicationDispense>

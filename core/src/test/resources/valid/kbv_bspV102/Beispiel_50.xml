@@ -118,6 +118,9 @@
 				<insurance>
 					<reference value="Coverage/e51239e1-ba74-48e0-97fb-9754d2b05c60"/>
 				</insurance>
+				<dosageInstruction>
+					<patientInstruction value="Täglich eine zum Frühstück"/>
+				</dosageInstruction>
 				<dispenseRequest>
 					<quantity>
 						<value value="1"/>
@@ -228,7 +231,7 @@
 						</coding>
 					</type>
 					<system value="http://fhir.de/NamingSystem/gkv/kvid-10" />
-					<value value="H030170227" />
+					<value value="H030170228" />
 				</identifier>
 				<name>
 					<use value="official" />

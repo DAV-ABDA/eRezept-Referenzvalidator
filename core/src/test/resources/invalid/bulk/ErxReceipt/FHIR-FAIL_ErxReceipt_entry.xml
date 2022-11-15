@@ -102,6 +102,6 @@
             <reference value="https://erp-ref.zentral.erp.splitdns.ti-dienste.de/Device/1" />
         </who>
         <sigFormat value="application/pkcs7-mime" />
-        <data value="MIII FQYJ KoZI hvcN AQcC oIII BjCC CAIC AQEx DzAN Bglg hkgB ZQME AgEF ADAL" />
+        <data value="U2lnbmF0dXIgZGVyIFRJLVF1aXR0dW5n" />
     </signature>
 </Bundle>

@@ -1,0 +1,85 @@
+<fhir:MedicationDispense xmlns:fhir="http://hl7.org/fhir">
+  <fhir:id value="f23d8d7f-5147-447f-b3d5-473a4d30268c"/>
+  <fhir:meta>
+    <fhir:profile value="https://gematik.de/fhir/StructureDefinition/ErxMedicationDispense|1.1.1"/>
+    <fhir:tag>
+      <fhir:display value="Beispiel MedicationDispense Wirkstoff Unfall -&gt; PZN Abgabe"/>
+    </fhir:tag>
+    <fhir:tag>
+      <fhir:display value="ACHTUNG! Der fachlich korrekte Inhalt der Beispielinstanz kann nicht gewährleistet werden. Wir sind jederzeit dankbar für Hinweise auf Fehler oder für Verbesserungsvorschläge."/>
+    </fhir:tag>
+  </fhir:meta>
+  <fhir:contained>
+    <fhir:Medication>
+      <fhir:id value="52660ef8-6e6e-4c8d-8096-ff78e084141c"/>
+      <fhir:meta>
+        <fhir:profile value="https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Medication_PZN|1.0.2"/>
+      </fhir:meta>
+      <fhir:extension url="https://fhir.kbv.de/StructureDefinition/KBV_EX_ERP_Medication_Category">
+        <fhir:valueCoding>
+          <fhir:system value="https://fhir.kbv.de/CodeSystem/KBV_CS_ERP_Medication_Category"/>
+          <fhir:code value="00"/>
+        </fhir:valueCoding>
+      </fhir:extension>
+      <fhir:extension url="https://fhir.kbv.de/StructureDefinition/KBV_EX_ERP_Medication_Vaccine">
+        <fhir:valueBoolean value="false"/>
+      </fhir:extension>
+      <fhir:extension url="http://fhir.de/StructureDefinition/normgroesse">
+        <fhir:valueCode value="N1"/>
+      </fhir:extension>
+      <fhir:code>
+        <fhir:coding>
+          <fhir:system value="http://fhir.de/CodeSystem/ifa/pzn"/>
+          <fhir:code value="12481766"/>
+        </fhir:coding>
+        <fhir:text value="Diclofenac Natrium Micro Labs 75 mg Reta, 20 St"/>
+      </fhir:code>
+      <fhir:form>
+        <fhir:coding>
+          <fhir:system value="https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_KBV_DARREICHUNGSFORM"/>
+          <fhir:code value="RET"/>
+        </fhir:coding>
+      </fhir:form>
+      <fhir:amount>
+        <fhir:numerator>
+          <fhir:value value="20"/>
+          <fhir:unit value="Tabletten"/>
+        </fhir:numerator>
+        <fhir:denominator>
+          <fhir:value value="1"/>
+        </fhir:denominator>
+      </fhir:amount>
+      <fhir:batch>
+        <fhir:lotNumber value="A123456789-1"/>
+        <fhir:expirationDate value="2022-12-31"/>
+      </fhir:batch>
+    </fhir:Medication>
+  </fhir:contained>
+  <fhir:identifier>
+    <fhir:system value="https://gematik.de/fhir/NamingSystem/PrescriptionID"/>
+    <fhir:value value="160.100.000.000.021.76"/>
+  </fhir:identifier>
+  <fhir:status value="completed"/>
+  <fhir:medicationReference>
+    <fhir:reference value="#52660ef8-6e6e-4c8d-8096-ff78e084141c"/>
+    <fhir:display value="Diclofenac Natrium Micro Labs 75 mg Reta, 20 St"/>
+  </fhir:medicationReference>
+  <fhir:subject>
+    <fhir:identifier>
+      <fhir:system value="http://fhir.de/NamingSystem/gkv/kvid-10"/>
+      <fhir:value value="K030182229"/>
+    </fhir:identifier>
+  </fhir:subject>
+  <fhir:performer>
+    <fhir:actor>
+      <fhir:identifier>
+        <fhir:system value="https://gematik.de/fhir/NamingSystem/TelematikID"/>
+        <fhir:value value="3-07.2.1234560000.10.789"/>
+      </fhir:identifier>
+    </fhir:actor>
+  </fhir:performer>
+  <fhir:whenHandedOver value="2021-05-27"/>
+  <fhir:dosageInstruction>
+    <fhir:text value="1-0-1-0"/>
+  </fhir:dosageInstruction>
+</fhir:MedicationDispense>

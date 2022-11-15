@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class Validator {
 
     static Logger logger = LoggerFactory.getLogger(Validator.class);
-    private final FhirValidator fhirValidator;
+    public final FhirValidator fhirValidator;
 
     public Validator(FhirValidator fhirValidator) {
         this.fhirValidator = fhirValidator;
@@ -42,7 +42,7 @@ public class Validator {
         List<SingleValidationMessage> messages = result.getMessages().stream().collect(Collectors.toList());
         WhiteListHelper.applyWhiteLists(messages);
 
-        if(logErrors) {
+        if (logErrors) {
             // The result object now contains the validation results
             for (SingleValidationMessage next : messages) {
                 logger.info("Validator message: " + next.getSeverity() + " " + next.getLocationString()

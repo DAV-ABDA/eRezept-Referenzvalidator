@@ -88,6 +88,8 @@ public class FixedSnapshotGeneratingValidationSupport extends SnapshotGenerating
                 ProfileUtilities profileUtilities = new ProfileUtilities(context, messages, profileKnowledgeProvider);
                 profileUtilities.generateSnapshot(baseCanonical, inputCanonical, theUrl, theWebUrl, theProfileName);
 
+                //TODO Process snapshotGeneration messages (not in HAPI yet!!!)
+
                 switch (version) {
                     case DSTU3:
                         org.hl7.fhir.dstu3.model.StructureDefinition generatedDstu3 = (org.hl7.fhir.dstu3.model.StructureDefinition) converter.fromCanonical(inputCanonical);

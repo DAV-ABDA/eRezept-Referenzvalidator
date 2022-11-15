@@ -12,9 +12,9 @@ public class WhiteListHelper {
         //add custom whitelist filters here
     }
 
-    //TODO This ain't failsafe. A better solution has to be found for the long term as this might ignore more errors than just the bad identifier definition in the profile (or better make a better/correct profile)
-    //fixed in package de.abda.eRezeptAbgabedaten 1.1.0
-    //TODO: Kontextprüfung package 1.0.3 (eRezeptAbgabedaten)
+    //This ain't failsafe. A better solution has to be found for the long term as this might ignore more errors than just the bad identifier definition in the profile (or better make a better/correct profile)
+    // --> fixed in package de.abda.eRezeptAbgabedaten 1.1.0
+    //TODO Kontextprüfung nur für package 1.0.3 (eRezeptAbgabedaten)
     public static void removeDAVActorIdentifierErrors(List<SingleValidationMessage> messages) {
         messages.removeIf(singleValidationMessage -> {
             if (singleValidationMessage.getSeverity() == ResultSeverityEnum.ERROR &&

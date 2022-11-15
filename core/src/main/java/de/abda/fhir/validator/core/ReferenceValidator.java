@@ -3,6 +3,7 @@ package de.abda.fhir.validator.core;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.validation.ResultSeverityEnum;
 import ca.uhn.fhir.validation.SingleValidationMessage;
+import de.abda.fhir.validator.core.configuration.FhirPackageValidityPeriod;
 import de.abda.fhir.validator.core.util.FileHelper;
 import de.abda.fhir.validator.core.util.Profile;
 import de.abda.fhir.validator.core.util.ProfileHelper;
@@ -15,6 +16,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
+import java.time.LocalDate;
 
 /**
  * This is the default class to use the ABDA FHIR validator in your Java Application.
@@ -53,6 +55,7 @@ public class ReferenceValidator {
      */
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateFile(String inputFile) {
         logger.debug("Start validating File {}", inputFile);
+        // TODO: NICO Umbau File basierter Stream
         String validatorInputAsString = FileHelper.loadValidatorInputAsString(inputFile);
         return this.validateImpl(validatorInputAsString);
     }
@@ -86,9 +89,38 @@ public class ReferenceValidator {
     }
 
     private Map<ResultSeverityEnum, List<SingleValidationMessage>> validateImpl(String validatorInputAsString) {
+        // fileinputstream
         InputStream validatorInputStream = new ByteArrayInputStream(validatorInputAsString.getBytes(StandardCharsets.UTF_8));
-        Profile profile = ProfileHelper.getProfileFromXmlStream(validatorInputStream);
-        Validator validator = validatorHolder.getValidatorForProfile(profile);
-        return validator.validate(validatorInputAsString);
+        // TODO: file management -> Fehler abfangen und melden -> output
+        // TODO: ReleaseVersionsausgabe !?!
+        Profile instanceProfile = ProfileHelper.getProfileFromXmlStream(validatorInputStream);
+        //validatorInputStream.close();
+
+        FhirPackageValidityPeriod validityPeriod = validatorHolder.getProfileValidityPeriod(instanceProfile);
+        if (validityPeriod == null) {
+            logger.error("validityPeriod for profile not found");
+            // TODO: Fehlermanagment -> output
+        } else {
+            logger.info("validityPeriod for profile: " + validityPeriod.getValid_from() + " - " + validityPeriod.getValid_to());
+
+            // TODO: ein zweites mal notwendig? Position zurücksetzen!!!
+            validatorInputStream = new ByteArrayInputStream(validatorInputAsString.getBytes(StandardCharsets.UTF_8));
+            LocalDate instanceDate = ProfileHelper.getInstanceDateFromXmlStream(validatorInputStream, validityPeriod.getFhir_path());
+            //validatorInputStream.close();
+            logger.debug(instanceDate.toString());
+            if ((instanceDate.isAfter(validityPeriod.getValid_from()) && instanceDate.isBefore(validityPeriod.getValid_to())) || instanceDate.isEqual(validityPeriod.getValid_from()) || instanceDate.isEqual(validityPeriod.getValid_to())) {
+                logger.info("Instance valid");
+            } else {
+                logger.error("Instance invalid");
+            }
+            // TODO: Fehlermanagment -> output
+        }
+        Validator validator = validatorHolder.getValidatorForProfile(instanceProfile);
+
+        Map<ResultSeverityEnum, List<SingleValidationMessage>> output = validator.validate(validatorInputAsString);
+        //output.entrySet(ResultSeverityEnum.ERROR);
+        return output; // TODO: Fehlermanagment -> auch Meldungen des Referenzvalidators zurückgeben!
+        //return validator.validate(validatorInputAsString);
     }
+
 }

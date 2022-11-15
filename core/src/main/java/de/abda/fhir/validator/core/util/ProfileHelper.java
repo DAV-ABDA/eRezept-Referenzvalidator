@@ -140,11 +140,13 @@ public class ProfileHelper {
                             logger.error("Could not read value attribute for date.");
                             return null;
                         }
-                        // TODO: Zeitverschiebung beachten? DateTime Umwandlung ?!? --> TemporalAccessor
-                        return LocalDate.parse(valueAttribute.getValue().substring(0,10)); // TODO: was wenn kein Date oder anders formatiert?
+                        // TODO: Zeitverschiebung beachten? DateTime Umwandlung ?!? --> TemporalAccessor?
+                        // TODO: was wenn kein Date oder anders formatiert?
+                        // TODO: KBV/DAV/GKV/PKV -> only DATE aber gematik DateTime Angabe möglich -> DeutscheZeit?
+                        return LocalDate.parse(valueAttribute.getValue().substring(0,10));
                     }
-                } else if (level == pos && nextTag.isEndElement() && xmlPathElements[pos].toLowerCase().contains(nextTag.asEndElement().getName().getLocalPart().toLowerCase())) {
-                    if (pos < (xmlPathElements.length - 1)) { // TODO: Abbruch wenn pos = xmlPathElements.length -2 und pos-- !!!!!
+                } else if (level == pos && nextTag.isEndElement() && xmlPathElements[pos - 1].toLowerCase().contains(nextTag.asEndElement().getName().getLocalPart().toLowerCase())) {
+                    if (pos < (xmlPathElements.length - 1)) {
                         pos--;
                         level--;
                     }
@@ -153,15 +155,18 @@ public class ProfileHelper {
                 } else if (!nextTag.isStartElement() && nextTag.isEndElement()) {
                     level--;
                 }
-/*
-                if (nextTag.isStartElement() || nextTag.isStartElement()) {
-                    logger.error("level:" + level + " pos:" + pos + " Element: " + nextTag.asStartElement().getName().getLocalPart());
+                /* Debuginfo
+                if (nextTag.isStartElement()) {
+                    logger.error("level:" + level + " pos:" + pos + " Start Element: " + nextTag.asStartElement().getName().getLocalPart());
                 }
+                if (nextTag.isEndElement()) {
+                    logger.error("level:" + level + " pos:" + pos + " End   Element: " + nextTag.asEndElement().getName().getLocalPart());
+                }
+                */
                 if (level < pos) { // level < pos = abbruch
-                    logger.error("level < pos");
-                    //return null;
+                    //logger.error("level < pos"); // gesuchtes Feld nicht an gesuchter Stelle angegeben...
+                    return null;
                 }
-*/
             }
         } catch (XMLStreamException e) {
             logger.error("Could not instance date.", e);

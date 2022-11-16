@@ -6,6 +6,7 @@ import ca.uhn.fhir.context.support.ValidationSupportContext;
 import ca.uhn.fhir.rest.server.exceptions.BaseServerResponseException;
 import ca.uhn.fhir.rest.server.exceptions.InternalErrorException;
 import ca.uhn.fhir.rest.server.exceptions.PreconditionFailedException;
+import ca.uhn.fhir.validation.SingleValidationMessage;
 import org.apache.commons.lang3.Validate;
 import org.hl7.fhir.common.hapi.validation.support.SnapshotGeneratingValidationSupport;
 import org.hl7.fhir.common.hapi.validation.validator.ProfileKnowledgeWorkerR5;
@@ -19,6 +20,8 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
@@ -88,8 +91,15 @@ public class FixedSnapshotGeneratingValidationSupport extends SnapshotGenerating
                 ProfileUtilities profileUtilities = new ProfileUtilities(context, messages, profileKnowledgeProvider);
                 profileUtilities.generateSnapshot(baseCanonical, inputCanonical, theUrl, theWebUrl, theProfileName);
 
-                //TODO Process snapshotGeneration messages (not in HAPI yet!!!)
-
+                //FIX Process snapshotGeneration messages (not in HAPI yet!!!) -> test with "DAV-PR-ERP-AbgabedatenBundle"
+                messages.stream().forEach(e -> this.logValidationMessage(e));
+                //List<ValidationMessage> errorsAndWarnings = messages.stream().filter(m -> m.getLevel().isError() || m.getLevel() == ValidationMessage.IssueSeverity.WARNING).collect(Collectors.toList());
+                //if (errorsAndWarnings.size() > 0) {
+                List<ValidationMessage> errors = messages.stream().filter(m -> m.getLevel().isError()).collect(Collectors.toList());
+                if (errors.size() > 0) {
+                    throw new PreconditionFailedException("Could not generate snapshot for " + inputUrl);
+                }
+                /**/
                 switch (version) {
                     case DSTU3:
                         org.hl7.fhir.dstu3.model.StructureDefinition generatedDstu3 = (org.hl7.fhir.dstu3.model.StructureDefinition) converter.fromCanonical(inputCanonical);
@@ -123,5 +133,14 @@ public class FixedSnapshotGeneratingValidationSupport extends SnapshotGenerating
         } catch (Exception e) {
             throw new InternalErrorException("Failed to generate snapshot", e);
         }
+    }
+
+    private void logValidationMessage(ValidationMessage e) {
+        if(e.getLevel().isError())
+            log.error(e.toString());
+        else if(e.getLevel() == ValidationMessage.IssueSeverity.WARNING)
+            log.warn(e.toString());
+        else
+            log.info(e.toString());
     }
 }

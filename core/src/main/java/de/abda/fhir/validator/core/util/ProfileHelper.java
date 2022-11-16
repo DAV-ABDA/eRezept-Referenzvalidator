@@ -146,9 +146,12 @@ public class ProfileHelper {
                         return LocalDate.parse(valueAttribute.getValue().substring(0,10));
                     }
                 } else if (level == pos && nextTag.isEndElement() && xmlPathElements[pos - 1].toLowerCase().contains(nextTag.asEndElement().getName().getLocalPart().toLowerCase())) {
-                    if (pos < (xmlPathElements.length - 1)) {
+                    if (pos < (xmlPathElements.length)) {
                         pos--;
                         level--;
+                        if (level == 0) {
+                            return null; // Abbruch da Ende erreicht...
+                        }
                     }
                 } else if (nextTag.isStartElement() && !nextTag.isEndElement()) {
                     level++;

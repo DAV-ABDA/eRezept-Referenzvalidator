@@ -107,13 +107,17 @@ public class ReferenceValidator {
             validatorInputStream = new ByteArrayInputStream(validatorInputAsString.getBytes(StandardCharsets.UTF_8));
             LocalDate instanceDate = ProfileHelper.getInstanceDateFromXmlStream(validatorInputStream, validityPeriod.getFhir_path());
             //validatorInputStream.close();
-            logger.debug(instanceDate.toString());
-            if ((instanceDate.isAfter(validityPeriod.getValid_from()) && instanceDate.isBefore(validityPeriod.getValid_to())) || instanceDate.isEqual(validityPeriod.getValid_from()) || instanceDate.isEqual(validityPeriod.getValid_to())) {
-                logger.info("Instance valid");
+            if (instanceDate == null) {
+                logger.debug("instanceDate null");
             } else {
-                logger.error("Instance invalid");
+                logger.debug(instanceDate.toString());
+                if ((instanceDate.isAfter(validityPeriod.getValid_from()) && instanceDate.isBefore(validityPeriod.getValid_to())) || instanceDate.isEqual(validityPeriod.getValid_from()) || instanceDate.isEqual(validityPeriod.getValid_to())) {
+                    logger.info("Instance valid");
+                } else {
+                    logger.error("Instance invalid");
+                }
+                // TODO: Fehlermanagment -> output
             }
-            // TODO: Fehlermanagment -> output
         }
         Validator validator = validatorHolder.getValidatorForProfile(instanceProfile);
 

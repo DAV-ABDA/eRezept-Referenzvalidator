@@ -31,6 +31,9 @@ public class ValidatorHolder {
     }
 
     public Validator getValidatorForProfile(Profile profile) {
+        if (profile == null) {
+            return null;
+        }
         if (!validatorMap.containsKey(profile)) {
             validatorMap.put(profile, validatorFactory.createValidatorForProfile(profile));
         }

@@ -39,8 +39,7 @@ class ReferenceValidatorTest {
   @ParameterizedTest
   @MethodSource
   void validateValidFile(Path path) {
-    Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator
-        .validateFile(path);
+    Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(path, true);
     String mapAsString = errors.keySet().stream()
         .map(key -> key + ": " + errors.get(key).size())
         .collect(Collectors.joining(","));
@@ -56,15 +55,14 @@ class ReferenceValidatorTest {
   @MethodSource
   void validateInvalidFile(Pair<Path, String> arguments) {
     Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator
-        .validateFile(arguments.getKey());
+        .validateFile(arguments.getKey(), true);
     String mapAsString = errors.keySet().stream()
         .map(key -> key + ": " + errors.get(key).size())
         .collect(Collectors.joining(","));
     System.out.println(mapAsString);
     List<SingleValidationMessage> errorMessages = getFatalAndErrorMessages(errors);
     assertNotEquals(0, errorMessages.size());
-    assertTrue(errorMessages.stream()
-        .anyMatch(message -> message.getMessage().contains(arguments.getValue())));
+    assertTrue(errorMessages.stream().anyMatch(message -> message.getMessage().contains(arguments.getValue())));
   }
 
   private static Stream<Pair<Path, String>> validateInvalidFile() throws IOException {
@@ -78,7 +76,7 @@ class ReferenceValidatorTest {
   @MethodSource
   void validateInvalidFileBulk(Path path) {
     Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator
-            .validateFile(path);
+            .validateFile(path, true);
     String mapAsString = errors.keySet().stream()
             .map(key -> key + ": " + errors.get(key).size())
             .collect(Collectors.joining(","));
@@ -93,7 +91,7 @@ class ReferenceValidatorTest {
   @ParameterizedTest
   @MethodSource
   void validateFileWithException(Pair<Path, Class<? extends Exception>> arguments) {
-    Assertions.assertThrows(arguments.getRight(), () -> validator.validateFile(arguments.getKey()));
+    Assertions.assertThrows(arguments.getRight(), () -> validator.validateFile(arguments.getKey(), true));
   }
 
   private static Stream<Pair<Path, Class<? extends Exception>>> validateFileWithException()
@@ -110,8 +108,7 @@ class ReferenceValidatorTest {
   private List<SingleValidationMessage> getFatalAndErrorMessages(
       Map<ResultSeverityEnum, List<SingleValidationMessage>> errors) {
     List<SingleValidationMessage> result = new ArrayList<>(
-        errors.getOrDefault(ResultSeverityEnum.ERROR,
-            Collections.emptyList()));
+                  errors.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()));
     result.addAll(errors.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()));
     return result;
   }

@@ -84,7 +84,7 @@ public class ValidatorFactory {
             instanceValidator.setAnyExtensionsAllowed(false);
 
             fhirValidator.registerValidatorModule(instanceValidator);
-            return new Validator(fhirValidator);
+            return new Validator(fhirValidator, fhirProfileVersion);
         } catch (ValidatorInitializationException e){
             logger.error(e.getMessage(), e);
             throw e;

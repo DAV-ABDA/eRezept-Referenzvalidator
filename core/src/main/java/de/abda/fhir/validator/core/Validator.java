@@ -4,6 +4,7 @@ import ca.uhn.fhir.validation.FhirValidator;
 import ca.uhn.fhir.validation.ResultSeverityEnum;
 import ca.uhn.fhir.validation.SingleValidationMessage;
 import ca.uhn.fhir.validation.ValidationResult;
+import de.abda.fhir.validator.core.configuration.FhirProfileVersion;
 import de.abda.fhir.validator.core.util.WhiteListHelper;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.slf4j.Logger;
@@ -18,8 +19,11 @@ public class Validator {
     static Logger logger = LoggerFactory.getLogger(Validator.class);
     public final FhirValidator fhirValidator;
 
-    public Validator(FhirValidator fhirValidator) {
+    private FhirProfileVersion fhirProfileVersion;
+
+    public Validator(FhirValidator fhirValidator, FhirProfileVersion fhirProfileVersion) {
         this.fhirValidator = fhirValidator;
+        this.fhirProfileVersion = fhirProfileVersion;
     }
 
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validate(String input) {
@@ -40,7 +44,7 @@ public class Validator {
         ValidationResult result, boolean logErrors) {
 
         List<SingleValidationMessage> messages = result.getMessages().stream().collect(Collectors.toList());
-        WhiteListHelper.applyWhiteLists(messages);
+        WhiteListHelper.applyWhiteLists(messages, fhirProfileVersion);
 
         if (logErrors) {
             // The result object now contains the validation results

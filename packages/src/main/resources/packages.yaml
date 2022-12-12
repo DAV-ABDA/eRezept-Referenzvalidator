@@ -173,7 +173,7 @@ fhirPackages:
     packageName: "de.gematik.erezept-patientenrechnung.r4"
     versions:
       1.0.0-rc3:
-        version: "1.0"
+        version: "1.0.0"
         filename: "de.gematik.erezept-patientenrechnung.r4-1.0.0-rc3.tgz"
         dependencies:
           - packageName: "kbv.ita.erp"
@@ -184,11 +184,10 @@ fhirPackages:
      #       packageVersion: "1.3.0"
      #     - packageName: "kbv.ita.for"
      #       packageVersion: "1.1.0"
-
      #     - packageName: "de.abda.erezeptabgabedatenbasis"
-     #       packageVersion: "1.3.0-rc1"
-          - packageName: "de.abda.erezeptabgabedaten"
-            packageVersion: "1.3.0-rc3" # TODO: change2 -> eigentlich 1.3.0-rc1
+     #       packageVersion: "1.3.0-rc3"
+          - packageName: "de.abda.erezeptabgabedatenpkv"
+            packageVersion: "1.1.0-rc12" # TODO: change2 -> eigentlich 1.3.0-rc1
           - packageName: "de.gematik.erezept-workflow.r4"
             packageVersion: "1.2.0" # TODO: change2 -> eigentlich rc3
           - packageName: "de.basisprofil.r4"
@@ -264,12 +263,12 @@ fhirPackages:
             packageVersion: "1.1.1"
       #    - packageName: "de.basisprofil.r4"
       #      packageVersion: "0.9.13"
-      1.3.0-rc2:
-        version: "1.3.0-rc2"
+      1.3.0-rc2: # coming soon
+        version: "1.3.0"
         filename: "de.gkvsv.erezeptabrechnungsdaten-1.3.0-rc2.tgz"
         dependencies:
           - packageName: "de.abda.erezeptabgabedatenbasis"
-            packageVersion: "1.3.0-rc3" # TODO: change2 -> eigentlich 1.3.0-rc1
+            packageVersion: "1.3.0-rc4" # TODO: change2 -> eigentlich 1.3.0-rc1
       #    - packageName: "de.basisprofil.r4"
       #      packageVersion: "1.3.2"
 
@@ -299,12 +298,12 @@ fhirPackages:
             packageVersion: "1.2.0"
       #    - packageName: "de.basisprofil.r4"
       #      packageVersion: "0.9.13"
-      1.3.0-rc3: # coming soon
-        version: "1.3.0-rc3"
-        filename: "de.abda.erezeptabgabedaten-1.3.0-rc3.tgz"
+      1.3.0-rc4: # coming soon
+        version: "1.3.0"
+        filename: "de.abda.erezeptabgabedaten-1.3.0-rc4.tgz"
         dependencies:
           - packageName: "de.abda.erezeptabgabedatenbasis"
-            packageVersion: "1.3.0-rc3"
+            packageVersion: "1.3.0-rc4"
       #    - packageName: "de.basisprofil.r4"
       #      packageVersion: "1.3.2"
 
@@ -344,15 +343,9 @@ fhirPackages:
         dependencies:
           - packageName: "de.basisprofil.r4"
             packageVersion: "0.9.13"
-  #    1.2.1:
-  #      version: "1.2.1"
-  #      filename: "de.abda.erezeptabgabedatenbasis-1.2.1.tgz"
-  #      dependencies:
-  #        - packageName: "de.basisprofil.r4"
-  #          packageVersion: "0.9.13"
-      1.3.0-rc3:
-        version: "1.3.0-rc3"
-        filename: "de.abda.erezeptabgabedatenbasis-1.3.0-rc3.tgz"
+      1.3.0-rc4: # coming soon
+        version: "1.3.0"
+        filename: "de.abda.erezeptabgabedatenbasis-1.3.0-rc4.tgz"
         dependencies:
           - packageName: "de.basisprofil.r4"
             packageVersion: "1.3.2"
@@ -373,12 +366,12 @@ fhirPackages:
   de.abda.erezeptabgabedatenpkv:
     packageName: "de.abda.erezeptabgabedatenpkv"
     versions:
-      1.1.0-rc11: #coming soon
-        version: "1.1.0-rc11"
-        filename: "de.abda.erezeptabgabedatenpkv-1.1.0-rc11.tgz"
+      1.1.0-rc12: #coming soon
+        version: "1.1.0"
+        filename: "de.abda.erezeptabgabedatenpkv-1.1.0-rc12.tgz"
         dependencies:
           - packageName: "de.abda.erezeptabgabedatenbasis"
-            packageVersion: "1.3.0-rc3" # TODO: change2 -> eigentlich 1.3.0-rc2
+            packageVersion: "1.3.0-rc4"
       #    - packageName: "de.basisprofil.r4"
       #      packageVersion: "1.3.2"
 
@@ -415,6 +408,7 @@ supportedProfiles:
     profileName: "https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle"
     versions:
       1.0.1:
+        version: "1.0.1"
         validityPeriod:
           valid_from: "2021-07-01"
           valid_to: "2022-01-31"  # TODO: Übergangszeit
@@ -425,6 +419,7 @@ supportedProfiles:
           packageName: "kbv.ita.erp"
           packageVersion: "1.0.1"
       1.0.2:
+        version: "1.0.2"
         validityPeriod:
           valid_from: "2021-01-01"
           valid_to: "2023-06-30" # TODO: Übergangszeit!
@@ -436,6 +431,7 @@ supportedProfiles:
           packageVersion: "1.0.2"
         #  packageVersion: "1.0.2-1" # TODO: KBV KorrekturRelease 15.11.22
       1.1.0:
+        version: "1.1.0"
         validityPeriod:
           valid_from: "2023-07-01"
           valid_to: "2024-12-31" # TODO: Endpunkt!
@@ -465,7 +461,8 @@ supportedProfiles:
   "https://gematik.de/fhir/StructureDefinition/ErxMedicationDispense":
     profileName: "https://gematik.de/fhir/StructureDefinition/ErxMedicationDispense"
     versions:
-      0.0.0:  # TODO Test wenn keine Version
+      0.0.0:  # wenn keine Version
+        version: "0.0.0"
         validityPeriod:
           valid_from: "2021-07-01"
           valid_to: "2021-12-31"
@@ -475,6 +472,7 @@ supportedProfiles:
           packageName: "de.gematik.erezept-workflow.r4"
           packageVersion: "1.0.3-1"
       1.0.3:
+        version: "1.0.3"
         validityPeriod:
           valid_from: "2021-07-01"
           valid_to: "2021-12-31"
@@ -484,6 +482,7 @@ supportedProfiles:
           packageName: "de.gematik.erezept-workflow.r4"
           packageVersion: "1.0.3"
       1.0.3-1:
+        version: "1.0.3-1"
         validityPeriod:
           valid_from: "2021-07-01"
           valid_to: "2021-12-31"
@@ -493,6 +492,7 @@ supportedProfiles:
           packageName: "de.gematik.erezept-workflow.r4"
           packageVersion: "1.0.3-1"
       1.1.1:
+        version: "1.1.1"
         validityPeriod:
           valid_from: "2022-01-01"
           valid_to: "2023-06-30"
@@ -507,6 +507,7 @@ supportedProfiles:
     profileName: "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_MedicationDispense"
     versions:
       1.2: #coming soon
+        version: "1.2"
         validityPeriod:
           valid_from: "2023-07-01"
           valid_to: "2024-12-31" # TODO: Endpunkt!
@@ -520,6 +521,7 @@ supportedProfiles:
     profileName: "https://gematik.de/fhir/StructureDefinition/ErxReceipt"
     versions:
       0.0.0:  # TODO Test wenn keine Version
+        version: "0.0.0"
         validityPeriod:
           valid_from: "2021-07-01"
           valid_to: "2021-12-31"
@@ -529,6 +531,7 @@ supportedProfiles:
           packageName: "de.gematik.erezept-workflow.r4"
           packageVersion: "1.0.3-1"
       1.0.3:
+        version: "1.0.3"
         validityPeriod:
           valid_from: "2021-07-01"
           valid_to: "2021-12-31"
@@ -538,6 +541,7 @@ supportedProfiles:
           packageName: "de.gematik.erezept-workflow.r4"
           packageVersion: "1.0.3"
       1.0.3-1:
+        version: "1.0.3-1"
         validityPeriod:
           valid_from: "2021-07-01"
           valid_to: "2021-12-31"
@@ -547,6 +551,7 @@ supportedProfiles:
           packageName: "de.gematik.erezept-workflow.r4"
           packageVersion: "1.0.3-1"
       1.1.1:
+        version: "1.1.1"
         validityPeriod:
           valid_from: "2022-01-01"
           valid_to: "2023-06-30"
@@ -561,6 +566,7 @@ supportedProfiles:
     profileName: "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_Bundle"
     versions:
       1.2: #coming soon
+        version: "1.2"
         validityPeriod:
           valid_from: "2023-07-01"
           valid_to: "2024-12-31" # TODO: Endpunkt!
@@ -580,6 +586,7 @@ supportedProfiles:
     profileName: "https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_ChargeItem"
     versions:
       1.0: #coming soon
+        version: "1.0"
         validityPeriod:
           valid_from: "2023-07-01"
           valid_to: "2024-12-31" # TODO: Endpunkt!
@@ -594,6 +601,7 @@ supportedProfiles:
 #    profileName: "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_CloseOperationInputBundle"
 #    versions:
 #      1.0: #coming soon
+#        version: "1.0"
 #        validityPeriod:
 #          valid_from: "2023-07-01"
 #          valid_to: "2023-12-31" # TODO: Endpunkt!
@@ -608,6 +616,7 @@ supportedProfiles:
     profileName: "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle"
     versions:
       1.0.3:
+        version: "1.0.3"
         validityPeriod:
           valid_from: "2021-07-01"
           valid_to: "2022-01-31"
@@ -617,6 +626,7 @@ supportedProfiles:
           packageName: "de.abda.erezeptabgabedaten"
           packageVersion: "1.0.3"
       1.1.0:
+        version: "1.1.0"
         validityPeriod:
           valid_from: "2022-01-01"
           valid_to: "2022-06-30"
@@ -626,6 +636,7 @@ supportedProfiles:
           packageName: "de.abda.erezeptabgabedaten"
           packageVersion: "1.1.2" #KorrekturRelease
       1.2:
+        version: "1.2"
         validityPeriod:
           valid_from: "2022-07-01"
           valid_to: "2023-06-30" # TODO: Übergangszeitraum?
@@ -635,6 +646,7 @@ supportedProfiles:
           packageName: "de.abda.erezeptabgabedaten"
           packageVersion: "1.2.0"
       1.3: #coming soon
+        version: "1.3"
         validityPeriod:
           valid_from: "2023-07-01"
           valid_to: "2024-12-31" # TODO: Endpunkt!
@@ -642,7 +654,7 @@ supportedProfiles:
           fhir_path: "Bundle;entry;resource;MedicationDispense;whenHandedOver"
         requiredPackage:
           packageName: "de.abda.erezeptabgabedaten"
-          packageVersion: "1.3.0-rc3"
+          packageVersion: "1.3.0-rc4"
 ### TODO: BETA
 #          packageName: "erezeptabgabedaten.staging"
 #          packageVersion: "1.3.0-beta5"
@@ -660,6 +672,7 @@ supportedProfiles:
     profileName: "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle"
     versions:
       1.0.4:
+        version: "1.0.4"
         validityPeriod:
           valid_from: "2021-07-01"
           valid_to: "2021-09-30"
@@ -669,6 +682,7 @@ supportedProfiles:
           packageName: "de.gkvsv.erezeptabrechnungsdaten"
           packageVersion: "1.0.4"
       1.0.5:
+        version: "1.0.5"
         validityPeriod:
           valid_from: "2021-07-01"
           valid_to: "2021-09-30"
@@ -678,6 +692,7 @@ supportedProfiles:
           packageName: "de.gkvsv.erezeptabrechnungsdaten"
           packageVersion: "1.0.5"
       1.0.6:
+        version: "1.0.6"
         validityPeriod:
           valid_from: "2021-07-01"
           valid_to: "2021-12-31"
@@ -687,6 +702,7 @@ supportedProfiles:
           packageName: "de.gkvsv.erezeptabrechnungsdaten"
           packageVersion: "1.0.6"
       1.1.0:
+        version: "1.1.0"
         validityPeriod:
           valid_from: "2022-01-01"
           valid_to: "2022-06-30"
@@ -696,6 +712,7 @@ supportedProfiles:
           packageName: "de.gkvsv.erezeptabrechnungsdaten"
           packageVersion: "1.1.0"
       1.2:
+        version: "1.2"
         validityPeriod:
           valid_from: "2022-07-01"
           valid_to: "2023-06-30" # TODO: Übergangzeitraum?
@@ -710,6 +727,7 @@ supportedProfiles:
     profileName: "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung_Bundle"
     versions:
       1.3:
+        version: "1.3"
         validityPeriod:
           valid_from: "2023-07-01"
           valid_to: "2024-12-31" # TODO: Endpunkt!
@@ -724,12 +742,14 @@ supportedProfiles:
   # https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_RezeptBundle
   # https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung
   # https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten
+  # https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_Binary
 
   # PKV Profile des eAbgabedatensatzesPKV (https://simplifier.net/erezeptabgabedatenpkv)
   "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-AbgabedatenBundle":
     profileName: "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-AbgabedatenBundle"
     versions:
       1.1: #coming soon
+        version: "1.1"
         validityPeriod:
           valid_from: "2023-07-01"
           valid_to: "2023-12-31" # TODO: Endpunkt!
@@ -737,9 +757,10 @@ supportedProfiles:
           fhir_path: "Bundle;entry;resource;MedicationDispense;whenHandedOver"
         requiredPackage:
           packageName: "de.abda.erezeptabgabedatenpkv"
-          packageVersion: "1.1.0-rc11"
+          packageVersion: "1.1.0-rc12"
   ### TODO: BETA
   #    1.1: #coming soon
+  #      version: "1.1"
   #      validityPeriod:
   #        valid_from: "2023-01-01"
   #        valid_to: "2023-12-31" # TODO: Endpunkt!

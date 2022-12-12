@@ -15,11 +15,11 @@ HAPI ERROR FIX - decimal maxValue -> https://github.com/hapifhir/org.hl7.fhir.co
 - Add new packages
   - de.basisprofil.r4-1.3.2.tgz
   - de.gematik.erezept-workflow.r4-1.2.0.tgz
-  - de.gematik.erezept-workflow.r4-1.2.0-rc4.tgz
-  - de.abda.erezeptabgabedatenbasis-1.3.0-rc1.tgz
-  - de.abda.erezeptabgabedaten-1.3.0-rc1.tgz
-  - de.abda.erezeptabgabedatenpkv-1.1.0-rc10.tgz
-  - de.gkvsv.erezeptabrechnungsdaten-1.3.0-rc2.tgz
+  - de.gematik.erezept-patientenrechnung.r4-1.0.0-rc3.tgz (TODO: PreRelease)
+  - de.abda.erezeptabgabedatenbasis-1.3.0-rc4.tgz (TODO: PreRelease)
+  - de.abda.erezeptabgabedaten-1.3.0-rc4.tgz
+  - de.abda.erezeptabgabedatenpkv-1.1.0-rc12.tgz (TODO: PreRelease)
+  - de.gkvsv.erezeptabrechnungsdaten-1.3.0-rc2.tgz (TODO: PreRelease)
   - kbv.basis-1.3.0.tgz
   - kbv.ita.for-1.1.0.tgz
   - kbv.ita.erp-1.1.0.tgz

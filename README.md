@@ -213,13 +213,13 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
 * de.abda.erezeptabgabedatenbasis-1.1.3.tgz (KorrekturRelease für v1.1.0)
 * de.abda.erezeptabgabedatenbasis-1.2.0.tgz
 * ~~de.abda.erezeptabgabedatenbasis-1.2.1.tgz ~~ (entfernt vx.x.x TODO)
-* de.abda.erezeptabgabedatenbasis-1.3.0-rc3.tgz (ACHTUNG! PreReleasePreview)
+* de.abda.erezeptabgabedatenbasis-1.3.0-rc4.tgz (ACHTUNG! PreReleasePreview)
 * ~~de.abda.erezeptabgabedaten-1.1.0.tgz~~  (entfernt v0.9.7)
 * ~~de.abda.erezeptabgabedaten-1.1.1.tgz~~ (entfernt v0.9.8)
 * de.abda.erezeptabgabedaten-1.1.2.tgz (KorrekturRelease für v1.1.0)
 * de.abda.erezeptabgabedaten-1.2.0.tgz
-* de.abda.erezeptabgabedaten-1.3.0-rc3.tgz (ACHTUNG! PreReleasePreview)
-* de.abda.erezeptabgabedatenpkv-1.1.0-rc11.tgz (ACHTUNG! PreReleasePreview)
+* de.abda.erezeptabgabedaten-1.3.0-rc4.tgz (ACHTUNG! PreReleasePreview)
+* de.abda.erezeptabgabedatenpkv-1.1.0-rc12.tgz (ACHTUNG! PreReleasePreview)
 * de.gkvsv.erezeptabrechnungsdaten-1.0.4.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.0.5.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.0.6.tgz

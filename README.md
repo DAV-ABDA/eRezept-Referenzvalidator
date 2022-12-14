@@ -21,6 +21,15 @@
 * Der Referenzvalidator dient als "Schiedsrichter", mit dem ohne weitere Voraussetzungen FHIR Dateien auf Ihre Validität (valid oder nicht valid) getestet werden können. Die einzig relevante Ausgabe ist 'Validation result: true' oder 'Validation result: false'. Zusätzlich ausgegebene Warnings sind ausschließlich informell und haben keinen Einfluss auf das Ergebnis. Das positive Testergebnis ist __eine__ Voraussetzung für die Annahme von Datenlieferungen zwischen Apothekenrechenzentren und Krankenkassen(-Annahmestellen). __Alle__ weiteren Akzeptanzkriterien werden in der TA7 Spezifikation festgelegt.
 * Es werden ausschließlich in den entsprechenden FHIR-Profilen enthaltene Constraints geprüft.
 * Es wird immer nur genau eine FHIR-XML-Datei geprüft. Als Base64-eingebettete weitere FHIR-Daten müssen durch separate Schritte/Aufrufe extrahiert und geprüft werden.
+* Kontrolle ob die Profilversion (nach TA7 Anhang 2) einer Instance zum Zeitpunkt dessen Erstellung gültig war<p>
+  Vor einer Validierung wird die korrekte Profilversion der Instanz geprüft.
+  * Verordnung, Datum der Ausstellung (KBV_PR_ERP_Prescription: MedicationRequest.authoredOn bzw. KBV_PR_ERP_PracticeSupply: SupplyRequest.authoredOn)
+  * MedicationDispense, Abgabedatum (GEM_ERP_PR_MedicationDispense bzw. Gem_erxMedicationDispense: MedicationDispense.whenHandedOver)
+  * Quittung, Ausstellungsdatum (GEM_ERP_PR_Composition bzw. Gem_erxComposition: Composition.date)
+  * Abgabedaten, Abgabedatum (DAV_PR_ERP_Abgabeinformationen: MedicationDispense.whenHandedOver)
+  * Abrechnungsdaten, Abrechnungsmonat (GKVSV_PR_TA7_Rechnung_Composition bzw. GKVSV_PR_TA7_Sammelrechnung_Composition: Composition.date)
+  * PKV Abgabedaten, Abgabedatum (DAV-PKV-PR-ERP-AbgabedatenComposition: MedicationDispense.whenHandedOver)
+  * PKV Patientenrechnung, Abrechnungsdatum (GEM_ERPCHRG_PR_ChargeItem: ChargeItem.enteredDate)
 
 ### NICHT-Projektziele
 
@@ -37,13 +46,6 @@ Fehler werden über Issues gemeldet und nach den Projektzielen priorisiert bzw. 
   relative URL "[type]/[id]" when resource has fullUrl "urn:uuid:[id]"
 * fehlerhafte UUIDs<p>
   * UUIDs werden momentan nicht auf Konformität nach RFC4122 geprüft.
-* Kontrolle ob die Profilversion (nach TA7) einer Instance zum Zeitpunkt dessen Erstellung gültig war<p>
-  Eine Validierung der korrekten Profilversion wird "momentan" nicht umgesetzt.
-  * Verordnung, Datum der Ausstellung (KBV_PR_ERP_Prescription: MedicationRequest.authoredOn)
-  * MedicationDispense, Abgabedatum (Gem_erxMedicationDispense: MedicationDispense.whenHandedOver)
-  * Quittung, Ausstellungsdatum (Gem_erxComposition: Composition.date)
-  * Abgabedaten, Abgabedatum (DAV_PR_ERP_Abgabeinformationen: MedicationDispense.whenHandedOver)
-  * Abrechnungsdaten, Abrechnungsmonat (GKVSV_PR_TA7_Sammelrechnung_Composition: Composition.date)
 * UTF-8-BOM <p>
   Das Format für alle E-Rezept-Dateien ist XML im UTF8 ohne BOM-Zeichensatz. Dieser Zeichensatz ist von der gematik für alle E-Rezept-Daten vorgegeben.
 

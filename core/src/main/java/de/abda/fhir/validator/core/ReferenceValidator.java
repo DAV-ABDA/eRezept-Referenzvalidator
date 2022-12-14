@@ -106,10 +106,11 @@ public class ReferenceValidator {
         // TODO: ReleaseVersionsausgabe !?! oder Option Auswertung Instanz? -> log4J ?!?
         logger.info("Validator Version 1.0.0");
         //ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.INFORMATION, "Validator Version 1.0.0");
-        logger.info("noInstanceValidityCheck: " + noInstanceValidityCheck);
         if (noInstanceValidityCheck) {
+            logger.warn("noInstanceValidityCheck: " + noInstanceValidityCheck);
             ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.WARNING, "noInstanceValidityCheck: " + noInstanceValidityCheck);
         } else {
+            logger.info("noInstanceValidityCheck: " + noInstanceValidityCheck);
             ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.INFORMATION, "noInstanceValidityCheck: " + noInstanceValidityCheck);
         }
 
@@ -145,7 +146,10 @@ public class ReferenceValidator {
         //validatorInputStream.close();
         //https://stackoverflow.com/questions/309424/how-do-i-read-convert-an-inputstream-into-a-string-in-java
 
-        if (instanceProfile != null) {
+        if (!noInstanceValidityCheck && (instanceValidityCheckResults.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()).size() != 0
+                || instanceValidityCheckResults.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()).size() != 0)) {
+            return instanceValidityCheckResults;
+        } else if (instanceProfile != null) {
             Validator validator = validatorHolder.getValidatorForProfile(instanceProfile);
             if (validator != null) {
                 Map<ResultSeverityEnum, List<SingleValidationMessage>> output = validator.validate(validatorInputAsString);

@@ -101,9 +101,18 @@ public class ReferenceValidator {
         Profile instanceProfile = null;
         ProfileValidityDate instanceProfileValidityDate = null;
         Map<ResultSeverityEnum, List<SingleValidationMessage>> instanceValidityCheckResults = new HashMap<>();
-        // TODO: ReleaseVersionsausgabe !?! oder Option Auswertung Instanz?
+        String tmp_str;
+
+        // TODO: ReleaseVersionsausgabe !?! oder Option Auswertung Instanz? -> log4J ?!?
+        logger.info("Validator Version 1.0.0");
         //ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.INFORMATION, "Validator Version 1.0.0");
-        //ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.INFORMATION, "noInstanceValidityCheck: " + noInstanceValidityCheck);
+        logger.info("noInstanceValidityCheck: " + noInstanceValidityCheck);
+        if (noInstanceValidityCheck) {
+            ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.WARNING, "noInstanceValidityCheck: " + noInstanceValidityCheck);
+        } else {
+            ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.INFORMATION, "noInstanceValidityCheck: " + noInstanceValidityCheck);
+        }
+
         InputStream validatorInputStream = new ByteArrayInputStream(validatorInputAsString.getBytes(StandardCharsets.UTF_8));
         if (noInstanceValidityCheck) {
             instanceProfile = ProfileHelper.getProfileFromXmlStream(validatorInputStream);
@@ -116,14 +125,18 @@ public class ReferenceValidator {
                     logger.debug("instanceDate null");
                     ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.FATAL, "no Instance date");
                 } else {
-                    logger.debug(instanceProfileValidityDate.getInstanceDate().toString());
+                    //logger.debug(instanceProfileValidityDate.getInstanceDate().toString());
                     instanceProfile = instanceProfileValidityDate.getProfile();
+                    // TODO: Was bei Zeitangaben und Verschiebungen in der Datumsangabe?!? -> Implementierung zur Zeit: Datum in deutscher Zeit!!!
+                    // .. für Verordnung, Abgabedaten (GKV/PKV) und Abrechnungsdaten (TA7) = ok
                     if ((instanceProfileValidityDate.getInstanceDate().isAfter(instanceProfileValidityDate.getValidityPeriod().getValid_from()) && instanceProfileValidityDate.getInstanceDate().isBefore(instanceProfileValidityDate.getValidityPeriod().getValid_to())) || instanceProfileValidityDate.getInstanceDate().isEqual(instanceProfileValidityDate.getValidityPeriod().getValid_from()) || instanceProfileValidityDate.getInstanceDate().isEqual(instanceProfileValidityDate.getValidityPeriod().getValid_to())) {
-                        logger.info("Instance valid");
-                        ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.INFORMATION, "Instance valid");
+                        tmp_str = "Instance valid " + instanceProfileValidityDate.getInstanceDate().toString() + " between " + instanceProfileValidityDate.getValidityPeriod().getValid_from().toString() + " and " + instanceProfileValidityDate.getValidityPeriod().getValid_to().toString();
+                        logger.info(tmp_str);
+                        ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.INFORMATION, tmp_str);
                     } else {
-                        logger.error("Instance invalid");
-                        ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.FATAL, "Instance invalid");
+                        tmp_str = "Instance invalid " + instanceProfileValidityDate.getInstanceDate().toString() + " not between " + instanceProfileValidityDate.getValidityPeriod().getValid_from().toString() + " and " + instanceProfileValidityDate.getValidityPeriod().getValid_to().toString();
+                        logger.info(tmp_str);
+                        ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.FATAL, tmp_str);
                     }
                 }
             }

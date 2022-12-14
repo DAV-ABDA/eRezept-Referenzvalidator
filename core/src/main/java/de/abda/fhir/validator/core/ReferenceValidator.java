@@ -136,8 +136,8 @@ public class ReferenceValidator {
                         ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.INFORMATION, tmp_str);
                     } else {
                         tmp_str = "Instance invalid " + instanceProfileValidityDate.getInstanceDate().toString() + " not between " + instanceProfileValidityDate.getValidityPeriod().getValid_from().toString() + " and " + instanceProfileValidityDate.getValidityPeriod().getValid_to().toString();
-                        logger.info(tmp_str);
-                        ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.FATAL, tmp_str);
+                        logger.error(tmp_str);
+                        ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.ERROR, tmp_str);
                     }
                 }
             }
@@ -156,11 +156,11 @@ public class ReferenceValidator {
                 output.putAll(instanceValidityCheckResults);
                 return output;
             } else {
-                ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.FATAL, "Profile unbekannt!");
+                ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.ERROR, "Profile unbekannt!");
                 return instanceValidityCheckResults;
             }
         } else {
-            ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.FATAL, "Profile nicht erkannt!");
+            ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.ERROR, "Profile nicht erkannt!");
             return instanceValidityCheckResults;
         }
     }

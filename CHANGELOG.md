@@ -7,15 +7,16 @@ HAPI ERROR FIX - decimal maxValue -> https://github.com/hapifhir/org.hl7.fhir.co
 
 # 1.0.0 - 2022-11-15
 - Add instance validity check
+- Add parameter "-noInstanceValidityCheck" -> deactivate instance validity check (only for QS & Testing!)
 
 - Remove unused function
-- Update HAPI version from 5.7.2 to 5.7.9 (last Java 8)
+- Update HAPI version from 5.7.2 to 5.7.9 (last Java 8 support)
 - Update externe ValueSets & Codesysteme (KBV) -> new package dav.kbv.sfhir.cs.vs-1.0.4-json.tgz
 - Update externe ValueSets & Codesysteme (KBV) -> new package dav.kbv.sfhir.cs.vs-1.0.5-json.tgz
 - Add new packages
   - de.basisprofil.r4-1.3.2.tgz
   - de.gematik.erezept-workflow.r4-1.2.0.tgz
-  - de.gematik.erezept-patientenrechnung.r4-1.0.0-rc3.tgz (TODO: PreRelease)
+  - de.gematik.erezept-patientenrechnung.r4-1.0.0-rc4.tgz (TODO: PreRelease)
   - de.abda.erezeptabgabedatenbasis-1.3.0-rc4.tgz (TODO: PreRelease)
   - de.abda.erezeptabgabedaten-1.3.0-rc4.tgz
   - de.abda.erezeptabgabedatenpkv-1.1.0-rc12.tgz (TODO: PreRelease)

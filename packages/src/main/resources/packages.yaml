@@ -172,26 +172,24 @@ fhirPackages:
   de.gematik.erezept-patientenrechnung.r4:
     packageName: "de.gematik.erezept-patientenrechnung.r4"
     versions:
-      1.0.0-rc3:
+      1.0.0: # TODO: NICO
         version: "1.0.0"
-        filename: "de.gematik.erezept-patientenrechnung.r4-1.0.0-rc3.tgz"
+        filename: "de.gematik.erezept-patientenrechnung.r4-1.0.0-rc4.tgz"
         dependencies:
           - packageName: "kbv.ita.erp"
-            packageVersion: "1.1.0" # TODO: change2 -> eigentlich PreRelease
+            packageVersion: "1.1.0"
      #     - packageName: "dav.kbv.sfhir.cs.vs"
      #       packageVersion: "1.0.5"
      #     - packageName: "kbv.basis"
      #       packageVersion: "1.3.0"
      #     - packageName: "kbv.ita.for"
      #       packageVersion: "1.1.0"
-     #     - packageName: "de.abda.erezeptabgabedatenbasis"
-     #       packageVersion: "1.3.0-rc3"
-          - packageName: "de.abda.erezeptabgabedatenpkv"
-            packageVersion: "1.1.0-rc12" # TODO: change2 -> eigentlich 1.3.0-rc1
+            #       - packageName: "de.abda.erezeptabgabedatenpkv" # TODO: raus?
+            #         packageVersion: "1.1.0"
           - packageName: "de.gematik.erezept-workflow.r4"
-            packageVersion: "1.2.0" # TODO: change2 -> eigentlich rc3
-          - packageName: "de.basisprofil.r4"
-            packageVersion: "1.3.2"
+            packageVersion: "1.2.0"
+     #     - packageName: "de.basisprofil.r4"
+     #       packageVersion: "1.3.2"
 
   # https://simplifier.net/eRezeptAbrechnungsdaten/~packages
   de.gkvsv.erezeptabrechnungsdaten:
@@ -263,12 +261,12 @@ fhirPackages:
             packageVersion: "1.1.1"
       #    - packageName: "de.basisprofil.r4"
       #      packageVersion: "0.9.13"
-      1.3.0-rc2: # coming soon
+      1.3.0:
         version: "1.3.0"
-        filename: "de.gkvsv.erezeptabrechnungsdaten-1.3.0-rc2.tgz"
+        filename: "de.gkvsv.erezeptabrechnungsdaten-1.3.0-rc3.tgz" # TODO: NICO
         dependencies:
           - packageName: "de.abda.erezeptabgabedatenbasis"
-            packageVersion: "1.3.0-rc4" # TODO: change2 -> eigentlich 1.3.0-rc1
+            packageVersion: "1.3.0"
       #    - packageName: "de.basisprofil.r4"
       #      packageVersion: "1.3.2"
 
@@ -298,28 +296,14 @@ fhirPackages:
             packageVersion: "1.2.0"
       #    - packageName: "de.basisprofil.r4"
       #      packageVersion: "0.9.13"
-      1.3.0-rc4: # coming soon
+      1.3.0:
         version: "1.3.0"
-        filename: "de.abda.erezeptabgabedaten-1.3.0-rc4.tgz"
+        filename: "de.abda.erezeptabgabedaten-1.3.0.tgz"
         dependencies:
           - packageName: "de.abda.erezeptabgabedatenbasis"
-            packageVersion: "1.3.0-rc4"
+            packageVersion: "1.3.0"
       #    - packageName: "de.basisprofil.r4"
       #      packageVersion: "1.3.2"
-
-### TODO: BETA
-# https://simplifier.net/packages/erezeptabgabedaten.staging/
-#  erezeptabgabedaten.staging: # TEST
-#    packageName: "erezeptabgabedaten.staging"
-#    versions:
-#      1.3.0-beta5: #coming soon
-#        version: "1.3.0-beta5"
-#        filename: "erezeptabgabedaten.staging-1.3.0-beta5.tgz"
-#        dependencies:
-#          - packageName: "erezeptabgabedatenbasis.staging"
-#            packageVersion: "1.3.0-beta6"
-#      #    - packageName: "de.basisprofil.r4"
-#      #      packageVersion: "1.3.2"
 
   # https://simplifier.net/eRezeptAbgabedatenBasis/~packages
   de.abda.erezeptabgabedatenbasis:
@@ -343,51 +327,25 @@ fhirPackages:
         dependencies:
           - packageName: "de.basisprofil.r4"
             packageVersion: "0.9.13"
-      1.3.0-rc4: # coming soon
+      1.3.0:
         version: "1.3.0"
-        filename: "de.abda.erezeptabgabedatenbasis-1.3.0-rc4.tgz"
+        filename: "de.abda.erezeptabgabedatenbasis-1.3.0.tgz"
         dependencies:
           - packageName: "de.basisprofil.r4"
             packageVersion: "1.3.2"
-
-### TODO: BETA
-# https://simplifier.net/packages/erezeptabgabedatenbasis.staging/
-#  erezeptabgabedatenbasis.staging: # TEST
-#    packageName: "erezeptabgabedatenbasis.staging"
-#    versions:
-#      1.3.0-beta6: #coming soon
-#        version: "1.3.0-beta6"
-#        filename: "erezeptabgabedatenbasis.staging-1.3.0-beta6.tgz"
-#        dependencies:
-#          - packageName: "de.basisprofil.r4"
-#            packageVersion: "1.3.2"
 
   # https://simplifier.net/eRezeptAbgabedatenPKV/~packages
   de.abda.erezeptabgabedatenpkv:
     packageName: "de.abda.erezeptabgabedatenpkv"
     versions:
-      1.1.0-rc12: #coming soon
+      1.1.0:
         version: "1.1.0"
-        filename: "de.abda.erezeptabgabedatenpkv-1.1.0-rc12.tgz"
+        filename: "de.abda.erezeptabgabedatenpkv-1.1.0.tgz"
         dependencies:
           - packageName: "de.abda.erezeptabgabedatenbasis"
-            packageVersion: "1.3.0-rc4"
+            packageVersion: "1.3.0"
       #    - packageName: "de.basisprofil.r4"
       #      packageVersion: "1.3.2"
-
-### TODO: BETA
- # https://simplifier.net/packages/erezeptabgabedatenpkv.staging/
-#  erezeptabgabedatenpkv.staging: # TEST
-#    packageName: "erezeptabgabedatenpkv.staging"
-#    versions:
-#     1.1.0-beta5: #coming soon
-#       version: "1.1.0-beta5"
-#       filename: "erezeptabgabedatenpkv.staging-1.1.0-beta5.tgz"
-#       dependencies:
-#         - packageName: "erezeptabgabedatenbasis.staging"
-#           packageVersion: "1.3.0-beta5"
-#     #    - packageName: "de.basisprofil.r4"
-#     #      packageVersion: "1.3.2"
 
   # https://simplifier.net/Basisprofil-DE-R4/~packages
   de.basisprofil.r4:
@@ -411,7 +369,7 @@ supportedProfiles:
         version: "1.0.1"
         validityPeriod:
           valid_from: "2021-07-01"
-          valid_to: "2022-01-31"  # TODO: Übergangszeit
+          valid_to: "2021-12-31"  # TODO: Übergangszeit? "2022-01-31"
         # fhir_path: "Bundle.entry.where(resource is MedicationRequest).resource.authoredOn"
         # fhir_path: "Bundle.entry.where(resource is SupplyRequest).resource.authoredOn"
           fhir_path: "Bundle;entry;resource;SupplyRequest|MedicationRequest;authoredOn"
@@ -422,7 +380,7 @@ supportedProfiles:
         version: "1.0.2"
         validityPeriod:
           valid_from: "2021-01-01"
-          valid_to: "2023-06-30" # TODO: Übergangszeit!
+          valid_to: "2023-06-30" # TODO: Übergangszeit!?!
           # fhir_path: "Bundle.entry.where(resource is MedicationRequest).resource.authoredOn"
           # fhir_path: "Bundle.entry.where(resource is SupplyRequest).resource.authoredOn"
           fhir_path: "Bundle;entry;resource;SupplyRequest|MedicationRequest;authoredOn"
@@ -506,7 +464,7 @@ supportedProfiles:
   "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_MedicationDispense":
     profileName: "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_MedicationDispense"
     versions:
-      1.2: #coming soon
+      1.2:
         version: "1.2"
         validityPeriod:
           valid_from: "2023-07-01"
@@ -520,7 +478,7 @@ supportedProfiles:
   "https://gematik.de/fhir/StructureDefinition/ErxReceipt":
     profileName: "https://gematik.de/fhir/StructureDefinition/ErxReceipt"
     versions:
-      0.0.0:  # TODO Test wenn keine Version
+      0.0.0:  # TODO: Test wenn keine Version
         version: "0.0.0"
         validityPeriod:
           valid_from: "2021-07-01"
@@ -565,7 +523,7 @@ supportedProfiles:
   "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_Bundle":
     profileName: "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_Bundle"
     versions:
-      1.2: #coming soon
+      1.2:
         version: "1.2"
         validityPeriod:
           valid_from: "2023-07-01"
@@ -579,13 +537,12 @@ supportedProfiles:
   # TODO: add? Umgang mit Referenzen?
   # https://gematik.de/fhir/StructureDefinition/ErxComposition
   # https://gematik.de/fhir/StructureDefinition/ErxTask
-  # https://gematik.de/fhir/StructureDefinition/ErxChargeItem -> ACHTUNG: PKV Kontext
 
   # ChargeItem -> PKV Rechnung (gematik)
   "https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_ChargeItem":
     profileName: "https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_ChargeItem"
     versions:
-      1.0: #coming soon
+      1.0:
         version: "1.0"
         validityPeriod:
           valid_from: "2023-07-01"
@@ -594,22 +551,7 @@ supportedProfiles:
           fhir_path: "ChargeItem;enteredDate"
         requiredPackage:
           packageName: "de.gematik.erezept-patientenrechnung.r4"
-          packageVersion: "1.0.0-rc3"
-
-#  # ChargeItem -> PKV Rechnung (gematik)
-#  "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_CloseOperationInputBundle":
-#    profileName: "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_CloseOperationInputBundle"
-#    versions:
-#      1.0: #coming soon
-#        version: "1.0"
-#        validityPeriod:
-#          valid_from: "2023-07-01"
-#          valid_to: "2023-12-31" # TODO: Endpunkt!
-#        # fhir_path: "enteredDate"
-#          fhir_path: "ChargeItem;enteredDate"
-#        requiredPackage:
-#          packageName: "de.gematik.erezept-patientenrechnung.r4"
-#          packageVersion: "1.0.0-rc3"
+          packageVersion: "1.0.0"
 
   # DAV Profile des eAbgabedatensatzes (https://simplifier.net/erezeptabgabedaten)
   "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle":
@@ -645,7 +587,7 @@ supportedProfiles:
         requiredPackage:
           packageName: "de.abda.erezeptabgabedaten"
           packageVersion: "1.2.0"
-      1.3: #coming soon
+      1.3:
         version: "1.3"
         validityPeriod:
           valid_from: "2023-07-01"
@@ -654,10 +596,7 @@ supportedProfiles:
           fhir_path: "Bundle;entry;resource;MedicationDispense;whenHandedOver"
         requiredPackage:
           packageName: "de.abda.erezeptabgabedaten"
-          packageVersion: "1.3.0-rc4"
-### TODO: BETA
-#          packageName: "erezeptabgabedaten.staging"
-#          packageVersion: "1.3.0-beta5"
+          packageVersion: "1.3.0"
 
   # TODO: add? Umgang mit Referenzen?
   # http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-Apotheke
@@ -715,7 +654,7 @@ supportedProfiles:
         version: "1.2"
         validityPeriod:
           valid_from: "2022-07-01"
-          valid_to: "2023-06-30" # TODO: Übergangzeitraum?
+          valid_to: "2023-06-30"
         # fhir_path: "Bundle.entry.where(resource is Composition).resource.date"
           fhir_path: "Bundle;entry;resource;Composition;date"
         requiredPackage:
@@ -735,20 +674,20 @@ supportedProfiles:
           fhir_path: "Bundle;entry;resource;Composition;date"
         requiredPackage:
           packageName: "de.gkvsv.erezeptabrechnungsdaten"
-          packageVersion: "1.3.0-rc2"
+          packageVersion: "1.3.0"
 
   # TODO: add? Umgang mit Referenzen?
   # https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Composition
   # https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_RezeptBundle
   # https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung
   # https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten
-  # https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_Binary
+  # https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_Binary|1.3
 
   # PKV Profile des eAbgabedatensatzesPKV (https://simplifier.net/erezeptabgabedatenpkv)
   "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-AbgabedatenBundle":
     profileName: "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-AbgabedatenBundle"
     versions:
-      1.1: #coming soon
+      1.1:
         version: "1.1"
         validityPeriod:
           valid_from: "2023-07-01"
@@ -757,21 +696,12 @@ supportedProfiles:
           fhir_path: "Bundle;entry;resource;MedicationDispense;whenHandedOver"
         requiredPackage:
           packageName: "de.abda.erezeptabgabedatenpkv"
-          packageVersion: "1.1.0-rc12"
-  ### TODO: BETA
-  #    1.1: #coming soon
-  #      version: "1.1"
-  #      validityPeriod:
-  #        valid_from: "2023-01-01"
-  #        valid_to: "2023-12-31" # TODO: Endpunkt!
-  #      # fhir_path: "Bundle.entry.where(resource is MedicationDispense).resource.whenHandedOver"
-  #        fhir_path: "Bundle;entry;resource;MedicationDispense;whenHandedOver"
-  #      requiredPackage:
-  #        packageName: "erezeptabgabedatenpkv.staging"
-  #        packageVersion: "1.1.0-beta5"
+          packageVersion: "1.1.0"
 
   # TODO: add? Umgang mit Referenzen?
   # http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-Apotheke
   # http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-AbgabedatenComposition
   # http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-Abgabeinformationen
   # http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-Abrechnungszeilen
+  # http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-ZusatzdatenHerstellung
+  # http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-ZusatzdatenEinheit

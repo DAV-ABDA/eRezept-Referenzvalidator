@@ -2,18 +2,13 @@
     <id value="abc825bc-bc30-45f8-b109-1b343fff5c45" />
     <meta>
         <profile value="https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_ChargeItem|1.0" />
-        <!--profile value="https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_ChargeItem\|1.0" /-->
         <tag>
             <display value="Example of an ChargeItem." />
         </tag>
     </meta>
     <contained>
-        <!-- Bsp Abgabedaten signiert (ohne Bundle.signatur) via Binary hinzugefügt -->
         <Binary xmlns="http://hl7.org/fhir">
             <id value="ad80703d-8c62-44a3-b12b-2ea66eda0aa2" />
-            <meta>
-                <profile value="https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_Binary|1.2" />
-            </meta>
             <contentType value="application/pkcs7-mime" />
             <data value="UEtWLUFiZ2FiZWRhdGVuIHNpZ25pZXJ0IGFscyBiYXNlNjQ="/>
         </Binary>
@@ -44,11 +39,9 @@
             <value value="3-15.2.1456789123.191" />
         </identifier>
     </enterer>
-    <enteredDate value="2022-06-01T07:13:00+05:00"/>
+    <enteredDate value="2023-07-01T07:13:00+05:00"/>
     <supportingInformation>
         <reference value="#ad80703d-8c62-44a3-b12b-2ea66eda0aa2"/>
-        <!--type value="DAV-PKV-PR-ERP-AbgabedatenBundle"/-->
-        <type value="Binary"/>
-        <display value="Abgabedatensatz" />
+        <display value="Binary" />
     </supportingInformation>
 </ChargeItem>

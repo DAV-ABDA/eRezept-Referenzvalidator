@@ -39,7 +39,7 @@ class ReferenceValidatorTest {
   @ParameterizedTest
   @MethodSource
   void validateValidFile(Path path) {
-    Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(path, true);
+    Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(path, true, null);
     String mapAsString = errors.keySet().stream()
         .map(key -> key + ": " + errors.get(key).size())
         .collect(Collectors.joining(","));
@@ -55,7 +55,7 @@ class ReferenceValidatorTest {
   @MethodSource
   void validateInvalidFile(Pair<Path, String> arguments) {
     Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator
-        .validateFile(arguments.getKey(), true);
+        .validateFile(arguments.getKey(), true, null);
     String mapAsString = errors.keySet().stream()
         .map(key -> key + ": " + errors.get(key).size())
         .collect(Collectors.joining(","));
@@ -75,11 +75,12 @@ class ReferenceValidatorTest {
   @ParameterizedTest
   @MethodSource
   void validateInvalidFileBulk(Path path) {
-    Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator
-            .validateFile(path, true);
+    Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(path, true, null);
+
     String mapAsString = errors.keySet().stream()
             .map(key -> key + ": " + errors.get(key).size())
             .collect(Collectors.joining(","));
+
     System.out.println(mapAsString);
     assertNotEquals(0, getFatalAndErrorMessages(errors).size());
   }
@@ -91,7 +92,7 @@ class ReferenceValidatorTest {
   @ParameterizedTest
   @MethodSource
   void validateFileWithException(Pair<Path, Class<? extends Exception>> arguments) {
-    Assertions.assertThrows(arguments.getRight(), () -> validator.validateFile(arguments.getKey(), true));
+    Assertions.assertThrows(arguments.getRight(), () -> validator.validateFile(arguments.getKey(), true, null));
   }
 
   private static Stream<Pair<Path, Class<? extends Exception>>> validateFileWithException()

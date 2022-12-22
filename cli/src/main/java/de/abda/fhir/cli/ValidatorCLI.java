@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -20,46 +21,77 @@ public class ValidatorCLI {
 
     public static void main(String[] args) {
         boolean noInstanceValidityCheck = false;
+        int arg4instance = -1;
+        int arg4profile = -1;
+        List<String> profileValidateAgainst = new ArrayList<String>();
 
-        // argv[0] => Instance-path
-        // argv[1] => parameter -noInstanceValidityCheck
-        // TODO: argv[2] => parameter -ProfileName ?!?
+        // argv[0] => InstancePath
+        // argv[1] => parameter --noInstanceValidityCheck
+        // argv[2] => parameter --profile [parameter]
+        if (args.length < 1) {
+            logger.warn("Usage: one argument must be a filename to validate");
+            logger.warn("Usage: another one argument is an optional option to deactivate the instance validity check");
+            logger.warn("No input file supplied! Exiting...");
+            //System.out.println("Usage: one argument must be a filename to validate");
+            System.exit(0);
+        }
+        try {
+            for(int i = 0; i < args.length; i++) {
+                if (i == arg4profile ) {
+                    continue;
+                }
+                if (args[i].contains("--")) {
+                    if (args[i].equals("--noInstanceValidityCheck")) {
+                        noInstanceValidityCheck = true;
+                    }
+                    else if (args[i].equals("--profile")) {
+                        /** packages.yaml surch4 -> profileName:
+                         "https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle"
+                         "https://gematik.de/fhir/StructureDefinition/ErxMedicationDispense"
+                         "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_MedicationDispense"
+                         "https://gematik.de/fhir/StructureDefinition/ErxReceipt"
+                         "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_Bundle"
+                         "https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_ChargeItem"
+                         "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle"
+                         "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle"
+                         "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung_Bundle"
+                         "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-AbgabedatenBundle"
+                         **/
+                        if (((i + 1) < args.length) && (args[i + 1].startsWith("http"))) {
+                            arg4profile = i + 1;
+                            profileValidateAgainst.add(args[arg4profile]);
+                        } else {
+                            System.out.println( "wrong profile parameter '" + args[i + 1]);
+                            System.exit(0);
+                        }
+                    }
+                } else {
+                    if (!Files.exists(Paths.get(args[i]), LinkOption.NOFOLLOW_LINKS)) {
+                        System.out.println( "one argument must be a exists filename '" + args[i] + "' can not be opened." );
+                        System.exit(0);
+                    } else {
+                        arg4instance = i;
+                    }
+                }
+            } // for args
+            ReferenceValidator validator = new ReferenceValidator();
+            Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(Paths.get(args[arg4instance]), noInstanceValidityCheck, profileValidateAgainst);
 
-        if ((args.length == 1) || (args.length == 2)) {
-            try {
-                if (!Files.exists( Paths.get( args[0] ), LinkOption.NOFOLLOW_LINKS ) ) {
-                    System.out.println( "First argument must be a exists filename '" + args[0] + "' can not be opened." );
-                    System.exit(0);
-                }
-                if ((args.length == 2) && args[1].equals("-noInstanceValidityCheck")) {
-                    noInstanceValidityCheck = true;
-                } else if (args.length == 2) {
-                    System.out.println( "the second parameter '" + args[1] + "' is not recognized and will be ignored" );
-                }
-                ReferenceValidator validator = new ReferenceValidator();
-                Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(Paths.get(args[0]), noInstanceValidityCheck);
-                String mapAsString = errors.keySet().stream()
-                        .map(key -> key + ": " + errors.get(key).size())
-                        .collect(Collectors.joining(","));
-                boolean validatorInputIsValid =
-                        errors.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()).size() == 0
-                                && errors.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()).size() == 0;
-                logger.info("Validation result: " + validatorInputIsValid + " -- Result summary: " + mapAsString);
-                System.exit(validatorInputIsValid ? 0 : 1);
-            } catch (Exception e){
-                logger.error("Exception occured", e);
-                System.exit(0);
-            }
-        } else {
-            if (args.length < 1) {
-                logger.warn("Usage: First argument must be a filename");
-                logger.warn("Usage: Second argument is an optional option to deactivate the instance validity check (default ist True)");
-                logger.warn("No input file supplied! Exiting...");
-            } else {
-                logger.warn("Usage: First argument must be a filename");
-                logger.warn("Usage: Second argument is an optional option to deactivate the instance validity check (default ist True)");
-                logger.warn("terminated due to errors in invocation parameter...");
-            }
+            String mapAsString = errors.keySet().stream()
+                    .map(key -> key + ": " + errors.get(key).size())
+                    .collect(Collectors.joining(","));
+
+            boolean validatorInputIsValid =
+                    errors.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()).size() == 0
+                            && errors.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()).size() == 0;
+
+            logger.info("Validation result: " + validatorInputIsValid + " -- Result summary: " + mapAsString);
+
+            //System.out.println("Validation result: " + validatorInputIsValid + " -- Result summary: " + mapAsString);
+            System.exit(validatorInputIsValid ? 0 : 1);
+
+        } catch (Exception e){
+            logger.error("Exception occured", e);
             System.exit(0);
         }
     }

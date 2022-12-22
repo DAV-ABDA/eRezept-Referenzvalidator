@@ -51,35 +51,35 @@ public class ReferenceValidator {
      * @param inputFile Path, not null
      * @return Map of {@link ResultSeverityEnum} as key and a List of {@link SingleValidationMessage} as key
      */
-    public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateFile(String inputFile, boolean noInstanceValidityCheck) {
-        logger.debug("Start validating File {}", inputFile);
+    public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateFile(String inputFile, boolean noInstanceValidityCheck, List<String> profileValidateAgainst) {
+        logger.debug("Start validating File: {}", inputFile);
         String validatorInputAsString = FileHelper.loadValidatorInputAsString(inputFile);
-        return this.validateImpl(validatorInputAsString, noInstanceValidityCheck);
+        return this.validateImpl(validatorInputAsString, noInstanceValidityCheck, profileValidateAgainst);
     }
 
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateFile(String inputFile) {
-        return this.validateFile(inputFile, true);
+        return this.validateFile(inputFile, false, null);
     }
     /**
      * Validates the given File
      * @param inputFile String path, not null or empty
      * @return Map of {@link ResultSeverityEnum} as key and a List of {@link SingleValidationMessage} as key
      */
-    public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateFile(Path inputFile, boolean noInstanceValidityCheck) {
-        return validateFile(inputFile.toString(), noInstanceValidityCheck);
+    public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateFile(Path inputFile, boolean noInstanceValidityCheck, List<String> profileValidateAgainst) {
+        return validateFile(inputFile.toString(), noInstanceValidityCheck, profileValidateAgainst);
     }
 
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateFile(Path inputFile) {
-        return validateFile(inputFile.toString(), true);
+        return validateFile(inputFile.toString(), false, null);
     }
     /**
      * Validates the given String containing a FHIR resource
      * @param validatorInputAsString String, not null or empty
      * @return Map of {@link ResultSeverityEnum} as key and a List of {@link SingleValidationMessage} as key
      */
-    public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateString(String validatorInputAsString, boolean noInstanceValidityCheck) {
+    public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateString(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst) {
         logger.debug("Start validating String input");
-        return validateImpl(validatorInputAsString, noInstanceValidityCheck);
+        return validateImpl(validatorInputAsString, noInstanceValidityCheck, profileValidateAgainst);
     }
 
     /**
@@ -94,10 +94,10 @@ public class ReferenceValidator {
     }
 
     private Map<ResultSeverityEnum, List<SingleValidationMessage>> validateImpl(String validatorInputAsString) {
-        return validateImpl(validatorInputAsString, false);
+        return validateImpl(validatorInputAsString, false, null);
     }
 
-    private Map<ResultSeverityEnum, List<SingleValidationMessage>> validateImpl(String validatorInputAsString, boolean noInstanceValidityCheck) {
+    private Map<ResultSeverityEnum, List<SingleValidationMessage>> validateImpl(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst) {
         Profile instanceProfile = null;
         ProfileValidityDate instanceProfileValidityDate = null;
         Map<ResultSeverityEnum, List<SingleValidationMessage>> instanceValidityCheckResults = new HashMap<>();
@@ -131,11 +131,11 @@ public class ReferenceValidator {
                     // TODO: Was bei Zeitangaben und Verschiebungen in der Datumsangabe?!? -> Implementierung zur Zeit: Datum in deutscher Zeit!!!
                     // .. für Verordnung, Abgabedaten (GKV/PKV) und Abrechnungsdaten (TA7) = ok
                     if ((instanceProfileValidityDate.getInstanceDate().isAfter(instanceProfileValidityDate.getValidityPeriod().getValid_from()) && instanceProfileValidityDate.getInstanceDate().isBefore(instanceProfileValidityDate.getValidityPeriod().getValid_to())) || instanceProfileValidityDate.getInstanceDate().isEqual(instanceProfileValidityDate.getValidityPeriod().getValid_from()) || instanceProfileValidityDate.getInstanceDate().isEqual(instanceProfileValidityDate.getValidityPeriod().getValid_to())) {
-                        tmp_str = "Instance valid " + instanceProfileValidityDate.getInstanceDate().toString() + " between " + instanceProfileValidityDate.getValidityPeriod().getValid_from().toString() + " and " + instanceProfileValidityDate.getValidityPeriod().getValid_to().toString();
+                        tmp_str = "Instance valid: " + instanceProfileValidityDate.getInstanceDate().toString() + " between " + instanceProfileValidityDate.getValidityPeriod().getValid_from().toString() + " and " + instanceProfileValidityDate.getValidityPeriod().getValid_to().toString();
                         logger.info(tmp_str);
                         ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.INFORMATION, tmp_str);
                     } else {
-                        tmp_str = "Instance invalid " + instanceProfileValidityDate.getInstanceDate().toString() + " not between " + instanceProfileValidityDate.getValidityPeriod().getValid_from().toString() + " and " + instanceProfileValidityDate.getValidityPeriod().getValid_to().toString();
+                        tmp_str = "Instance invalid: " + instanceProfileValidityDate.getInstanceDate().toString() + " not between " + instanceProfileValidityDate.getValidityPeriod().getValid_from().toString() + " and " + instanceProfileValidityDate.getValidityPeriod().getValid_to().toString();
                         logger.error(tmp_str);
                         ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.ERROR, tmp_str);
                     }
@@ -148,6 +148,11 @@ public class ReferenceValidator {
 
         if (!noInstanceValidityCheck && (instanceValidityCheckResults.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()).size() != 0
                 || instanceValidityCheckResults.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()).size() != 0)) {
+            return instanceValidityCheckResults;
+        } else if ((instanceProfile != null) && (!profileValidateAgainst(profileValidateAgainst, instanceProfile.getBaseCanonical()))) {
+            tmp_str = "profile: " + instanceProfile.getBaseCanonical() + " does not match the parameter(s): " + profileValidateAgainst.toString();
+            logger.error(tmp_str);
+            ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.ERROR, tmp_str);
             return instanceValidityCheckResults;
         } else if (instanceProfile != null) {
             Validator validator = validatorHolder.getValidatorForProfile(instanceProfile);
@@ -163,6 +168,21 @@ public class ReferenceValidator {
             ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.ERROR, "Profile nicht erkannt!");
             return instanceValidityCheckResults;
         }
+    }
+
+    private boolean profileValidateAgainst(List<String> profileValidateAgainst, String instanceProfile) {
+        boolean retVal = false;
+        if ((profileValidateAgainst == null) || (profileValidateAgainst.isEmpty())) {
+            retVal = true;
+        } else {
+            for (int i = 0; i < profileValidateAgainst.size(); i++) {
+                if (profileValidateAgainst.get(i).equals(instanceProfile)) {
+                    retVal = true;
+                    break;
+                }
+            }
+        }
+        return retVal;
     }
 
     private void ValidationMessageAdd(Map<ResultSeverityEnum, List<SingleValidationMessage>> instanceValidityCheckResults, ResultSeverityEnum inResultSeverityEnum, String inMessage) {

@@ -172,9 +172,9 @@ fhirPackages:
   de.gematik.erezept-patientenrechnung.r4:
     packageName: "de.gematik.erezept-patientenrechnung.r4"
     versions:
-      1.0.0: # TODO: NICO
+      1.0.0:
         version: "1.0.0"
-        filename: "de.gematik.erezept-patientenrechnung.r4-1.0.0-rc4.tgz"
+        filename: "de.gematik.erezept-patientenrechnung.r4-1.0.0.tgz"
         dependencies:
           - packageName: "kbv.ita.erp"
             packageVersion: "1.1.0"
@@ -184,8 +184,6 @@ fhirPackages:
      #       packageVersion: "1.3.0"
      #     - packageName: "kbv.ita.for"
      #       packageVersion: "1.1.0"
-            #       - packageName: "de.abda.erezeptabgabedatenpkv" # TODO: raus?
-            #         packageVersion: "1.1.0"
           - packageName: "de.gematik.erezept-workflow.r4"
             packageVersion: "1.2.0"
      #     - packageName: "de.basisprofil.r4"
@@ -263,7 +261,7 @@ fhirPackages:
       #      packageVersion: "0.9.13"
       1.3.0:
         version: "1.3.0"
-        filename: "de.gkvsv.erezeptabrechnungsdaten-1.3.0-rc3.tgz" # TODO: NICO
+        filename: "de.gkvsv.erezeptabrechnungsdaten-1.3.0.tgz"
         dependencies:
           - packageName: "de.abda.erezeptabgabedatenbasis"
             packageVersion: "1.3.0"

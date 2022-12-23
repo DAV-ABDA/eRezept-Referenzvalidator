@@ -73,6 +73,11 @@ public class ReferenceValidator {
         return validateFile(inputFile.toString(), noInstanceValidityCheck, profileValidateAgainst);
     }
 
+    /**
+     * Validates the given File
+     * @param inputFile String path, not null or empty
+     * @return Map of {@link ResultSeverityEnum} as key and a List of {@link SingleValidationMessage} as key
+     */
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateFile(Path inputFile) {
         return validateFile(inputFile.toString(), false, null);
     }
@@ -88,6 +93,15 @@ public class ReferenceValidator {
         return validateImpl(validatorInputAsString, noInstanceValidityCheck, profileValidateAgainst);
     }
 
+    /**
+     * Validates the given String containing a FHIR resource
+     * @param validatorInputAsString String, not null or empty
+     * @return Map of {@link ResultSeverityEnum} as key and a List of {@link SingleValidationMessage} as key
+     */
+    public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateString(String validatorInputAsString) {
+        logger.debug("Start validating String input");
+        return validateImpl(validatorInputAsString, false, null);
+    }
     /**
      * The first validation in a new validator is very slow. So this method creates validators
      * for all supported profiles and loads all necessary data, so the calls to the validator

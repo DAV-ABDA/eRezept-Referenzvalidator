@@ -106,8 +106,7 @@ class ReferenceValidatorTest {
     );
   }
 
-  private List<SingleValidationMessage> getFatalAndErrorMessages(
-      Map<ResultSeverityEnum, List<SingleValidationMessage>> errors) {
+  private List<SingleValidationMessage> getFatalAndErrorMessages(Map<ResultSeverityEnum, List<SingleValidationMessage>> errors) {
     List<SingleValidationMessage> result = new ArrayList<>(
                   errors.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()));
     result.addAll(errors.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()));

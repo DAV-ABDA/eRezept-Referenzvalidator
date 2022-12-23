@@ -45,18 +45,7 @@ public class ValidatorCLI {
                         noInstanceValidityCheck = true;
                     }
                     else if (args[i].equals("--profile")) {
-                        /** packages.yaml surch4 -> profileName:
-                         "https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle"
-                         "https://gematik.de/fhir/StructureDefinition/ErxMedicationDispense"
-                         "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_MedicationDispense"
-                         "https://gematik.de/fhir/StructureDefinition/ErxReceipt"
-                         "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_Bundle"
-                         "https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_ChargeItem"
-                         "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle"
-                         "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle"
-                         "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung_Bundle"
-                         "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-AbgabedatenBundle"
-                         **/
+                        // packages.yaml surch4 -> profileName: "http...../StructureDefinition/.........."
                         if (((i + 1) < args.length) && (args[i + 1].startsWith("http"))) {
                             arg4profile = i + 1;
                             profileValidateAgainst.add(args[arg4profile]);
@@ -86,10 +75,9 @@ public class ValidatorCLI {
                             && errors.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()).size() == 0;
 
             logger.info("Validation result: " + validatorInputIsValid + " -- Result summary: " + mapAsString);
-
             //System.out.println("Validation result: " + validatorInputIsValid + " -- Result summary: " + mapAsString);
-            System.exit(validatorInputIsValid ? 0 : 1);
 
+            System.exit(validatorInputIsValid ? 0 : 1);
         } catch (Exception e){
             logger.error("Exception occured", e);
             System.exit(0);

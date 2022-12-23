@@ -1,12 +1,7 @@
 # eRezept-Referenzvalidator ChangeLog
 
-TODO: suche nach TODO -> auch in README & packages
-
-HAPI ERROR FIX - decimal maxValue -> https://github.com/hapifhir/org.hl7.fhir.core/pull/968/
-  - org.hl7.fhir.validation.instance - InstanceValidator -> Zeile 2216 - "if (type.equals("decimal")) {"
-
 # 1.0.0 - 2022-12-23
-- Add parameter "--profile [profile canonical]" -> instance canonical check (Multiple entries possible)
+- Add parameter "--profile [profile canonical]" -> instance canonical check (multiple entries possible)
 - Add parameter "--noInstanceValidityCheck" -> deactivate instance validity check (only for QS & Testing!)
 - Add instance validity check
 - Remove unused function

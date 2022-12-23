@@ -5,10 +5,10 @@ TODO: suche nach TODO -> auch in README & packages
 HAPI ERROR FIX - decimal maxValue -> https://github.com/hapifhir/org.hl7.fhir.core/pull/968/
   - org.hl7.fhir.validation.instance - InstanceValidator -> Zeile 2216 - "if (type.equals("decimal")) {"
 
-# 1.0.0 - 2022-11-15
+# 1.0.0 - 2022-12-23
+- Add parameter "--profile [profile canonical]" -> instance canonical check (Multiple entries possible)
+- Add parameter "--noInstanceValidityCheck" -> deactivate instance validity check (only for QS & Testing!)
 - Add instance validity check
-- Add parameter "-noInstanceValidityCheck" -> deactivate instance validity check (only for QS & Testing!)
-
 - Remove unused function
 - Update HAPI version from 5.7.2 to 5.7.9 (last Java 8 support)
 - Update externe ValueSets & Codesysteme (KBV) -> new package dav.kbv.sfhir.cs.vs-1.0.4-json.tgz
@@ -16,11 +16,11 @@ HAPI ERROR FIX - decimal maxValue -> https://github.com/hapifhir/org.hl7.fhir.co
 - Add new packages
   - de.basisprofil.r4-1.3.2.tgz
   - de.gematik.erezept-workflow.r4-1.2.0.tgz
-  - de.gematik.erezept-patientenrechnung.r4-1.0.0-rc4.tgz (TODO: PreRelease)
-  - de.abda.erezeptabgabedatenbasis-1.3.0-rc4.tgz (TODO: PreRelease)
+  - de.gematik.erezept-patientenrechnung.r4-1.0.0.tgz
+  - de.abda.erezeptabgabedatenbasis-1.3.0.tgz
   - de.abda.erezeptabgabedaten-1.3.0-rc4.tgz
-  - de.abda.erezeptabgabedatenpkv-1.1.0-rc12.tgz (TODO: PreRelease)
-  - de.gkvsv.erezeptabrechnungsdaten-1.3.0-rc2.tgz (TODO: PreRelease)
+  - de.abda.erezeptabgabedatenpkv-1.1.0.tgz
+  - de.gkvsv.erezeptabrechnungsdaten-1.3.0.tgz
   - kbv.basis-1.3.0.tgz
   - kbv.ita.for-1.1.0.tgz
   - kbv.ita.erp-1.1.0.tgz

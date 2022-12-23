@@ -114,8 +114,8 @@
 					</extension>
 					<extension url="Zeitraum">
 						<valuePeriod>
-							<start value="2021-06-15"/>
-							<end value="2021-09-30"/>
+							<start value="2022-06-15"/>
+							<end value="2022-09-30"/>
 						</valuePeriod>
 					</extension>
 				</extension>
@@ -127,7 +127,7 @@
 				<subject>
 					<reference value="Patient/ce4104af-b86b-4664-afee-1b5fc3ac8acf"/>
 				</subject>
-				<authoredOn value="2021-04-01" />
+				<authoredOn value="2022-04-01" />
 				<requester>
 					<reference value="Practitioner/667ffd79-42a3-4002-b7ca-6b9098f20ccb"/>
 				</requester>

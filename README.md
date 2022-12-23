@@ -59,7 +59,27 @@ auf Ihre Validität getestet werden können. Zum Starten ist lediglich (mindeste
 Environment) notwendig.
 
 `````shell
-java -jar reference-validator-cli.jar myFhirResource.xml
+java -jar reference-validator-cli.jar myFhirResource.xml [--noInstanceValidityCheck] [--profile [ProfileCanonical] ] 
+
+myFhirResource.xml    Angabe der zu validierenden FHIR-Instanz
+
+optionale Parameter (Reihenfolge egal):
+--noInstanceValidityCheck           deaktiviert die standardmäßige Gültigkeitskontrolle einer Instanz
+
+--profile [ProfileCanonical]        optionale zusätzliche Möglichkeit die Instanze einzuschränken
+                                    ProfileCanonicals können auch mehrfach angegeben werden
+                                    
+   Liste der unterstützten Profile: 
+   --profile https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle
+   --profile https://gematik.de/fhir/StructureDefinition/ErxMedicationDispense
+   --profile https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_MedicationDispense
+   --profile https://gematik.de/fhir/StructureDefinition/ErxReceipt
+   --profile https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_Bundle
+   --profile https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_ChargeItem
+   --profile http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle
+   --profile https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle
+   --profile https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung_Bundle
+   --profile http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-AbgabedatenBundle
 `````
 
 ### Einbindung in Maven oder Gradle Builds
@@ -89,12 +109,15 @@ ReferenceValidator validator = new ReferenceValidator();
 
 //path can be a String or a Path object
 Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(path);
+//or (with parameter: noInstanceValidityCheck (default true) and profileValidateAgainst (default null or empty))
+Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst)
 
 //If the file content is already read to a String, you can use validateString
-Map<ResultSeverityEnum, List<SingleValidationMessage>> errors2 = validator.validateString(stringContent);
+Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateString(stringContent);
+//or (with parameter: noInstanceValidityCheck (default true) and profileValidateAgainst (default null or empty))
+Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateString(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst)
 
 ````
-
 # Contribution
 
 In diesem Kapitel finden sich Informationen für alle, die den Validator entweder selbst bauen
@@ -179,12 +202,12 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
 * https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_Bundle
   * 1.2
 * https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_ChargeItem
-  * 1.0 (PreRelease)
+  * 1.0
 * http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle
   * 1.0.3
   * 1.1.0
   * 1.2
-  * 1.3 (PreRelease)
+  * 1.3
 * https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle
   * 1.0.4
   * 1.0.5
@@ -192,7 +215,7 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
   * 1.1.0
   * 1.2
 * https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung_Bundle
-  * 1.3 (PreRelease)
+  * 1.3
 
 ### eingebundene Packages (R4)
 * de.basisprofil.r4-0.9.13.tgz
@@ -208,26 +231,25 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
 * de.gematik.erezept-workflow.r4-1.0.3-1.tgz
 * de.gematik.erezept-workflow.r4-1.1.1.tgz
 * de.gematik.erezept-workflow.r4-1.2.0.tgz
-* de.gematik.erezept-patientenrechnung.r4-1.0.0-rc3.tgz (ACHTUNG! PreReleasePreview)
+* de.gematik.erezept-patientenrechnung.r4-1.0.0.tgz
 * de.abda.erezeptabgabedaten-1.0.3.tgz
 * de.abda.erezeptabgabedatenbasis-1.1.0.tgz (ACHTUNG! fix issue)
 * ~~de.abda.erezeptabgabedatenbasis-1.1.2.tgz~~ (entfernt v0.9.8)
 * de.abda.erezeptabgabedatenbasis-1.1.3.tgz (KorrekturRelease für v1.1.0)
 * de.abda.erezeptabgabedatenbasis-1.2.0.tgz
-* ~~de.abda.erezeptabgabedatenbasis-1.2.1.tgz ~~ (entfernt vx.x.x TODO)
-* de.abda.erezeptabgabedatenbasis-1.3.0-rc4.tgz (ACHTUNG! PreReleasePreview)
+* de.abda.erezeptabgabedatenbasis-1.3.0.tgz
 * ~~de.abda.erezeptabgabedaten-1.1.0.tgz~~  (entfernt v0.9.7)
 * ~~de.abda.erezeptabgabedaten-1.1.1.tgz~~ (entfernt v0.9.8)
 * de.abda.erezeptabgabedaten-1.1.2.tgz (KorrekturRelease für v1.1.0)
 * de.abda.erezeptabgabedaten-1.2.0.tgz
-* de.abda.erezeptabgabedaten-1.3.0-rc4.tgz (ACHTUNG! PreReleasePreview)
-* de.abda.erezeptabgabedatenpkv-1.1.0-rc12.tgz (ACHTUNG! PreReleasePreview)
+* de.abda.erezeptabgabedaten-1.3.0.tgz
+* de.abda.erezeptabgabedatenpkv-1.1.0.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.0.4.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.0.5.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.0.6.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.1.0.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.2.0.tgz
-* de.gkvsv.erezeptabrechnungsdaten-1.3.0-rc2.tgz (ACHTUNG! PreReleasePreview)
+* de.gkvsv.erezeptabrechnungsdaten-1.3.0.tgz
 
 #### Anpassungen der Packages (TODO: ACHTUNG! Hinweis Instanzegültigkeiten mit PackageKontext (abwärtskompatible?!?))
 - Add Package dav.kbv.sfhir.cs.vs-1.0.2-json.tgz (KBV Schlüsseltabellen - externe CodeSytseme/ValueSets)

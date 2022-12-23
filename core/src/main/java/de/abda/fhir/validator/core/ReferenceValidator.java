@@ -50,7 +50,7 @@ public class ReferenceValidator {
      * Validates the given File
      * @param inputFile Path, not null
      * @param noInstanceValidityCheck, boolean
-     * @param profileValidateAgainst, List<String>
+     * @param profileValidateAgainst, List of String
      * @return Map of {@link ResultSeverityEnum} as key and a List of {@link SingleValidationMessage} as key
      */
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateFile(String inputFile, boolean noInstanceValidityCheck, List<String> profileValidateAgainst) {
@@ -66,7 +66,7 @@ public class ReferenceValidator {
      * Validates the given File
      * @param inputFile String path, not null or empty
      * @param noInstanceValidityCheck, boolean
-     * @param profileValidateAgainst, List<String>
+     * @param profileValidateAgainst, List of String
      * @return Map of {@link ResultSeverityEnum} as key and a List of {@link SingleValidationMessage} as key
      */
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateFile(Path inputFile, boolean noInstanceValidityCheck, List<String> profileValidateAgainst) {
@@ -80,7 +80,7 @@ public class ReferenceValidator {
      * Validates the given String containing a FHIR resource
      * @param validatorInputAsString String, not null or empty
      * @param noInstanceValidityCheck, boolean
-     * @param profileValidateAgainst, List<String>
+     * @param profileValidateAgainst, List of String
      * @return Map of {@link ResultSeverityEnum} as key and a List of {@link SingleValidationMessage} as key
      */
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateString(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst) {

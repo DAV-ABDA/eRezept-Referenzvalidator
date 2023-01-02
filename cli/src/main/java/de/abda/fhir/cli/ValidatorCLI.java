@@ -59,6 +59,7 @@ public class ValidatorCLI {
                         System.out.println( "one argument must be a exists filename '" + args[i] + "' can not be opened." );
                         System.exit(0);
                     } else {
+                        // TODO: der Letzte gewinnt... if arg4instance > 0
                         arg4instance = i;
                     }
                 }

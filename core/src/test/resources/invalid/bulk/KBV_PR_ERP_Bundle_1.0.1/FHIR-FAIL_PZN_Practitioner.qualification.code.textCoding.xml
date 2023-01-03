@@ -11,7 +11,7 @@
 	<type value="document"/>
 	<timestamp value="2021-11-12T11:08:17.2415449+01:00"/>
 	<entry>
-		<fullUrl value="http://pvs.praxis.local/fhir/d8dee9ad-6d84-41af-8d1d-748c3c563cba"/>
+		<fullUrl value="http://pvs.praxis.local/fhir/Composition/d8dee9ad-6d84-41af-8d1d-748c3c563cba"/>
 		<resource>
 			<Composition>
 				<id value="d8dee9ad-6d84-41af-8d1d-748c3c563cba"/>
@@ -76,7 +76,7 @@
 		</resource>
 	</entry>
 	<entry>
-		<fullUrl value="http://pvs.praxis.local/fhir/34070baf-8eb9-4265-abb6-f51208bb4acd"/>
+		<fullUrl value="http://pvs.praxis.local/fhir/Patient/34070baf-8eb9-4265-abb6-f51208bb4acd"/>
 		<resource>
 			<Patient>
 				<id value="34070baf-8eb9-4265-abb6-f51208bb4acd"/>
@@ -128,7 +128,7 @@
 		</resource>
 	</entry>
 	<entry>
-		<fullUrl value="http://pvs.praxis.local/fhir/74996a40-d335-4abd-a393-dde0f4bdd88e"/>
+		<fullUrl value="http://pvs.praxis.local/fhir/Practitioner/74996a40-d335-4abd-a393-dde0f4bdd88e"/>
 		<resource>
 			<Practitioner>
 				<id value="74996a40-d335-4abd-a393-dde0f4bdd88e"/>
@@ -181,7 +181,7 @@
 		</resource>
 	</entry>
 	<entry>
-		<fullUrl value="http://pvs.praxis.local/fhir/8d8c91fa-0075-4512-aba3-3b73856c32d2"/>
+		<fullUrl value="http://pvs.praxis.local/fhir/Organization/8d8c91fa-0075-4512-aba3-3b73856c32d2"/>
 		<resource>
 			<Organization>
 				<id value="8d8c91fa-0075-4512-aba3-3b73856c32d2"/>
@@ -222,7 +222,7 @@
 		</resource>
 	</entry>
 	<entry>
-		<fullUrl value="http://pvs.praxis.local/fhir/25341d1b-ff4c-4ae9-8e33-e1e895514b4c"/>
+		<fullUrl value="http://pvs.praxis.local/fhir/Medication/25341d1b-ff4c-4ae9-8e33-e1e895514b4c"/>
 		<resource>
 			<Medication>
 				<id value="25341d1b-ff4c-4ae9-8e33-e1e895514b4c"/>
@@ -267,7 +267,7 @@
 		</resource>
 	</entry>
 	<entry>
-		<fullUrl value="http://pvs.praxis.local/fhir/4cddf31d-5558-47f1-9bb4-a86329dcafa4"/>
+		<fullUrl value="http://pvs.praxis.local/fhir/Coverage/4cddf31d-5558-47f1-9bb4-a86329dcafa4"/>
 		<resource>
 			<Coverage>
 				<id value="4cddf31d-5558-47f1-9bb4-a86329dcafa4"/>
@@ -313,7 +313,7 @@
 		</resource>
 	</entry>
 	<entry>
-		<fullUrl value="http://pvs.praxis.local/fhir/d35922d1-add1-4d78-b2b3-2fbb90c2cd2d"/>
+		<fullUrl value="http://pvs.praxis.local/fhir/MedicationRequest/d35922d1-add1-4d78-b2b3-2fbb90c2cd2d"/>
 		<resource>
 			<MedicationRequest>
 				<id value="d35922d1-add1-4d78-b2b3-2fbb90c2cd2d"/>

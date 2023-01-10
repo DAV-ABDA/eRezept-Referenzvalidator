@@ -6,17 +6,17 @@ import de.abda.fhir.validator.core.configuration.FhirProfileVersion;
 
 import java.util.List;
 
-public class WhiteListHelper {
+public class AllowListHelper {
 
-    public static void applyWhiteLists(List<SingleValidationMessage> messages, FhirProfileVersion fhirProfileVersion) {
+    public static void applyAllowLists(List<SingleValidationMessage> messages, FhirProfileVersion fhirProfileVersion) {
         removeDAVActorIdentifierErrors(messages, fhirProfileVersion);
-        //add custom whitelist filters here
+        //add custom allowlist filters here
     }
 
     //This ain't failsafe. A better solution has to be found for the long term as this might ignore more errors than just the bad identifier definition in the profile (or better make a better/correct profile)
     // --> fixed in package de.abda.eRezeptAbgabedaten 1.1.0
     public static void removeDAVActorIdentifierErrors(List<SingleValidationMessage> messages, FhirProfileVersion fhirProfileVersion) {
-        // TODO: eigentlich WhiteListHelper pro ProfileVersion / Package
+        // TODO: eigentlich AllowListHelper pro ProfileVersion / Package
         if ((fhirProfileVersion.getVersion().equals("1.0.3")) && (fhirProfileVersion.getRequiredPackage().getPackageName().equals("de.abda.erezeptabgabedaten"))) {
             messages.removeIf(singleValidationMessage -> {
                 if (singleValidationMessage.getSeverity() == ResultSeverityEnum.ERROR &&

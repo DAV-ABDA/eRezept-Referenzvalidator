@@ -66,7 +66,7 @@
 ## 0.9.5 - 2021-12-28
 - Add fix for circular dependencies
 - Add more profiles versions in packages
-- Improve whitelisting
+- Improve allowlisting
 - Add valid and invalid testing files
 
 ## 0.9.4 - 2021-12-17

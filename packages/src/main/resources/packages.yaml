@@ -367,7 +367,7 @@ supportedProfiles:
         version: "1.0.1"
         validityPeriod:
           valid_from: "2021-07-01"
-          valid_to: "2021-12-31"  # TODO: Übergangszeit? "2022-01-31"
+          valid_to: "2022-01-31"  # 31.12.2021 + Übergangszeit 1 Monat von der KBV geduldet
         # fhir_path: "Bundle.entry.where(resource is MedicationRequest).resource.authoredOn"
         # fhir_path: "Bundle.entry.where(resource is SupplyRequest).resource.authoredOn"
           fhir_path: "Bundle;entry;resource;SupplyRequest|MedicationRequest;authoredOn"
@@ -378,19 +378,19 @@ supportedProfiles:
         version: "1.0.2"
         validityPeriod:
           valid_from: "2021-01-01"
-          valid_to: "2023-06-30" # TODO: Übergangszeit!?!
+          valid_to: "2023-12-31" # 30.06.2023 + Übergangszeit 6 Monate
           # fhir_path: "Bundle.entry.where(resource is MedicationRequest).resource.authoredOn"
           # fhir_path: "Bundle.entry.where(resource is SupplyRequest).resource.authoredOn"
           fhir_path: "Bundle;entry;resource;SupplyRequest|MedicationRequest;authoredOn"
         requiredPackage:
           packageName: "kbv.ita.erp"
           packageVersion: "1.0.2"
-        #  packageVersion: "1.0.2-1" # TODO: KBV KorrekturRelease 15.11.22
+        #  packageVersion: "1.0.2-1" # KBV KorrekturRelease 15.11.22 nicht veröffentlicht
       1.1.0:
         version: "1.1.0"
         validityPeriod:
           valid_from: "2023-07-01"
-          valid_to: "2024-12-31" # TODO: Endpunkt!
+          valid_to: "3000-01-01" # TODO: Endpunkt!
           # fhir_path: "Bundle.entry.where(resource is MedicationRequest).resource.authoredOn"
           # fhir_path: "Bundle.entry.where(resource is SupplyRequest).resource.authoredOn"
           fhir_path: "Bundle;entry;resource;SupplyRequest|MedicationRequest;authoredOn"
@@ -466,7 +466,7 @@ supportedProfiles:
         version: "1.2"
         validityPeriod:
           valid_from: "2023-07-01"
-          valid_to: "2024-12-31" # TODO: Endpunkt!
+          valid_to: "3000-01-01" # TODO: Endpunkt!
         # fhir_path: "whenHandedOver"
           fhir_path: "MedicationDispense;whenHandedOver"
         requiredPackage:
@@ -476,7 +476,7 @@ supportedProfiles:
   "https://gematik.de/fhir/StructureDefinition/ErxReceipt":
     profileName: "https://gematik.de/fhir/StructureDefinition/ErxReceipt"
     versions:
-      0.0.0:  # TODO: Test wenn keine Version
+      0.0.0:  # wenn noch keine Version
         version: "0.0.0"
         validityPeriod:
           valid_from: "2021-07-01"
@@ -525,7 +525,7 @@ supportedProfiles:
         version: "1.2"
         validityPeriod:
           valid_from: "2023-07-01"
-          valid_to: "2024-12-31" # TODO: Endpunkt!
+          valid_to: "3000-01-01" # TODO: Endpunkt!
         # fhir_path: "Bundle.entry.where(resource is Composition).resource.date"
           fhir_path: "Bundle;entry;resource;Composition;date"
         requiredPackage:
@@ -544,7 +544,7 @@ supportedProfiles:
         version: "1.0"
         validityPeriod:
           valid_from: "2023-07-01"
-          valid_to: "2024-12-31" # TODO: Endpunkt!
+          valid_to: "3000-01-01" # TODO: Endpunkt!
         # fhir_path: "enteredDate"
           fhir_path: "ChargeItem;enteredDate"
         requiredPackage:
@@ -579,7 +579,7 @@ supportedProfiles:
         version: "1.2"
         validityPeriod:
           valid_from: "2022-07-01"
-          valid_to: "2023-06-30" # TODO: Übergangszeitraum?
+          valid_to: "2023-06-30" # kein Übergangszeitraum
         # fhir_path: "Bundle.entry.where(resource is MedicationDispense).resource.whenHandedOver"
           fhir_path: "Bundle;entry;resource;MedicationDispense;whenHandedOver"
         requiredPackage:
@@ -589,7 +589,7 @@ supportedProfiles:
         version: "1.3"
         validityPeriod:
           valid_from: "2023-07-01"
-          valid_to: "2024-12-31" # TODO: Endpunkt!
+          valid_to: "3000-01-01" # TODO: Endpunkt!
         # fhir_path: "Bundle.entry.where(resource is MedicationDispense).resource.whenHandedOver"
           fhir_path: "Bundle;entry;resource;MedicationDispense;whenHandedOver"
         requiredPackage:
@@ -667,7 +667,7 @@ supportedProfiles:
         version: "1.3"
         validityPeriod:
           valid_from: "2023-07-01"
-          valid_to: "2024-12-31" # TODO: Endpunkt!
+          valid_to: "3000-01-01" # TODO: Endpunkt!
         # fhir_path: "Bundle.entry.where(resource is Composition).resource.date"
           fhir_path: "Bundle;entry;resource;Composition;date"
         requiredPackage:
@@ -689,7 +689,7 @@ supportedProfiles:
         version: "1.1"
         validityPeriod:
           valid_from: "2023-07-01"
-          valid_to: "2023-12-31" # TODO: Endpunkt!
+          valid_to: "3000-01-01" # TODO: Endpunkt!
         # fhir_path: "Bundle.entry.where(resource is MedicationDispense).resource.whenHandedOver"
           fhir_path: "Bundle;entry;resource;MedicationDispense;whenHandedOver"
         requiredPackage:

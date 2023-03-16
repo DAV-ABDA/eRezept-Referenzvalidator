@@ -20,7 +20,8 @@ public class ReferenceValidatorPreloadTest {
     validator.preloadAllSupportedValidators(GEM_ERP_PR_MedicationDispense);
     validator.preloadAllSupportedValidators(GEM_ERP_PR_Bundle);
     validator.preloadAllSupportedValidators(GKVSV_PR_TA7_RECHNUNG);
-    validator.preloadAllSupportedValidators(GEM_ERPCHRG, DAV_PKV_PR_ERP_ABGABEDATEN_BUNDLE);
+    validator.preloadAllSupportedValidators(GEM_ERPCHRG, GEM_ERPCONSENT);
+    validator.preloadAllSupportedValidators(DAV_PKV_PR_ERP_ABGABEDATEN_BUNDLE);
     validator.preloadAllSupportedValidators(KBV_PR_ERP_BUNDLE, ERX_RECEIPT, GEM_ERP_PR_Bundle, DAV_PR_ERP_ABGABEDATEN_BUNDLE, GKVSV_PR_TA7_RECHNUNG);
   }
 

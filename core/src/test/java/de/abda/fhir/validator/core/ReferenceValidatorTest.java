@@ -39,7 +39,7 @@ class ReferenceValidatorTest {
   @ParameterizedTest
   @MethodSource
   void validateValidFile(Path path) {
-    Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(path, true, null);
+    Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(path, false, null);
     String mapAsString = errors.keySet().stream()
         .map(key -> key + ": " + errors.get(key).size())
         .collect(Collectors.joining(","));
@@ -54,8 +54,7 @@ class ReferenceValidatorTest {
   @ParameterizedTest
   @MethodSource
   void validateInvalidFile(Pair<Path, String> arguments) {
-    Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator
-        .validateFile(arguments.getKey(), true, null);
+    Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(arguments.getKey(), false, null);
     String mapAsString = errors.keySet().stream()
         .map(key -> key + ": " + errors.get(key).size())
         .collect(Collectors.joining(","));
@@ -107,8 +106,7 @@ class ReferenceValidatorTest {
   }
 
   private List<SingleValidationMessage> getFatalAndErrorMessages(Map<ResultSeverityEnum, List<SingleValidationMessage>> errors) {
-    List<SingleValidationMessage> result = new ArrayList<>(
-                  errors.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()));
+    List<SingleValidationMessage> result = new ArrayList<>(errors.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()));
     result.addAll(errors.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()));
     return result;
   }

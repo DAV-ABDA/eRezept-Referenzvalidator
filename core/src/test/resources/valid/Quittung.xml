@@ -1,0 +1,95 @@
+<Bundle xmlns="http://hl7.org/fhir">
+    <id value="a086fa1f-0000-0000-0003-000000000000"/>
+    <meta>
+        <profile value="https://gematik.de/fhir/StructureDefinition/ErxReceipt|1.1.1"/>
+    </meta>
+    <identifier>
+        <system value="https://gematik.de/fhir/NamingSystem/PrescriptionID"/>
+        <value value="160.000.002.095.750.56"/>
+    </identifier>
+    <type value="document"/>
+    <timestamp value="2022-12-21T19:05:39.672+00:00"/>
+    <link>
+        <relation value="self"/>
+        <url value="https://erp.zentral.erp.splitdns.ti-dienste.de/Task/160.000.002.095.750.56/$close/"/>
+    </link>
+    <entry>
+        <fullUrl value="urn:uuid:c94cf7a6-7b3b-4474-9d8b-4df442a6a7e3"/>
+        <resource>
+            <Composition>
+                <id value="c94cf7a6-7b3b-4474-9d8b-4df442a6a7e3"/>
+                <meta>
+                    <profile value="https://gematik.de/fhir/StructureDefinition/ErxComposition|1.1.1"/>
+                </meta>
+                <extension url="https://gematik.de/fhir/StructureDefinition/BeneficiaryExtension">
+                    <valueIdentifier>
+                        <system value="https://gematik.de/fhir/NamingSystem/TelematikID"/>
+                        <value value="3-16.2.0000000019.312"/>
+                    </valueIdentifier>
+                </extension>
+                <status value="final"/>
+                <type>
+                    <coding>
+                        <system value="https://gematik.de/fhir/CodeSystem/Documenttype"/>
+                        <code value="3"/>
+                        <display value="Receipt"/>
+                    </coding>
+                </type>
+                <date value="2022-12-21T19:05:39.672+00:00"/>
+                <author>
+                    <reference value="https://erp.zentral.erp.splitdns.ti-dienste.de/Device/1"/>
+                </author>
+                <title value="Quittung"/>
+                <event>
+                    <period>
+                        <start value="2022-12-20T10:20:38.861+00:00"/>
+                        <end value="2022-12-21T19:05:39.672+00:00"/>
+                    </period>
+                </event>
+                <section>
+                    <entry>
+                        <reference value="Binary/PrescriptionDigest-160.000.002.095.750.56"/>
+                    </entry>
+                </section>
+            </Composition>
+        </resource>
+    </entry>
+    <entry>
+        <fullUrl value="https://erp.zentral.erp.splitdns.ti-dienste.de/Device/1"/>
+        <resource>
+            <Device>
+                <id value="1"/>
+                <meta>
+                    <profile value="https://gematik.de/fhir/StructureDefinition/ErxDevice|1.1.1"/>
+                </meta>
+                <status value="active"/>
+                <serialNumber value="1.8.1"/>
+                <deviceName>
+                    <name value="E-Rezept Fachdienst"/>
+                    <type value="user-friendly-name"/>
+                </deviceName>
+                <version>
+                    <value value="1.8.1"/>
+                </version>
+                <contact>
+                    <system value="email"/>
+                    <value value="betrieb@gematik.de"/>
+                </contact>
+            </Device>
+        </resource>
+    </entry>
+    <entry>
+        <fullUrl value="https://erp.zentral.erp.splitdns.ti-dienste.de/Task/160.000.002.095.750.56/PrescriptionDigest"/>
+        <resource>
+            <Binary>
+                <id value="PrescriptionDigest-160.000.002.095.750.56"/>
+                <meta>
+                    <versionId value="1"/>
+                    <profile value="http://hl7.org/fhir/StructureDefinition/Binary|4.0.1"/>
+                </meta>
+                <contentType value="application/octet-stream"/>
+                <data value="aIWQcFeOv3037YmJF6aWhnQ9Iqi7LqIAyIGrnTROYFE="/>
+            </Binary>
+        </resource>
+    </entry>
+</Bundle>

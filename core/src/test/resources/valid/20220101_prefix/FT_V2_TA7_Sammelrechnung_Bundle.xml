@@ -14,10 +14,10 @@
       <fhir:valueString value="00001" />
     </fhir:extension>
     <fhir:system value="https://fhir.gkvsv.de/NamingSystem/GKVSV_NS_Dateiname" />
-    <fhir:value value="ARZFHR21001" />
+    <fhir:value value="ARZFHR22001" />
   </fhir:identifier>
   <fhir:type value="document" />
-  <fhir:timestamp value="2021-06-10T10:00:00Z" />
+  <fhir:timestamp value="2022-06-10T10:00:00Z" />
   <fhir:entry>
     <fhir:fullUrl value="urn:uuid:785754ef-18f5-4074-b0f0-29efebe9c736" />
     <fhir:resource>
@@ -46,7 +46,7 @@
             <fhir:display value="Sammelrechnung" />
           </fhir:coding>
         </fhir:type>
-        <fhir:date value="2021-05-31" />
+        <fhir:date value="2022-05-31" />
         <fhir:author>
           <fhir:identifier>
             <fhir:system value="http://fhir.de/NamingSystem/arge-ik/iknr" />
@@ -108,7 +108,7 @@
           <fhir:profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung|1.1.0" />
         </fhir:meta>
         <fhir:extension url="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_TA7_Abrechnungszeitraum">
-          <fhir:valueDateTime value="2021-05-31" />
+          <fhir:valueDateTime value="2022-05-31" />
         </fhir:extension>
         <fhir:extension url="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_RezeptBundleReferenz">
           <fhir:extension url="lineItem">
@@ -119,7 +119,7 @@
         </fhir:extension>
         <fhir:identifier>
           <fhir:system value="https://fhir.gkvsv.de/NamingSystem/GKVSV_NS_Sammelrechnungsnummer" />
-          <fhir:value value="104212505-01-100621" />
+          <fhir:value value="104212505-01-100622" />
         </fhir:identifier>
         <fhir:status value="issued" />
         <fhir:type>
@@ -134,7 +134,7 @@
             <fhir:value value="104212505" />
           </fhir:identifier>
         </fhir:recipient>
-        <fhir:date value="2021-06-10" />
+        <fhir:date value="2022-06-10" />
       </fhir:Invoice>
     </fhir:resource>
   </fhir:entry>

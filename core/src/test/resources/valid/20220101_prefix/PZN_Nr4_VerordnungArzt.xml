@@ -1,7 +1,7 @@
 <fhir:Bundle xmlns:fhir="http://hl7.org/fhir">
   <fhir:id value="0428d416-149e-48a4-977c-394887b3d85c" />
   <fhir:meta>
-    <fhir:lastUpdated value="2021-05-27T08:30:00Z" />
+    <fhir:lastUpdated value="2022-05-27T08:30:00Z" />
     <fhir:profile value="https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle|1.0.2" />
   </fhir:meta>
   <fhir:identifier>
@@ -9,7 +9,7 @@
     <fhir:value value="160.100.000.000.002.36" />
   </fhir:identifier>
   <fhir:type value="document" />
-  <fhir:timestamp value="2021-05-27T08:30:00Z" />
+  <fhir:timestamp value="2022-05-27T08:30:00Z" />
   <fhir:entry>
     <fhir:fullUrl value="http://pvs.praxis.local/fhir/Composition/a054c2f3-0123-4d33-a0b3-bedec2f7d1ea" />
     <fhir:resource>
@@ -34,7 +34,7 @@
         <fhir:subject>
           <fhir:reference value="Patient/512ab5bc-a7ab-4fd7-81cc-16a594f747a6" />
         </fhir:subject>
-        <fhir:date value="2021-05-27T08:00:00Z" />
+        <fhir:date value="2022-05-27T08:00:00Z" />
         <fhir:author>
           <fhir:reference value="Practitioner/e33d2afd-44c8-462b-80e5-52dbe5ebf359" />
           <fhir:type value="Practitioner" />
@@ -111,7 +111,7 @@
         <fhir:subject>
           <fhir:reference value="Patient/512ab5bc-a7ab-4fd7-81cc-16a594f747a6" />
         </fhir:subject>
-        <fhir:authoredOn value="2021-05-27" />
+        <fhir:authoredOn value="2022-05-27" />
         <fhir:requester>
           <fhir:reference value="Practitioner/e33d2afd-44c8-462b-80e5-52dbe5ebf359" />
         </fhir:requester>

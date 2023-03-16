@@ -14,7 +14,7 @@
     <fhir:value value="160.100.000.000.020.79"/>
   </fhir:identifier>
   <fhir:type value="document"/>
-  <fhir:timestamp value="2021-05-27T10:00:00Z"/>
+  <fhir:timestamp value="2022-05-27T10:00:00Z"/>
   <fhir:entry>
     <fhir:fullUrl value="urn:uuid:4ba0b1d1-3fad-4689-9d03-b87226687181"/>
     <fhir:resource>
@@ -30,7 +30,7 @@
             <fhir:code value="ERezeptAbgabedaten"/>
           </fhir:coding>
         </fhir:type>
-        <fhir:date value="2021-05-27T10:00:00Z"/>
+        <fhir:date value="2022-05-27T10:00:00Z"/>
         <fhir:author>
           <fhir:reference value="urn:uuid:4dce048d-6491-452b-8e5c-668788d21c03"/>
         </fhir:author>
@@ -117,7 +117,7 @@
             <fhir:code value="Abgabeinformationen"/>
           </fhir:coding>
         </fhir:type>
-        <fhir:whenHandedOver value="2021-05-27"/>
+        <fhir:whenHandedOver value="2022-05-27"/>
         <fhir:substitution>
           <fhir:extension url="http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-EX-ERP-Rezeptaenderung">
             <fhir:extension url="ArtRezeptaenderung">
@@ -137,7 +137,7 @@
               </fhir:valueCodeableConcept>
             </fhir:extension>
             <fhir:extension url="DatumRezeptaenderung">
-              <fhir:valueDate value="2021-05-28"/>
+              <fhir:valueDate value="2022-05-28"/>
             </fhir:extension>
           </fhir:extension>
           <fhir:wasSubstituted value="true"/>

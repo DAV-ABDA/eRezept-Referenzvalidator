@@ -14,7 +14,7 @@
     <fhir:value value="160.100.000.000.003.33"/>
   </fhir:identifier>
   <fhir:type value="document"/>
-  <fhir:timestamp value="2021-05-27T22:20:00Z"/>
+  <fhir:timestamp value="2022-05-27T22:20:00Z"/>
   <fhir:entry>
     <fhir:fullUrl value="urn:uuid:307dced0-6e9c-4032-a9a5-b7e985f24669"/>
     <fhir:resource>
@@ -30,7 +30,7 @@
             <fhir:code value="ERezeptAbgabedaten"/>
           </fhir:coding>
         </fhir:type>
-        <fhir:date value="2021-05-27T22:20:00Z"/>
+        <fhir:date value="2022-05-27T22:20:00Z"/>
         <fhir:author>
           <fhir:reference value="urn:uuid:2b379f7d-6d03-4415-a7f6-6390f76b8138"/>
         </fhir:author>
@@ -117,7 +117,7 @@
             <fhir:code value="Abgabeinformationen"/>
           </fhir:coding>
         </fhir:type>
-        <fhir:whenHandedOver value="2021-05-27"/>
+        <fhir:whenHandedOver value="2022-05-27"/>
       </fhir:MedicationDispense>
     </fhir:resource>
   </fhir:entry>
@@ -263,7 +263,7 @@
                 </fhir:valueCodeableConcept>
               </fhir:extension>
               <fhir:extension url="DatumUhrzeit">
-                <fhir:valueDateTime value="2021-05-27T22:10:00.0Z"/>
+                <fhir:valueDateTime value="2022-05-27T22:10:00.0Z"/>
               </fhir:extension>
               <fhir:extension url="Schluessel">
                 <fhir:valueBoolean value="true"/>

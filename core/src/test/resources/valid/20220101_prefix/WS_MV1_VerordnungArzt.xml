@@ -1,7 +1,7 @@
 <fhir:Bundle xmlns:fhir="http://hl7.org/fhir">
   <fhir:id value="cd6d3a17-8105-4f1e-86ff-48cd5cebf245" />
   <fhir:meta>
-    <fhir:lastUpdated value="2021-05-27T08:30:00Z" />
+    <fhir:lastUpdated value="2022-05-27T08:30:00Z" />
     <fhir:profile value="https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle|1.0.2" />
   </fhir:meta>
   <fhir:identifier>
@@ -9,7 +9,7 @@
     <fhir:value value="160.100.000.000.022.73" />
   </fhir:identifier>
   <fhir:type value="document" />
-  <fhir:timestamp value="2021-05-27T08:30:00Z" />
+  <fhir:timestamp value="2022-05-27T08:30:00Z" />
   <fhir:entry>
     <fhir:fullUrl value="http://pvs.praxis.local/fhir/Composition/dc55a629-9d26-467e-83be-55a5a21d6016" />
     <fhir:resource>
@@ -34,7 +34,7 @@
         <fhir:subject>
           <fhir:reference value="Patient/93866fdc-3e50-4902-a7e9-891b54737b5e" />
         </fhir:subject>
-        <fhir:date value="2021-05-27T08:00:00Z" />
+        <fhir:date value="2022-05-27T08:00:00Z" />
         <fhir:author>
           <fhir:reference value="Practitioner/d6f3b55d-3095-4655-96dc-da3bec21271c" />
           <fhir:type value="Practitioner" />
@@ -113,7 +113,7 @@
           </fhir:extension>
           <fhir:extension url="Zeitraum">
             <fhir:valuePeriod>
-              <fhir:start value="2021-05-27" />
+              <fhir:start value="2022-05-27" />
             </fhir:valuePeriod>
           </fhir:extension>
         </fhir:extension>
@@ -125,7 +125,7 @@
         <fhir:subject>
           <fhir:reference value="Patient/93866fdc-3e50-4902-a7e9-891b54737b5e" />
         </fhir:subject>
-        <fhir:authoredOn value="2021-05-27" />
+        <fhir:authoredOn value="2022-05-27" />
         <fhir:requester>
           <fhir:reference value="Practitioner/d6f3b55d-3095-4655-96dc-da3bec21271c" />
         </fhir:requester>

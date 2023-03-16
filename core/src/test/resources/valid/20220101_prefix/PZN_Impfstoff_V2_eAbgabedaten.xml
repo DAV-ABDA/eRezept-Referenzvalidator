@@ -14,7 +14,7 @@
     <fhir:value value="160.100.000.000.009.15"/>
   </fhir:identifier>
   <fhir:type value="document"/>
-  <fhir:timestamp value="2021-05-27T10:00:00Z"/>
+  <fhir:timestamp value="2022-05-27T10:00:00Z"/>
   <fhir:entry>
     <fhir:fullUrl value="urn:uuid:7d4fdd76-b688-49f0-a142-10c1300d5c38"/>
     <fhir:resource>
@@ -30,7 +30,7 @@
             <fhir:code value="ERezeptAbgabedaten"/>
           </fhir:coding>
         </fhir:type>
-        <fhir:date value="2021-05-27T10:00:00Z"/>
+        <fhir:date value="2022-05-27T10:00:00Z"/>
         <fhir:author>
           <fhir:reference value="urn:uuid:fa9cd195-da33-455d-aa1c-ff3cdc871db8"/>
         </fhir:author>
@@ -120,7 +120,7 @@
             <fhir:code value="Abgabeinformationen"/>
           </fhir:coding>
         </fhir:type>
-        <fhir:whenHandedOver value="2021-05-27"/>
+        <fhir:whenHandedOver value="2022-05-27"/>
         <fhir:substitution>
           <fhir:extension url="http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-EX-ERP-Rezeptaenderung">
             <fhir:extension url="ArtRezeptaenderung">
@@ -143,7 +143,7 @@
               <fhir:valueString value="Aufgrund Schnellimmunisierung kurzfristig 2 Spritzen erforderlich."/>
             </fhir:extension>
             <fhir:extension url="DatumRezeptaenderung">
-              <fhir:valueDate value="2021-05-28"/>
+              <fhir:valueDate value="2022-05-28"/>
             </fhir:extension>
           </fhir:extension>
           <fhir:wasSubstituted value="true"/>

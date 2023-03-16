@@ -11,7 +11,7 @@
         <fhir:value value="160.000.764.737.300.50" />
     </fhir:identifier>
     <fhir:type value="document" />
-    <fhir:timestamp value="2021-03-30T10:40:00.000+00:00" />
+    <fhir:timestamp value="2022-03-30T10:40:00.000+00:00" />
     <fhir:link>
         <fhir:relation value="self" />
         <fhir:url value="https://erp-ref.zentral.erp.splitdns.ti-dienste.de/Task/160.000.764.737.300.50/$close/" />
@@ -38,15 +38,15 @@
                         <fhir:display value="Receipt" />
                     </fhir:coding>
                 </fhir:type>
-                <fhir:date value="2021-03-30T10:40:00.000+00:00" />
+                <fhir:date value="2022-03-30T10:40:00.000+00:00" />
                 <fhir:author>
                     <fhir:reference value="Device/1" />
                 </fhir:author>
                 <fhir:title value="Quittung" />
                 <fhir:event>
                     <fhir:period>
-                        <fhir:start value="2021-03-30T10:20:00.000+00:00" />
-                        <fhir:end value="2021-03-30T10:40:00.000+00:00" />
+                        <fhir:start value="2022-03-30T10:20:00.000+00:00" />
+                        <fhir:end value="2022-03-30T10:40:00.000+00:00" />
                     </fhir:period>
                 </fhir:event>
                 <fhir:section>
@@ -97,11 +97,11 @@
             <fhir:system value="urn:iso-astm:E1762-95:2013" />
             <fhir:code value="1.2.840.10065.1.12.1.1" />
         </fhir:type>
-        <fhir:when value="2021-03-30T10:40:00.000+00:00" />
+        <fhir:when value="2022-03-30T10:40:00.000+00:00" />
         <fhir:who>
             <fhir:reference value="https://erp-ref.zentral.erp.splitdns.ti-dienste.de/Device/1" />
         </fhir:who>
         <fhir:sigFormat value="application/pkcs7-mime" />
-        <fhir:data value="U2lnbmF0dXIgZGVyIFRJLVF1aXR0dW5n" />
+        <fhir:data value="MIII FQYJ KoZI hvcN AQcC oIII BjCC CAIC AQEx DzAN Bglg hkgB ZQME AgEF ADAL" />
     </fhir:signature>
 </fhir:Bundle>

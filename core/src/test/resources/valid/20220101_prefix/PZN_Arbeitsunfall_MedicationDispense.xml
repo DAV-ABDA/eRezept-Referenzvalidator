@@ -78,7 +78,7 @@
       </fhir:identifier>
     </fhir:actor>
   </fhir:performer>
-  <fhir:whenHandedOver value="2021-05-27"/>
+  <fhir:whenHandedOver value="2022-05-27"/>
   <fhir:dosageInstruction>
     <fhir:text value="3mal täglich dünn auftragen"/>
   </fhir:dosageInstruction>

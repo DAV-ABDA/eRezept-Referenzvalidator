@@ -1,7 +1,7 @@
 <fhir:Bundle xmlns:fhir="http://hl7.org/fhir">
   <fhir:id value="9c85a2a5-92ee-4a57-83cb-ba90a0df2a21" />
   <fhir:meta>
-    <fhir:lastUpdated value="2021-05-27T08:30:00Z" />
+    <fhir:lastUpdated value="2022-05-27T08:30:00Z" />
     <fhir:profile value="https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle|1.0.2" />
   </fhir:meta>
   <fhir:identifier>
@@ -9,7 +9,7 @@
     <fhir:value value="160.100.000.000.019.82" />
   </fhir:identifier>
   <fhir:type value="document" />
-  <fhir:timestamp value="2021-05-27T08:30:00Z" />
+  <fhir:timestamp value="2022-05-27T08:30:00Z" />
   <fhir:entry>
     <fhir:fullUrl value="http://pvs.praxis.local/fhir/Composition/4ca03203-b01b-4b4c-aeac-c36adb30ea34" />
     <fhir:resource>
@@ -34,7 +34,7 @@
         <fhir:subject>
           <fhir:reference value="Patient/ce4104af-b86b-4664-afee-1b5fc3ac8acf" />
         </fhir:subject>
-        <fhir:date value="2021-05-27T08:00:00Z" />
+        <fhir:date value="2022-05-27T08:00:00Z" />
         <fhir:author>
           <fhir:reference value="Practitioner/bc329f24-3d65-4286-bf06-b54dd6cad655" />
           <fhir:type value="Practitioner" />
@@ -110,7 +110,7 @@
         <fhir:subject>
           <fhir:reference value="Patient/ce4104af-b86b-4664-afee-1b5fc3ac8acf" />
         </fhir:subject>
-        <fhir:authoredOn value="2021-05-27" />
+        <fhir:authoredOn value="2022-05-27" />
         <fhir:requester>
           <fhir:reference value="Practitioner/bc329f24-3d65-4286-bf06-b54dd6cad655" />
         </fhir:requester>
@@ -296,7 +296,7 @@
         </fhir:qualification>
         <fhir:qualification>
           <fhir:code>
-            <fhir:text value="Facharzt für Innere Medizin (Schwer. Kardiologie)" />
+            <fhir:text value="Facharzt für Innere Medizin mit dem Schwerpunkt Kardiologie" />
           </fhir:code>
         </fhir:qualification>
       </fhir:Practitioner>

@@ -78,5 +78,5 @@
       </fhir:identifier>
     </fhir:actor>
   </fhir:performer>
-  <fhir:whenHandedOver value="2021-06-15"/>
+  <fhir:whenHandedOver value="2022-02-15"/>
 </fhir:MedicationDispense>

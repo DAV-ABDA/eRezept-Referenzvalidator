@@ -14,7 +14,7 @@
         <fhir:value value="160.100.000.000.026.61"/>
     </fhir:identifier>
     <fhir:type value="document"/>
-    <fhir:timestamp value="2021-05-27T15:30:00Z"/>
+    <fhir:timestamp value="2022-05-27T15:30:00Z"/>
     <fhir:entry>
         <fhir:fullUrl value="urn:uuid:ed487041-66d2-4ddd-9ae7-2f9f17bca602"/>
         <fhir:resource>
@@ -30,7 +30,7 @@
                         <fhir:code value="ERezeptAbgabedaten"/>
                     </fhir:coding>
                 </fhir:type>
-                <fhir:date value="2021-05-27T15:30:00Z"/>
+                <fhir:date value="2022-05-27T15:30:00Z"/>
                 <fhir:author>
                     <fhir:reference value="urn:uuid:db08a05f-c8fc-41c2-bb8c-e102ed183c8e"/>
                 </fhir:author>
@@ -132,7 +132,7 @@
                         <fhir:code value="Abgabeinformationen"/>
                     </fhir:coding>
                 </fhir:type>
-                <fhir:whenHandedOver value="2021-05-27"/>
+                <fhir:whenHandedOver value="2022-05-27"/>
             </fhir:MedicationDispense>
         </fhir:resource>
     </fhir:entry>
@@ -243,7 +243,7 @@
                         <fhir:code value="ZusatzdatenHerstellung"/>
                     </fhir:coding>
                 </fhir:type>
-                <fhir:whenPrepared value="2021-05-25T12:00:00Z"/>
+                <fhir:whenPrepared value="2022-05-25T12:00:00Z"/>
             </fhir:MedicationDispense>
         </fhir:resource>
     </fhir:entry>
@@ -290,7 +290,7 @@
                         <fhir:code value="ZusatzdatenHerstellung"/>
                     </fhir:coding>
                 </fhir:type>
-                <fhir:whenPrepared value="2021-05-26T09:00:00Z"/>
+                <fhir:whenPrepared value="2022-05-26T09:00:00Z"/>
             </fhir:MedicationDispense>
         </fhir:resource>
     </fhir:entry>
@@ -337,7 +337,7 @@
                         <fhir:code value="ZusatzdatenHerstellung"/>
                     </fhir:coding>
                 </fhir:type>
-                <fhir:whenPrepared value="2021-05-27T10:00:00Z"/>
+                <fhir:whenPrepared value="2022-05-27T10:00:00Z"/>
             </fhir:MedicationDispense>
         </fhir:resource>
     </fhir:entry>

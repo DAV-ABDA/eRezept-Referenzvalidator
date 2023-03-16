@@ -4,6 +4,7 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.support.IValidationSupport;
 import de.abda.fhir.validator.core.support.IgnoreMissingValueSetValidationSupport;
 import de.abda.fhir.validator.core.support.FixedSnapshotGeneratingValidationSupport;
+import de.abda.fhir.validator.core.support.PipedCanonicalCoreResourcesValidationSupport;
 import org.hl7.fhir.common.hapi.validation.support.PrePopulatedValidationSupport;
 import org.hl7.fhir.common.hapi.validation.support.ValidationSupportChain;
 //import org.hl7.fhir.common.hapi.validation.support.SnapshotGeneratingValidationSupport;
@@ -24,8 +25,8 @@ public class ValidationSupportChainHelper {
 	                validationSupport,
 	                new FixedSnapshotGeneratingValidationSupport(ctx),
 					//new SnapshotGeneratingValidationSupport(ctx), // TODO: test or look for HAPI fix
-	                new IgnoreMissingValueSetValidationSupport(ctx)
-
+	                new IgnoreMissingValueSetValidationSupport(ctx),
+					new PipedCanonicalCoreResourcesValidationSupport(ctx)
         );
     }
 }

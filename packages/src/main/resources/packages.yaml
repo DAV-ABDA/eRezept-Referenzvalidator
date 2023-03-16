@@ -22,7 +22,7 @@ fhirPackages:
         filename: "kbv.ita.erp-1.0.2.tgz"
         dependencies:
           - packageName: "dav.kbv.sfhir.cs.vs"
-            packageVersion: "1.0.4"  # TODO ACHTUNG! 1.0.4 erst ab 01.07.2022 davor 1.0.3 ab 01.04.2022 davor 1.0.2
+            packageVersion: "1.0.6"
           - packageName: "kbv.ita.for"
             packageVersion: "1.0.3"
       #    - packageName: "kbv.basis"
@@ -46,7 +46,7 @@ fhirPackages:
         filename: "kbv.ita.erp-1.1.0.tgz"
         dependencies:
           - packageName: "dav.kbv.sfhir.cs.vs"
-            packageVersion: "1.0.5"
+            packageVersion: "1.0.6"
           - packageName: "kbv.ita.for"
             packageVersion: "1.1.0"
       #    - packageName: "kbv.basis"
@@ -103,12 +103,15 @@ fhirPackages:
       1.0.3: # ersetzt durch 1.0.4 ab 01.07.2022
         version: "1.0.3"
         filename: "dav.kbv.sfhir.cs.vs-1.0.3-json.tgz"
-      1.0.4: # ersetzt durch 1.0.5 ab 01.07.2023
+      1.0.4: # ersetzt durch 1.0.6 ab 01.04.2023 -> davor ersetzt durch 1.0.5 ab 01.07.2023
         version: "1.0.4"
         filename: "dav.kbv.sfhir.cs.vs-1.0.4-json.tgz"
-      1.0.5: # abwärtskompatible?
+      1.0.5: #  ersetzt durch 1.0.6 ab 01.04.2023
         version: "1.0.5"
         filename: "dav.kbv.sfhir.cs.vs-1.0.5-json.tgz"
+      1.0.6: # abwärtskompatible?!?
+        version: "1.0.6"
+        filename: "dav.kbv.sfhir.cs.vs-1.0.6-json.tgz"
 
   # https://simplifier.net/erezept-workflow/~packages
   de.gematik.erezept-workflow.r4:
@@ -149,8 +152,7 @@ fhirPackages:
           - packageName: "kbv.ita.erp"
             packageVersion: "1.0.2"
       #    - packageName: "dav.kbv.sfhir.cs.vs"
-      #      packageVersion: "1.0.4" # TODO ACHTUNG! 1.0.4 erst ab 01.07.2022 davor 1.0.3 ab 01.04.2022 davor 1.0.2
-
+      #      packageVersion: "1.0.6"
       #    - packageName: "de.basisprofil.r4"
       #      packageVersion: "0.9.13"
       1.2.0:
@@ -160,7 +162,7 @@ fhirPackages:
           - packageName: "kbv.ita.erp"
             packageVersion: "1.1.0"
       #    - packageName: "dav.kbv.sfhir.cs.vs"
-      #      packageVersion: "1.0.5"
+      #      packageVersion: "1.0.6"
       #    - packageName: "kbv.ita.for"
       #      packageVersion: "1.1.0"
       #    - packageName: "kbv.basis"
@@ -179,7 +181,7 @@ fhirPackages:
           - packageName: "kbv.ita.erp"
             packageVersion: "1.1.0"
      #     - packageName: "dav.kbv.sfhir.cs.vs"
-     #       packageVersion: "1.0.5"
+     #       packageVersion: "1.0.6"
      #     - packageName: "kbv.basis"
      #       packageVersion: "1.3.0"
      #     - packageName: "kbv.ita.for"
@@ -200,7 +202,7 @@ fhirPackages:
           - packageName: "de.abda.erezeptabgabedaten"
             packageVersion: "1.0.3"
           - packageName: "dav.kbv.sfhir.cs.vs"
-            packageVersion: "1.0.5"
+            packageVersion: "1.0.4"
           - packageName: "de.gematik.erezept-workflow.r4"
             packageVersion: "1.0.3"
           - packageName: "kbv.ita.erp"
@@ -228,7 +230,7 @@ fhirPackages:
           - packageName: "de.abda.erezeptabgabedaten"
             packageVersion: "1.0.3"
           - packageName: "dav.kbv.sfhir.cs.vs"
-            packageVersion: "1.0.5"
+            packageVersion: "1.0.4"
           - packageName: "de.gematik.erezept-workflow.r4"
             packageVersion: "1.0.3-1"
           - packageName: "kbv.ita.erp"
@@ -278,7 +280,7 @@ fhirPackages:
         dependencies:
           - packageName: "de.basisprofil.r4"
             packageVersion: "0.9.13"
-      1.1.2: #KorrekturRelease
+      1.1.2: # KorrekturRelease
         version: "1.1.2"
         filename: "de.abda.erezeptabgabedaten-1.1.2.tgz"
         dependencies:
@@ -294,12 +296,12 @@ fhirPackages:
             packageVersion: "1.2.0"
       #    - packageName: "de.basisprofil.r4"
       #      packageVersion: "0.9.13"
-      1.3.0:
-        version: "1.3.0"
-        filename: "de.abda.erezeptabgabedaten-1.3.0.tgz"
+      1.3.1: # KorrekturRelease
+        version: "1.3.1"
+        filename: "de.abda.erezeptabgabedaten-1.3.1.tgz"
         dependencies:
           - packageName: "de.abda.erezeptabgabedatenbasis"
-            packageVersion: "1.3.0"
+            packageVersion: "1.3.1"
       #    - packageName: "de.basisprofil.r4"
       #      packageVersion: "1.3.2"
 
@@ -313,7 +315,7 @@ fhirPackages:
         dependencies:
           - packageName: "de.basisprofil.r4"
             packageVersion: "0.9.13"
-      1.1.3: #KorrekturRelease
+      1.1.3: # KorrekturRelease
         version: "1.1.3"
         filename: "de.abda.erezeptabgabedatenbasis-1.1.3.tgz"
         dependencies:
@@ -331,17 +333,23 @@ fhirPackages:
         dependencies:
           - packageName: "de.basisprofil.r4"
             packageVersion: "1.3.2"
+      1.3.1: # KorrekturRelease
+        version: "1.3.1"
+        filename: "de.abda.erezeptabgabedatenbasis-1.3.1.tgz"
+        dependencies:
+          - packageName: "de.basisprofil.r4"
+            packageVersion: "1.3.2"
 
   # https://simplifier.net/eRezeptAbgabedatenPKV/~packages
   de.abda.erezeptabgabedatenpkv:
     packageName: "de.abda.erezeptabgabedatenpkv"
     versions:
-      1.1.0:
-        version: "1.1.0"
-        filename: "de.abda.erezeptabgabedatenpkv-1.1.0.tgz"
+      1.2.0:
+        version: "1.2.0"
+        filename: "de.abda.erezeptabgabedatenpkv-1.2.0.tgz"
         dependencies:
           - packageName: "de.abda.erezeptabgabedatenbasis"
-            packageVersion: "1.3.0"
+            packageVersion: "1.3.1"
       #    - packageName: "de.basisprofil.r4"
       #      packageVersion: "1.3.2"
 
@@ -543,10 +551,25 @@ supportedProfiles:
       1.0:
         version: "1.0"
         validityPeriod:
-          valid_from: "2023-07-01"
-          valid_to: "3000-01-01" # TODO: Endpunkt!
+          valid_from: "2023-07-01" # Zeitkontrolle deaktivieren da zeitlos !?!
+          valid_to: "3000-01-01" # TODO: kein Endpunkt!
         # fhir_path: "enteredDate"
           fhir_path: "ChargeItem;enteredDate"
+        requiredPackage:
+          packageName: "de.gematik.erezept-patientenrechnung.r4"
+          packageVersion: "1.0.0"
+
+  # Consent -> PKV-Einwilligung (gematik)
+  "https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_Consent":
+    profileName: "https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_Consent"
+    versions:
+      1.0:
+        version: "1.0"
+        validityPeriod:
+          valid_from: "2023-07-01" # Zeitkontrolle deaktivieren da zeitlos !?!
+          valid_to: "3000-01-01" # TODO: Endpunkt!
+          # fhir_path: "dateTime"
+          fhir_path: "Consent;dateTime"
         requiredPackage:
           packageName: "de.gematik.erezept-patientenrechnung.r4"
           packageVersion: "1.0.0"
@@ -574,7 +597,7 @@ supportedProfiles:
           fhir_path: "Bundle;entry;resource;MedicationDispense;whenHandedOver"
         requiredPackage:
           packageName: "de.abda.erezeptabgabedaten"
-          packageVersion: "1.1.2" #KorrekturRelease
+          packageVersion: "1.1.2" # KorrekturRelease
       1.2:
         version: "1.2"
         validityPeriod:
@@ -594,7 +617,7 @@ supportedProfiles:
           fhir_path: "Bundle;entry;resource;MedicationDispense;whenHandedOver"
         requiredPackage:
           packageName: "de.abda.erezeptabgabedaten"
-          packageVersion: "1.3.0"
+          packageVersion: "1.3.1"
 
   # TODO: add? Umgang mit Referenzen?
   # http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-Apotheke
@@ -685,8 +708,8 @@ supportedProfiles:
   "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-AbgabedatenBundle":
     profileName: "http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-AbgabedatenBundle"
     versions:
-      1.1:
-        version: "1.1"
+      1.2:
+        version: "1.2"
         validityPeriod:
           valid_from: "2023-07-01"
           valid_to: "3000-01-01" # TODO: Endpunkt!
@@ -694,7 +717,7 @@ supportedProfiles:
           fhir_path: "Bundle;entry;resource;MedicationDispense;whenHandedOver"
         requiredPackage:
           packageName: "de.abda.erezeptabgabedatenpkv"
-          packageVersion: "1.1.0"
+          packageVersion: "1.2.0"
 
   # TODO: add? Umgang mit Referenzen?
   # http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-Apotheke

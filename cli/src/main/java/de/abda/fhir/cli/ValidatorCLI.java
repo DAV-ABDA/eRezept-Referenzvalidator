@@ -3,16 +3,14 @@ package de.abda.fhir.cli;
 import ca.uhn.fhir.validation.ResultSeverityEnum;
 import ca.uhn.fhir.validation.SingleValidationMessage;
 import de.abda.fhir.validator.core.ReferenceValidator;
+import de.abda.fhir.validator.core.Validator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ValidatorCLI {
@@ -20,6 +18,9 @@ public class ValidatorCLI {
     static Logger logger = LoggerFactory.getLogger(ValidatorCLI.class);
 
     public static void main(String[] args) {
+        // TODO: ACHTUNG! core use with Locale.ENGLISH 4 same result
+        Locale.setDefault(Locale.ENGLISH); // Auswertung Fehler auf Basis Fehlertexte erst ab HAPI v6.2 gelöst (MessageID).
+
         boolean noInstanceValidityCheck = false;
         int arg4instance = -1;
         int arg4profile = -1;
@@ -59,7 +60,6 @@ public class ValidatorCLI {
                         System.out.println( "one argument must be a exists filename '" + args[i] + "' can not be opened." );
                         System.exit(0);
                     } else {
-                        // TODO: der Letzte gewinnt... if arg4instance > 0
                         arg4instance = i;
                     }
                 }
@@ -71,9 +71,7 @@ public class ValidatorCLI {
                     .map(key -> key + ": " + errors.get(key).size())
                     .collect(Collectors.joining(","));
 
-            boolean validatorInputIsValid =
-                    errors.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()).size() == 0
-                            && errors.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()).size() == 0;
+            boolean validatorInputIsValid = Validator.validate2Boolean(errors);
 
             logger.info("Validation result: " + validatorInputIsValid + " -- Result summary: " + mapAsString);
             //System.out.println("Validation result: " + validatorInputIsValid + " -- Result summary: " + mapAsString);

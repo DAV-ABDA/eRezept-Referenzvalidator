@@ -28,7 +28,7 @@ import java.util.*;
  */
 public class ReferenceValidator {
     static Logger logger = LoggerFactory.getLogger(Validator.class);
-    private FhirContext ctx ;
+    private FhirContext ctx;
     private ValidatorHolder validatorHolder;
 
     /**
@@ -46,6 +46,7 @@ public class ReferenceValidator {
         this.ctx = ctx;
         validatorHolder = new ValidatorHolder(ctx);
     }
+
     /**
      * Validates the given File
      * @param inputFile Path, not null
@@ -58,10 +59,57 @@ public class ReferenceValidator {
         String validatorInputAsString = FileHelper.loadValidatorInputAsString(inputFile);
         return this.validateImpl(validatorInputAsString, noInstanceValidityCheck, profileValidateAgainst);
     }
-
+    /**
+     * Validates the given File
+     * @param inputFile Path, not null
+     * @return Map of {@link ResultSeverityEnum} as key and a List of {@link SingleValidationMessage} as key
+     */
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateFile(String inputFile) {
         return this.validateFile(inputFile, false, null);
     }
+
+    /**
+     * Validates the given File
+     * @param inputFile Path, not null
+     * @param noInstanceValidityCheck, boolean
+     * @param profileValidateAgainst, List of String
+     * @return List of {@link SingleValidationMessage}
+     */
+    public List<SingleValidationMessage> validateFile2ValidationMessageList(String inputFile, boolean noInstanceValidityCheck, List<String> profileValidateAgainst) {
+        logger.debug("Start validating File: {}", inputFile);
+        String validatorInputAsString = FileHelper.loadValidatorInputAsString(inputFile);
+        return this.validateImpl2ValidationMessageList(validatorInputAsString, noInstanceValidityCheck, profileValidateAgainst);
+    }
+    /**
+     * Validates the given File
+     * @param inputFile Path, not null
+     * @return List of {@link SingleValidationMessage}
+     */
+    public List<SingleValidationMessage> validateFile2ValidationMessageList(String inputFile) {
+        return this.validateFile2ValidationMessageList(inputFile, false, null);
+    }
+
+    /**
+     * Validates the given File
+     * @param inputFile Path, not null
+     * @param noInstanceValidityCheck, boolean
+     * @param profileValidateAgainst, List of String
+     * @return Validation result as {@link boolean}
+     */
+    public boolean validateFile2Boolean(String inputFile, boolean noInstanceValidityCheck, List<String> profileValidateAgainst) {
+        logger.debug("Start validating File: {}", inputFile);
+        String validatorInputAsString = FileHelper.loadValidatorInputAsString(inputFile);
+        return Validator.validate2Boolean(this.validateImpl2ValidationMessageList(validatorInputAsString, noInstanceValidityCheck, profileValidateAgainst));
+    }
+    /**
+     * Validates the given File
+     * @param inputFile Path, not null
+     * @return Validation result as {@link boolean}
+     */
+    public boolean validateFile2Boolean(String inputFile) {
+        return this.validateFile2Boolean(inputFile, false, null);
+    }
+
     /**
      * Validates the given File
      * @param inputFile String path, not null or empty
@@ -70,7 +118,7 @@ public class ReferenceValidator {
      * @return Map of {@link ResultSeverityEnum} as key and a List of {@link SingleValidationMessage} as key
      */
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateFile(Path inputFile, boolean noInstanceValidityCheck, List<String> profileValidateAgainst) {
-        return validateFile(inputFile.toString(), noInstanceValidityCheck, profileValidateAgainst);
+        return this.validateFile(inputFile.toString(), noInstanceValidityCheck, profileValidateAgainst);
     }
 
     /**
@@ -79,8 +127,49 @@ public class ReferenceValidator {
      * @return Map of {@link ResultSeverityEnum} as key and a List of {@link SingleValidationMessage} as key
      */
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateFile(Path inputFile) {
-        return validateFile(inputFile.toString(), false, null);
+        return this.validateFile(inputFile.toString(), false, null);
     }
+
+    /**
+     * Validates the given File
+     * @param inputFile String path, not null or empty
+     * @param noInstanceValidityCheck, boolean
+     * @param profileValidateAgainst, List of String
+     * @return List of {@link SingleValidationMessage}
+     */
+    public List<SingleValidationMessage> validateFile2ValidationMessageList(Path inputFile, boolean noInstanceValidityCheck, List<String> profileValidateAgainst) {
+        return this.validateFile2ValidationMessageList(inputFile.toString(), noInstanceValidityCheck, profileValidateAgainst);
+    }
+
+    /**
+     * Validates the given File
+     * @param inputFile String path, not null or empty
+     * @return List of {@link SingleValidationMessage}
+     */
+    public List<SingleValidationMessage> validateFile2ValidationMessageList(Path inputFile) {
+        return this.validateFile2ValidationMessageList(inputFile.toString(), false, null);
+    }
+
+    /**
+     * Validates the given File
+     * @param inputFile String path, not null or empty
+     * @param noInstanceValidityCheck, boolean
+     * @param profileValidateAgainst, List of String
+     * @return Validation result as {@link boolean}
+     */
+    public boolean validateFile2Boolean(Path inputFile, boolean noInstanceValidityCheck, List<String> profileValidateAgainst) {
+        return Validator.validate2Boolean(this.validateFile2ValidationMessageList(inputFile.toString(), noInstanceValidityCheck, profileValidateAgainst));
+    }
+
+    /**
+     * Validates the given File
+     * @param inputFile String path, not null or empty
+     * @return Validation result as {@link boolean}
+     */
+    public boolean validateFile2Boolean(Path inputFile) {
+        return this.validateFile2Boolean(inputFile.toString(), false, null);
+    }
+
     /**
      * Validates the given String containing a FHIR resource
      * @param validatorInputAsString String, not null or empty
@@ -90,7 +179,7 @@ public class ReferenceValidator {
      */
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateString(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst) {
         logger.debug("Start validating String input");
-        return validateImpl(validatorInputAsString, noInstanceValidityCheck, profileValidateAgainst);
+        return this.validateImpl(validatorInputAsString, noInstanceValidityCheck, profileValidateAgainst);
     }
 
     /**
@@ -100,8 +189,53 @@ public class ReferenceValidator {
      */
     public Map<ResultSeverityEnum, List<SingleValidationMessage>> validateString(String validatorInputAsString) {
         logger.debug("Start validating String input");
-        return validateImpl(validatorInputAsString, false, null);
+        return this.validateImpl(validatorInputAsString, false, null);
     }
+
+    /**
+     * Validates the given String containing a FHIR resource
+     * @param validatorInputAsString String, not null or empty
+     * @param noInstanceValidityCheck, boolean
+     * @param profileValidateAgainst, List of String
+     * @return List of {@link SingleValidationMessage}
+     */
+    public List<SingleValidationMessage> validateString2ValidationMessageList(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst) {
+        logger.debug("Start validating String input");
+        return this.validateImpl2ValidationMessageList(validatorInputAsString, noInstanceValidityCheck, profileValidateAgainst);
+    }
+
+    /**
+     * Validates the given String containing a FHIR resource
+     * @param validatorInputAsString String, not null or empty
+     * @return List of {@link SingleValidationMessage}
+     */
+    public List<SingleValidationMessage> validateString2ValidationMessageList(String validatorInputAsString) {
+        logger.debug("Start validating String input");
+        return this.validateString2ValidationMessageList(validatorInputAsString, false, null);
+    }
+
+    /**
+     * Validates the given String containing a FHIR resource
+     * @param validatorInputAsString String, not null or empty
+     * @param noInstanceValidityCheck, boolean
+     * @param profileValidateAgainst, List of String
+     * @return Validation result as {@link boolean}
+     */
+    public boolean validateString2Boolean(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst) {
+        logger.debug("Start validating String input");
+        return Validator.validate2Boolean(this.validateImpl2ValidationMessageList(validatorInputAsString, noInstanceValidityCheck, profileValidateAgainst));
+    }
+
+    /**
+     * Validates the given String containing a FHIR resource
+     * @param validatorInputAsString String, not null or empty
+     * @return Validation result as {@link boolean}
+     */
+    public boolean validateString2Boolean(String validatorInputAsString) {
+        logger.debug("Start validating String input");
+        return this.validateString2Boolean(validatorInputAsString, false, null);
+    }
+
     /**
      * The first validation in a new validator is very slow. So this method creates validators
      * for all supported profiles and loads all necessary data, so the calls to the validator
@@ -114,13 +248,21 @@ public class ReferenceValidator {
     }
 
     private Map<ResultSeverityEnum, List<SingleValidationMessage>> validateImpl(String validatorInputAsString) {
-        return validateImpl(validatorInputAsString, false, null);
+        return this.validateImpl(validatorInputAsString, false, null);
     }
 
     private Map<ResultSeverityEnum, List<SingleValidationMessage>> validateImpl(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst) {
+        return Validator.validateList2Map(this.validateImpl2ValidationMessageList(validatorInputAsString, noInstanceValidityCheck, profileValidateAgainst));
+    }
+
+    private List<SingleValidationMessage> validateImpl2ValidationMessageList(String validatorInputAsString) {
+        return this.validateImpl2ValidationMessageList(validatorInputAsString, false, null);
+    }
+
+    private List<SingleValidationMessage> validateImpl2ValidationMessageList(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst) {
         Profile instanceProfile = null;
         ProfileValidityDate instanceProfileValidityDate = null;
-        Map<ResultSeverityEnum, List<SingleValidationMessage>> instanceValidityCheckResults = new HashMap<>();
+        List<SingleValidationMessage> instanceValidityCheckResults = new ArrayList();
         String tmp_str;
 
         // TODO: ReleaseVersionsausgabe !?! oder Option Auswertung Instanz? -> log4J ?!?
@@ -139,7 +281,9 @@ public class ReferenceValidator {
             instanceProfile = ProfileHelper.getProfileFromXmlStream(validatorInputStream);
         } else { // if (!noInstanceValidityCheck) {
             instanceProfileValidityDate = ProfileHelper.getProfileValidityDateFromXmlStream(validatorInputStream, validatorHolder);
-            if (instanceProfileValidityDate == null || instanceProfileValidityDate.getValidityPeriod() == null) {
+            if (instanceProfileValidityDate == null) {
+                ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.FATAL, "profile not found");
+            } else if (instanceProfileValidityDate.getValidityPeriod() == null) {
                 ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.FATAL, "validityPeriod for profile not found");
             } else {
                 if (instanceProfileValidityDate.getInstanceDate() == null) {
@@ -166,8 +310,7 @@ public class ReferenceValidator {
         //validatorInputStream.close();
         //https://stackoverflow.com/questions/309424/how-do-i-read-convert-an-inputstream-into-a-string-in-java
 
-        if (!noInstanceValidityCheck && (instanceValidityCheckResults.getOrDefault(ResultSeverityEnum.ERROR, Collections.emptyList()).size() != 0
-                || instanceValidityCheckResults.getOrDefault(ResultSeverityEnum.FATAL, Collections.emptyList()).size() != 0)) {
+        if (!noInstanceValidityCheck && !Validator.validate2Boolean(instanceValidityCheckResults)) {
             return instanceValidityCheckResults;
         } else if ((instanceProfile != null) && (!profileValidateAgainst(profileValidateAgainst, instanceProfile.getBaseCanonical()))) {
             tmp_str = "profile: " + instanceProfile.getBaseCanonical() + " does not match the parameter(s): " + profileValidateAgainst.toString();
@@ -177,9 +320,9 @@ public class ReferenceValidator {
         } else if (instanceProfile != null) {
             Validator validator = validatorHolder.getValidatorForProfile(instanceProfile);
             if (validator != null) {
-                Map<ResultSeverityEnum, List<SingleValidationMessage>> output = validator.validate(validatorInputAsString);
-                output.putAll(instanceValidityCheckResults);
-                return output;
+                List<SingleValidationMessage> output = validator.validate2ValidationMessageList(validatorInputAsString);
+                instanceValidityCheckResults.addAll(output);
+                return instanceValidityCheckResults;
             } else {
                 ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.ERROR, "Profile unbekannt!");
                 return instanceValidityCheckResults;
@@ -190,7 +333,7 @@ public class ReferenceValidator {
         }
     }
 
-    private boolean profileValidateAgainst(List<String> profileValidateAgainst, String instanceProfile) {
+    private static boolean profileValidateAgainst(List<String> profileValidateAgainst, String instanceProfile) {
         boolean retVal = false;
         if ((profileValidateAgainst == null) || (profileValidateAgainst.isEmpty())) {
             retVal = true;
@@ -205,18 +348,12 @@ public class ReferenceValidator {
         return retVal;
     }
 
-    private void ValidationMessageAdd(Map<ResultSeverityEnum, List<SingleValidationMessage>> instanceValidityCheckResults, ResultSeverityEnum inResultSeverityEnum, String inMessage) {
+    private void ValidationMessageAdd(List<SingleValidationMessage> instanceValidityCheckResults, ResultSeverityEnum inResultSeverityEnum, String inMessage) {
         // create new Message
         SingleValidationMessage mySingleValidationMessage = new SingleValidationMessage();
         mySingleValidationMessage.setSeverity(inResultSeverityEnum);
         mySingleValidationMessage.setMessage(inMessage);
 
-        if(instanceValidityCheckResults.containsKey(inResultSeverityEnum)){
-            instanceValidityCheckResults.get(inResultSeverityEnum).add(mySingleValidationMessage);
-        } else {
-            ArrayList<SingleValidationMessage> mySingleValidationMessageList  = new ArrayList<>();
-            mySingleValidationMessageList.add(mySingleValidationMessage);
-            instanceValidityCheckResults.put(inResultSeverityEnum, mySingleValidationMessageList);
-        }
+        instanceValidityCheckResults.add(mySingleValidationMessage);
     }
 }

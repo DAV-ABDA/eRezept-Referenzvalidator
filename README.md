@@ -109,14 +109,21 @@ ReferenceValidator validator = new ReferenceValidator();
 
 //path can be a String or a Path object
 Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(path);
-//or (with parameter: noInstanceValidityCheck (default true) and profileValidateAgainst (default null or empty))
+List<SingleValidationMessage> errors = validator.validateFile2ValidationMessageList(path);
+boolean errors = validator.validateFile2Boolean(path);
+//or (with parameter: noInstanceValidityCheck (default false) and profileValidateAgainst (default null or empty))
 Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateFile(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst)
+List<SingleValidationMessage> errors = validator.validateFile2ValidationMessageList(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst)
+boolean errors = validator.validateFile2Boolean(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst)
 
 //If the file content is already read to a String, you can use validateString
 Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateString(stringContent);
-//or (with parameter: noInstanceValidityCheck (default true) and profileValidateAgainst (default null or empty))
+List<SingleValidationMessage> errors = validator.validateString2ValidationMessageList(stringContent);
+boolean errors = validator.validateString2Boolean(stringContent);
+//or (with parameter: noInstanceValidityCheck (default false) and profileValidateAgainst (default null or empty))
 Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateString(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst)
-
+List<SingleValidationMessage> errors = validator.validateString2ValidationMessageList(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst)
+boolean errors = validator.validateString2Boolean(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst)
 ````
 # Contribution
 
@@ -203,6 +210,10 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
   * 1.2
 * https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_ChargeItem
   * 1.0
+* https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_Consent
+  * 1.0
+* http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-AbgabedatenBundle
+  * 1.2
 * http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle
   * 1.0.3
   * 1.1.0
@@ -238,12 +249,15 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
 * de.abda.erezeptabgabedatenbasis-1.1.3.tgz (KorrekturRelease für v1.1.0)
 * de.abda.erezeptabgabedatenbasis-1.2.0.tgz
 * de.abda.erezeptabgabedatenbasis-1.3.0.tgz
+* de.abda.erezeptabgabedatenbasis-1.3.1.tgz (KorrekturRelease für v1.3.0)
 * ~~de.abda.erezeptabgabedaten-1.1.0.tgz~~  (entfernt v0.9.7)
 * ~~de.abda.erezeptabgabedaten-1.1.1.tgz~~ (entfernt v0.9.8)
 * de.abda.erezeptabgabedaten-1.1.2.tgz (KorrekturRelease für v1.1.0)
 * de.abda.erezeptabgabedaten-1.2.0.tgz
-* de.abda.erezeptabgabedaten-1.3.0.tgz
-* de.abda.erezeptabgabedatenpkv-1.1.0.tgz
+* ~~de.abda.erezeptabgabedaten-1.3.0.tgz~~ (entfernt v1.0.1)
+* de.abda.erezeptabgabedaten-1.3.1.tgz
+* ~~de.abda.erezeptabgabedatenpkv-1.1.0.tgz~~ (entfernt v1.0.1)
+* de.abda.erezeptabgabedatenpkv-1.2.0.tgz (KorrekturRelease für v1.1.0)
 * de.gkvsv.erezeptabrechnungsdaten-1.0.4.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.0.5.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.0.6.tgz
@@ -259,7 +273,9 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
   - Edit DARREICHUNGSFORM v1.10 ab 01.07.2022
 - Add Package dav.kbv.sfhir.cs.vs-1.0.5-json.tgz (KBV Schlüsseltabellen - externe CodeSytseme/ValueSets)
   - Add SFHIR_EAU_AU_ERROR_KASSE v1.00 ab 01.07.2023
-  
+- Add Package dav.kbv.sfhir.cs.vs-1.0.6-json.tgz (KBV Schlüsseltabellen - externe CodeSytseme/ValueSets)
+  - Edit DARREICHUNGSFORM v1.11 ab 01.04.2023
+  - 
 - delete examples in Packages
 - de.gematik.erezept-workflow.r4-1.0.3-1.tgz
   - Delete ProFile StructureDefinition-ChargeItem-erxChargeItem.json (keine Relevanz - future use)

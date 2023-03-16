@@ -11,6 +11,7 @@ public enum ProfileForPreloading {
   ERX_RECEIPT("https://gematik.de/fhir/StructureDefinition/ErxReceipt"),
   GEM_ERP_PR_Bundle("https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_Bundle"),
   GEM_ERPCHRG("https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_ChargeItem"),
+  GEM_ERPCONSENT("https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_Consent"),
   DAV_PR_ERP_ABGABEDATEN_BUNDLE("http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle"),
   DAV_PKV_PR_ERP_ABGABEDATEN_BUNDLE("http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-AbgabedatenBundle"),
   GKVSV_PR_TA7_SAMMELRECHNUNG("https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle"),

@@ -1,14 +1,14 @@
 # eRezept-Referenzvalidator ChangeLog
 
-# 1.0.1 - 2023-03-16
-- Fix - Auflösung von Piped Canonicals für Core-Ressourcen
+# 1.0.1 - 2023-03-22
+- Restore - Wrapper for lookup resources using pipe notation for the specified version
 - Add FunktionCalls -> OperationOutCome (ValidationMessageList, Boolean) 
 - Update Examples & Tests
 - Update externe ValueSets & Codesysteme (KBV) -> new package dav.kbv.sfhir.cs.vs-1.0.6-json.tgz
-- add profile (GEM_ERPCHRG_PR_Consent) 4 validation
-- add new package
+- Add profile (GEM_ERPCHRG_PR_Consent) for validation
+- Add new package
   - de.abda.erezeptabgabedatenbasis-1.3.1.tgz
-- replace packages
+- Replace packages
   - de.abda.erezeptabgabedaten-1.3.0.tgz -> de.abda.erezeptabgabedaten-1.3.1.tgz
   - de.abda.erezeptabgabedatenpkv-1.1.0.tgz -> de.abda.erezeptabgabedatenpkv-1.2.0.tgz
 

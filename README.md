@@ -29,7 +29,8 @@
   * Abgabedaten, Abgabedatum (DAV_PR_ERP_Abgabeinformationen: MedicationDispense.whenHandedOver)
   * Abrechnungsdaten, Abrechnungsmonat (GKVSV_PR_TA7_Rechnung_Composition bzw. GKVSV_PR_TA7_Sammelrechnung_Composition: Composition.date)
   * PKV Abgabedaten, Abgabedatum (DAV-PKV-PR-ERP-AbgabedatenComposition: MedicationDispense.whenHandedOver)
-  * PKV Patientenrechnung, Abrechnungsdatum (GEM_ERPCHRG_PR_ChargeItem: ChargeItem.enteredDate)
+  * ~~PKV Patientenrechnung, Abrechnungsdatum (GEM_ERPCHRG_PR_ChargeItem: ChargeItem.enteredDate)~~
+  * ~~PKV Patientenrechnung, Einwilligungsdatum (GEM_ERPCHRG_PR_Consent: Consent.dateTime)~~
 
 ### NICHT-Projektziele
 
@@ -75,11 +76,12 @@ optionale Parameter (Reihenfolge egal):
    --profile https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_MedicationDispense
    --profile https://gematik.de/fhir/StructureDefinition/ErxReceipt
    --profile https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_Bundle
-   --profile https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_ChargeItem
    --profile http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle
    --profile https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle
    --profile https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung_Bundle
    --profile http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PKV-PR-ERP-AbgabedatenBundle
+   --profile https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_ChargeItem
+   --profile https://gematik.de/fhir/erpchrg/StructureDefinition/GEM_ERPCHRG_PR_Consent    
 `````
 
 ### Einbindung in Maven oder Gradle Builds
@@ -198,13 +200,13 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
   * 1.1.0
 * https://gematik.de/fhir/StructureDefinition/ErxMedicationDispense
   * 1.0.3
-  * 1.0.3-1 (Instancen ohne Versionsangaben werden gegen die Version 1.0.3-1 validiert)
+  * 1.0.3-1 (Instanzen ohne Versionsangaben werden gegen die Version 1.0.3-1 validiert)
   * 1.1.1
 * https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_MedicationDispense
   * 1.2
 * https://gematik.de/fhir/StructureDefinition/ErxReceipt
   * 1.0.3
-  * 1.0.3-1 (Instancen ohne Versionsangaben werden gegen die Version 1.0.3-1 validiert)
+  * 1.0.3-1 (Instanzen ohne Versionsangaben werden gegen die Version 1.0.3-1 validiert)
   * 1.1.1
 * https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_Bundle
   * 1.2

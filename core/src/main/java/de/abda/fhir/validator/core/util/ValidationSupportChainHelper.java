@@ -4,9 +4,8 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.context.support.IValidationSupport;
 import de.abda.fhir.validator.core.support.IgnoreMissingValueSetValidationSupport;
 import de.abda.fhir.validator.core.support.FixedSnapshotGeneratingValidationSupport;
-import de.abda.fhir.validator.core.support.PipedCanonicalCoreResourcesValidationSupport;
+import de.abda.fhir.validator.core.support.VersionPipeAwareSupportChain;
 import org.hl7.fhir.common.hapi.validation.support.PrePopulatedValidationSupport;
-import org.hl7.fhir.common.hapi.validation.support.ValidationSupportChain;
 //import org.hl7.fhir.common.hapi.validation.support.SnapshotGeneratingValidationSupport;
 
 public class ValidationSupportChainHelper {
@@ -20,13 +19,12 @@ public class ValidationSupportChainHelper {
     	IValidationSupport validationSupport = ctx.getValidationSupport();
 
     	// Create a support chain including the NPM Package Support
-        return new ValidationSupportChain(
+        return new VersionPipeAwareSupportChain(
 	                npmPackageSupport,
 	                validationSupport,
 	                new FixedSnapshotGeneratingValidationSupport(ctx),
 					//new SnapshotGeneratingValidationSupport(ctx), // TODO: test or look for HAPI fix
-	                new IgnoreMissingValueSetValidationSupport(ctx),
-					new PipedCanonicalCoreResourcesValidationSupport(ctx)
+	                new IgnoreMissingValueSetValidationSupport(ctx)
         );
     }
 }

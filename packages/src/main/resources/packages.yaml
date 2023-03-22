@@ -551,8 +551,8 @@ supportedProfiles:
       1.0:
         version: "1.0"
         validityPeriod:
-          valid_from: "2023-07-01" # Zeitkontrolle deaktivieren da zeitlos !?!
-          valid_to: "3000-01-01" # TODO: kein Endpunkt!
+          valid_from: "2023-07-01" # Zeitkontrolle deaktivieren da zeitlos!
+          valid_to: "3000-01-01" # Endpunkt!
         # fhir_path: "enteredDate"
           fhir_path: "ChargeItem;enteredDate"
         requiredPackage:
@@ -566,8 +566,8 @@ supportedProfiles:
       1.0:
         version: "1.0"
         validityPeriod:
-          valid_from: "2023-07-01" # Zeitkontrolle deaktivieren da zeitlos !?!
-          valid_to: "3000-01-01" # TODO: Endpunkt!
+          valid_from: "2023-07-01" # Zeitkontrolle deaktivieren da zeitlos!
+          valid_to: "3000-01-01" # Endpunkt!
           # fhir_path: "dateTime"
           fhir_path: "Consent;dateTime"
         requiredPackage:

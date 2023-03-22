@@ -51,7 +51,7 @@ Fehler werden über Issues gemeldet und nach den Projektzielen priorisiert bzw. 
   Das Format für alle E-Rezept-Dateien ist XML im UTF8 ohne BOM-Zeichensatz. Dieser Zeichensatz ist von der gematik für alle E-Rezept-Daten vorgegeben.
 
 ## Verwendung
-Der Referenzvalidator wird auf zwei Arten bereitgestellt: Als Fat-Jar und als Artefakt auf Maven Central
+Der Referenzvalidator wird auf zwei Arten bereitgestellt: Als Fat-Jar (inklusive CLI) und als Artefakt (CORE) auf Maven Central
 
 ### Fat-Jar
 Das Fat-Jar enthält alle Abhängigkeiten und kann daher standalone ohne das Nachladen von Ressourcen
@@ -98,6 +98,7 @@ ArtefactIds:
 zugesicherte Korrektheit der Validierung ist nur gegeben, wenn zur Laufzeit auch exakt die angegebenen
 Versionen verwendet werden. Bitte stellen Sie sicher, dass Ihr Maven oder Gradle Build entsprechend
 konfiguriert ist.
+Bitte beachten Sie das die Sprach-Locale, für ein ordnungsgemäßes Validierungsergebnis, ENGLISH sein muss.
 
 Dafür können Sie die ebenfalls veröffentlichte BOM (Bill of Materials) verwenden, ArtefaktId ist
 `fhir-validator-bom`. Bitte lesen Sie in der Maven bzw. Gradle Dokumentation nach, wie man diese

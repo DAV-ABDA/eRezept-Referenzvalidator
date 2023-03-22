@@ -18,7 +18,7 @@ public class ValidatorCLI {
     static Logger logger = LoggerFactory.getLogger(ValidatorCLI.class);
 
     public static void main(String[] args) {
-        // TODO: ACHTUNG! core use with Locale.ENGLISH 4 same result
+        //ACHTUNG! core use with Locale.ENGLISH for same result
         Locale.setDefault(Locale.ENGLISH); // Auswertung Fehler auf Basis Fehlertexte erst ab HAPI v6.2 gelöst (MessageID).
 
         boolean noInstanceValidityCheck = false;

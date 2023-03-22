@@ -266,8 +266,13 @@ public class ReferenceValidator {
         String tmp_str;
 
         // TODO: ReleaseVersionsausgabe !?! oder Option Auswertung Instanz? -> log4J ?!?
-        logger.info("Validator Version 1.0.0");
+        logger.info("Validator Version 1.0.1"); // TODO: Versionsausgabe
         //ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.INFORMATION, "Validator Version 1.0.0");
+        logger.info("Sprach-Locale: " + Locale.getDefault().getDisplayLanguage());
+        if (Locale.getDefault().equals(Locale.ENGLISH) == false ) {
+            logger.error("Sprach-Locale ist nicht wie erwartet ENGLISH! Validierungsergebnis ist unter Umständen nicht korrekt!");
+        }
+
         if (noInstanceValidityCheck) {
             logger.warn("noInstanceValidityCheck: " + noInstanceValidityCheck);
             ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.WARNING, "noInstanceValidityCheck: " + noInstanceValidityCheck);

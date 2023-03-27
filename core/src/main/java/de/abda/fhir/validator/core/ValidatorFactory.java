@@ -78,7 +78,8 @@ public class ValidatorFactory {
 
             FhirValidator fhirValidator = ctx.newValidator();
             FhirInstanceValidator instanceValidator = new FhirInstanceValidator(validationSupportChain);
-            // instanceValidator.setNoTerminologyChecks(true); //TODO check if this needs to be configured
+            // instanceValidator.setNoTerminologyChecks(false); --> (default is false) // true = the valueSet will not be validate
+            // instanceValidator.setNoBindingMsgSuppressed(false); --> (default is false) // true = no binding message is suppressed
             instanceValidator.setErrorForUnknownProfiles(true);
             instanceValidator.setNoExtensibleWarnings(true);
             instanceValidator.setAnyExtensionsAllowed(false);

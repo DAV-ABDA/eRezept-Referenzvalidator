@@ -27,11 +27,11 @@ public class VersionPipeAwareSupportChain extends ValidationSupportChain {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public IBaseResource fetchCodeSystem(String resourceUIR) {
-		IBaseResource result = super.fetchCodeSystem(resourceUIR);
+	public IBaseResource fetchCodeSystem(String resourceURI) {
+		IBaseResource result = super.fetchCodeSystem(resourceURI);
 		
 		if ( null == result) {
-			Optional<String[]> fragmentOP = this.splitVersion(resourceUIR);
+			Optional<String[]> fragmentOP = this.splitVersion(resourceURI);
 			
 			if (fragmentOP.isPresent()) {
 				String[] fragments = fragmentOP.get();
@@ -61,14 +61,14 @@ public class VersionPipeAwareSupportChain extends ValidationSupportChain {
 		return null;
 	}
 
-	private Optional<String[]> splitVersion(String resourceUIR) {
-		final int lastIndexOf = resourceUIR.lastIndexOf(SPLITTER);
+	private Optional<String[]> splitVersion(String resourceURI) {
+		final int lastIndexOf = resourceURI.lastIndexOf(SPLITTER);
 	
 		if ( lastIndexOf > 0 ) {
 			return Optional.of(
 					new String[] {
-							resourceUIR.substring(0, lastIndexOf),
-							resourceUIR.substring(lastIndexOf + 1)
+							resourceURI.substring(0, lastIndexOf),
+							resourceURI.substring(lastIndexOf + 1)
 					}
 					);
 		}
@@ -79,11 +79,11 @@ public class VersionPipeAwareSupportChain extends ValidationSupportChain {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public IBaseResource fetchValueSet(String resourceUIR) {
-		IBaseResource result = super.fetchValueSet(resourceUIR);
+	public IBaseResource fetchValueSet(String resourceURI) {
+		IBaseResource result = super.fetchValueSet(resourceURI);
 		
 		if ( null == result) {
-			Optional<String[]> fragmentOP = this.splitVersion(resourceUIR);
+			Optional<String[]> fragmentOP = this.splitVersion(resourceURI);
 			
 			if (fragmentOP.isPresent()) {
 				String[] fragments = fragmentOP.get();
@@ -94,14 +94,12 @@ public class VersionPipeAwareSupportChain extends ValidationSupportChain {
 		return result;
 	}
 
-	
-	
 	@Override
-	public <T extends IBaseResource> T fetchResource(Class<T> theClass, String resourceUIR) {
-		T result = super.fetchResource(theClass, resourceUIR);
+	public <T extends IBaseResource> T fetchResource(Class<T> theClass, String resourceURI) {
+		T result = super.fetchResource(theClass, resourceURI);
 		
 		if ( null == result) {
-			Optional<String[]> fragmentOP = this.splitVersion(resourceUIR);
+			Optional<String[]> fragmentOP = this.splitVersion(resourceURI);
 			
 			if (fragmentOP.isPresent()) {
 				String[] fragments = fragmentOP.get();
@@ -116,11 +114,11 @@ public class VersionPipeAwareSupportChain extends ValidationSupportChain {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public IBaseResource fetchStructureDefinition(String resourceUIR) {
-		IBaseResource result = super.fetchStructureDefinition(resourceUIR);
+	public IBaseResource fetchStructureDefinition(String resourceURI) {
+		IBaseResource result = super.fetchStructureDefinition(resourceURI);
 		
 		if (null == result) {
-			Optional<String[]> fragmentOP = this.splitVersion(resourceUIR);
+			Optional<String[]> fragmentOP = this.splitVersion(resourceURI);
 			
 			if (fragmentOP.isPresent()) {
 				String[] fragments = fragmentOP.get();
@@ -130,7 +128,4 @@ public class VersionPipeAwareSupportChain extends ValidationSupportChain {
 		}
 		return result;
 	}
-
-	
-	
 }

@@ -481,6 +481,21 @@ supportedProfiles:
           packageName: "de.gematik.erezept-workflow.r4"
           packageVersion: "1.2.0"
 
+  # MedicationDispense Multi
+  "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_CloseOperationInputBundle":
+    profileName: "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_CloseOperationInputBundle"
+    versions:
+      1.2:
+        version: "1.2"
+        validityPeriod:
+          valid_from: "2023-07-01"
+          valid_to: "3000-01-01" # TODO: Endpunkt!
+          # fhir_path: "Bundle.entry.where(resource is MedicationDispense).resource.whenHandedOver"
+          fhir_path: "Bundle;entry;resource;MedicationDispense;whenHandedOver"
+        requiredPackage:
+          packageName: "de.gematik.erezept-workflow.r4"
+          packageVersion: "1.2.0"
+
   "https://gematik.de/fhir/StructureDefinition/ErxReceipt":
     profileName: "https://gematik.de/fhir/StructureDefinition/ErxReceipt"
     versions:

@@ -71,7 +71,7 @@ public class ValidatorCLI {
                     .map(key -> key + ": " + errors.get(key).size())
                     .collect(Collectors.joining(","));
 
-            boolean validatorInputIsValid = Validator.validate2Boolean(errors);
+            boolean validatorInputIsValid = validator.validate2Boolean(errors);
 
             logger.info("Validation result: " + validatorInputIsValid + " -- Result summary: " + mapAsString);
             //System.out.println("Validation result: " + validatorInputIsValid + " -- Result summary: " + mapAsString);

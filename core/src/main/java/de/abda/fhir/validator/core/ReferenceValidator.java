@@ -236,6 +236,14 @@ public class ReferenceValidator {
         return this.validateString2Boolean(validatorInputAsString, false, null);
     }
 
+    public boolean validate2Boolean(Map<ResultSeverityEnum, List<SingleValidationMessage>> validationResultMessages) {
+        return Validator.validate2Boolean(validationResultMessages);
+    }
+
+    public boolean validate2Boolean(List<SingleValidationMessage> validationResultMessages) {
+        return Validator.validate2Boolean(validationResultMessages);
+    }
+
     /**
      * The first validation in a new validator is very slow. So this method creates validators
      * for all supported profiles and loads all necessary data, so the calls to the validator

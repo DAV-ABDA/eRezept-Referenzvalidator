@@ -18,6 +18,7 @@ public class ReferenceValidatorPreloadTest {
     validator.preloadAllSupportedValidators(DAV_PR_ERP_ABGABEDATEN_BUNDLE);
     validator.preloadAllSupportedValidators(GKVSV_PR_TA7_SAMMELRECHNUNG);
     validator.preloadAllSupportedValidators(GEM_ERP_PR_MedicationDispense);
+    validator.preloadAllSupportedValidators(GEM_ERP_PR_CloseOperationInputBundle);
     validator.preloadAllSupportedValidators(GEM_ERP_PR_Bundle);
     validator.preloadAllSupportedValidators(GKVSV_PR_TA7_RECHNUNG);
     validator.preloadAllSupportedValidators(GEM_ERPCHRG, GEM_ERPCONSENT);

@@ -127,6 +127,9 @@ boolean errors = validator.validateString2Boolean(stringContent);
 Map<ResultSeverityEnum, List<SingleValidationMessage>> errors = validator.validateString(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst)
 List<SingleValidationMessage> errors = validator.validateString2ValidationMessageList(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst)
 boolean errors = validator.validateString2Boolean(String validatorInputAsString, boolean noInstanceValidityCheck, List<String> profileValidateAgainst)
+
+//convert MessagesResult to ValidationResult (boolean)
+boolean errorResult = validate2Boolean(validationResultMessages);
 ````
 # Contribution
 
@@ -204,6 +207,8 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
   * 1.0.3-1 (Instanzen ohne Versionsangaben werden gegen die Version 1.0.3-1 validiert)
   * 1.1.1
 * https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_MedicationDispense
+  * 1.2
+* https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_CloseOperationInputBundle (for multiple MedicationDispenses) 
   * 1.2
 * https://gematik.de/fhir/StructureDefinition/ErxReceipt
   * 1.0.3

@@ -39,6 +39,7 @@ configure(subprojects.findAll {it.name == "core" || it.name == "cli"}) {
     }
     dependencies{
         implementation("org.slf4j:slf4j-api:1.7.32")
+        implementation("org.apache.commons:commons-text:1.10.0") // überschreiben HAPI dependencies -> Sicherheitslücke CVE-2022-42889
         implementation("ca.uhn.hapi.fhir:hapi-fhir-validation:$hapiFhirVersion") {
             exclude group:"ca.uhn.hapi.fhir", module:"hapi-fhir-jpaserver-model"
         }

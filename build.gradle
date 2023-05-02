@@ -57,7 +57,7 @@ configure(subprojects.findAll {it.name == "core" || it.name == "cli"}) {
     test {
         useJUnitPlatform()
         maxHeapSize("2G")
-        systemProperty "user.language","de"
+        systemProperty "user.language","en"
     }
 }
 

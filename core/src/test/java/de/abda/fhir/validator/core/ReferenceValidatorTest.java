@@ -67,7 +67,7 @@ class ReferenceValidatorTest {
   private static Stream<Pair<Path, String>> validateInvalidFile() throws IOException {
     return Stream.of(
         of(INVALID_BASE_DIR.resolve("InvalidEprescriptionBundle1.xml"),
-            "Der Wert ist \"https://fhir.kbv.de/CodeSystem/Wrong\", muss aber \"https://fhir.kbv.de/CodeSystem/KBV_CS_ERP_Section_Type\" sein")
+            "Value is 'https://fhir.kbv.de/CodeSystem/Wrong' but must be 'https://fhir.kbv.de/CodeSystem/KBV_CS_ERP_Section_Type'")
     );
   }
 

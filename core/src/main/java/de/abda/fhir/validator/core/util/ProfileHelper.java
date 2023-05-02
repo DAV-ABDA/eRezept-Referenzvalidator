@@ -287,6 +287,7 @@ public class ProfileHelper {
             }
         } catch (XMLStreamException e) {
             logger.error("Could not determine profile.", e);
+            return null;
         }
         return null;
     }

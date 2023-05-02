@@ -79,6 +79,7 @@ public class ValidatorCLI {
             System.exit(validatorInputIsValid ? 0 : 1);
         } catch (Exception e){
             logger.error("Exception occured", e);
+            logger.info("Validation result: false");
             System.exit(0);
         }
     }

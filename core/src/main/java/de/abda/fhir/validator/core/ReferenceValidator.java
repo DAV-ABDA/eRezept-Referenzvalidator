@@ -277,7 +277,7 @@ public class ReferenceValidator {
         logger.info("Validator Version 1.0.1"); // TODO: Versionsausgabe
         //ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.INFORMATION, "Validator Version 1.0.0");
         logger.info("Sprach-Locale: " + Locale.getDefault().getDisplayLanguage());
-        if (Locale.getDefault().equals(Locale.ENGLISH) == false ) {
+        if (Locale.getDefault().getLanguage().equals(Locale.ENGLISH.getLanguage()) == false ) {
             logger.error("Sprach-Locale ist nicht wie erwartet ENGLISH! Validierungsergebnis ist unter Umständen nicht korrekt!");
         }
 

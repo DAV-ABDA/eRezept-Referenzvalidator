@@ -4,6 +4,8 @@ TODO:
   - KBV externe Codesysteme
     - weitere Anpassung zum im Juli 2023 geplant (Gültig ab 1.10.2023)
     
+TODO: new Version count -> ReferenceValidator Line 277
+
 # 1.0.2 - 2023-05-17?
 - Replace packages
   - kbv.ita.erp-1.1.0.tgz -> kbv.ita.erp-1.1.1.tgz

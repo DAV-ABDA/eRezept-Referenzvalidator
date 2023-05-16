@@ -245,12 +245,15 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
 * kbv.ita.for-1.1.0.tgz
 * kbv.ita.erp-1.0.1.tgz
 * kbv.ita.erp-1.0.2.tgz
-* kbv.ita.erp-1.1.0.tgz
+* ~~kbv.ita.erp-1.1.0.tgz~~ (entfernt v1.0.2)
+* kbv.ita.erp-1.1.1.tgz (KorrekturRelease für v1.1.0)
 * ~~de.gematik.erezept-workflow.r4-1.0.3.tgz~~ (entfernt v0.9.8)
 * de.gematik.erezept-workflow.r4-1.0.3-1.tgz
 * de.gematik.erezept-workflow.r4-1.1.1.tgz
-* de.gematik.erezept-workflow.r4-1.2.0.tgz
-* de.gematik.erezept-patientenrechnung.r4-1.0.0.tgz
+* ~~de.gematik.erezept-workflow.r4-1.2.0.tgz~~ (entfernt v1.0.2)
+* de.gematik.erezept-workflow.r4-1.2.1.tgz (KorrekturRelease für v1.2.0)
+* ~~de.gematik.erezept-patientenrechnung.r4-1.0.0.tgz~~  (entfernt v1.0.2)
+* de.gematik.erezept-patientenrechnung.r4-1.0.1.tgz (KorrekturRelease für v1.0.0)
 * de.abda.erezeptabgabedaten-1.0.3.tgz
 * de.abda.erezeptabgabedatenbasis-1.1.0.tgz (ACHTUNG! fix issue)
 * ~~de.abda.erezeptabgabedatenbasis-1.1.2.tgz~~ (entfernt v0.9.8)
@@ -283,11 +286,11 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
   - Add SFHIR_EAU_AU_ERROR_KASSE v1.00 ab 01.07.2023
 - Add Package dav.kbv.sfhir.cs.vs-1.0.6-json.tgz (KBV Schlüsseltabellen - externe CodeSytseme/ValueSets)
   - Edit DARREICHUNGSFORM v1.11 ab 01.04.2023
-  - 
+
 - delete examples in Packages
 - de.gematik.erezept-workflow.r4-1.0.3-1.tgz
   - Delete ProFile StructureDefinition-ChargeItem-erxChargeItem.json (keine Relevanz - future use)
-- de.gematik.erezept-workflow.r4-1.2.0.tgz
+- de.gematik.erezept-workflow.r4-1.2.1.tgz
   - defined by package dav.kbv.sfhir.cs.vs-1.0.5-json.tgz
     - Delete KBV_CS_SFHIR_KBV_DARREICHUNGSFORM_V1.10.json
     - Delete KBV_CS_SFHIR_KBV_NORMGROESSE_V1.00.json

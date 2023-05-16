@@ -274,7 +274,7 @@ public class ReferenceValidator {
         String tmp_str;
 
         // TODO: ReleaseVersionsausgabe !?! oder Option Auswertung Instanz? -> log4J ?!?
-        logger.info("Validator Version 1.0.1"); // TODO: Versionsausgabe
+        logger.info("Validator Version 1.0.2"); // TODO: Versionsausgabe
         //ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.INFORMATION, "Validator Version 1.0.0");
         logger.info("Sprach-Locale: " + Locale.getDefault().getDisplayLanguage());
         if (Locale.getDefault().getLanguage().equals(Locale.ENGLISH.getLanguage()) == false ) {

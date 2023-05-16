@@ -74,6 +74,7 @@ optionale Parameter (Reihenfolge egal):
    --profile https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle
    --profile https://gematik.de/fhir/StructureDefinition/ErxMedicationDispense
    --profile https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_MedicationDispense
+   --profile https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_CloseOperationInputBundle
    --profile https://gematik.de/fhir/StructureDefinition/ErxReceipt
    --profile https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_Bundle
    --profile http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle

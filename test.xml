@@ -183,6 +183,12 @@
                     <given value="Vorname"/>
                 </name>
                 <birthDate value="1980-10-31"/>
+                <!--birthDate value="1980"/-->
+                <!--birthDate>
+                    <extension url="http://hl7.org/fhir/StructureDefinition/data-absent-reason">
+                        <valueCode value="unknown"/>
+                    </extension>
+                </birthDate-->
                 <address>
                     <type value="both"/>
                     <line value="Strasse_und_Hausnummer 0815">

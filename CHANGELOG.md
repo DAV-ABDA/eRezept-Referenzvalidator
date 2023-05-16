@@ -1,5 +1,20 @@
 # eRezept-Referenzvalidator ChangeLog
 
+TODO:
+  - KBV externe Codesysteme
+    - weitere Anpassung zum im Juli 2023 geplant (Gültig ab 1.10.2023)
+    
+# 1.0.2 - 2023-05-17?
+- Replace packages
+  - kbv.ita.erp-1.1.0.tgz -> kbv.ita.erp-1.1.1.tgz
+  - de.gematik.erezept-workflow.r4-1.2.0.tgz -> de.gematik.erezept-workflow.r4-1.2.1.tgz
+  - de.gematik.erezept-patientenrechnung.r4-1.0.0.tgz -> de.gematik.erezept-patientenrechnung.r4-1.0.1.tgz
+- Bump commons-text version to 1.10.0 to counter CVE-2022-42889
+- Fix locale check
+- Return validation result for improper input 
+- Add functions for validationResult (boolean) of MessageLists (Map<ResultSeverityEnum, List<SingleValidationMessage>> or List<SingleValidationMessage)
+- Add profile (GEM_ERP_PR_CloseOperationInputBundle) for validation (multi MedicationDispenses)
+
 # 1.0.1 - 2023-03-22
 - Restore - Wrapper for lookup resources using pipe notation for the specified version
 - Add FunktionCalls -> OperationOutCome (ValidationMessageList, Boolean) 

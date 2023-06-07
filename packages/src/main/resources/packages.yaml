@@ -385,7 +385,7 @@ supportedProfiles:
       1.0.2:
         version: "1.0.2"
         validityPeriod:
-          valid_from: "2021-01-01"
+          valid_from: "2022-01-01"
           valid_to: "2023-12-31" # 30.06.2023 + Übergangszeit 6 Monate
           # fhir_path: "Bundle.entry.where(resource is MedicationRequest).resource.authoredOn"
           # fhir_path: "Bundle.entry.where(resource is SupplyRequest).resource.authoredOn"
@@ -429,7 +429,7 @@ supportedProfiles:
         version: "0.0.0"
         validityPeriod:
           valid_from: "2021-07-01"
-          valid_to: "2021-12-31"
+          valid_to: "2022-01-31" # 2021-12-31
         # fhir_path: "whenHandedOver"
           fhir_path: "MedicationDispense;whenHandedOver"
         requiredPackage:
@@ -439,7 +439,7 @@ supportedProfiles:
         version: "1.0.3"
         validityPeriod:
           valid_from: "2021-07-01"
-          valid_to: "2021-12-31"
+          valid_to: "2022-01-31" # 2021-12-31
         # fhir_path: "whenHandedOver"
           fhir_path: "MedicationDispense;whenHandedOver"
         requiredPackage:
@@ -449,7 +449,7 @@ supportedProfiles:
         version: "1.0.3-1"
         validityPeriod:
           valid_from: "2021-07-01"
-          valid_to: "2021-12-31"
+          valid_to: "2022-01-31" # 2021-12-31
         # fhir_path: "whenHandedOver"
           fhir_path: "MedicationDispense;whenHandedOver"
         requiredPackage:
@@ -597,7 +597,7 @@ supportedProfiles:
         version: "1.0.3"
         validityPeriod:
           valid_from: "2021-07-01"
-          valid_to: "2022-01-31"
+          valid_to: "2022-01-31" # "2021-12-31"
         # fhir_path: "Bundle.entry.where(resource is MedicationDispense).resource.whenHandedOver"
           fhir_path: "Bundle;entry;resource;MedicationDispense;whenHandedOver"
         requiredPackage:
@@ -607,7 +607,7 @@ supportedProfiles:
         version: "1.1.0"
         validityPeriod:
           valid_from: "2022-01-01"
-          valid_to: "2022-06-30"
+          valid_to: "2022-06-30" # kein Übergangszeitraum
         # fhir_path: "Bundle.entry.where(resource is MedicationDispense).resource.whenHandedOver"
           fhir_path: "Bundle;entry;resource;MedicationDispense;whenHandedOver"
         requiredPackage:

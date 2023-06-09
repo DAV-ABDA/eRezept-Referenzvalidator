@@ -252,7 +252,8 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
 * de.gematik.erezept-workflow.r4-1.0.3-1.tgz
 * de.gematik.erezept-workflow.r4-1.1.1.tgz
 * ~~de.gematik.erezept-workflow.r4-1.2.0.tgz~~ (entfernt v1.0.2)
-* de.gematik.erezept-workflow.r4-1.2.1.tgz (KorrekturRelease für v1.2.0)
+* ~~de.gematik.erezept-workflow.r4-1.2.1.tgz~~ (KorrekturRelease für v1.2.0) (entfernt v1.0.3)
+* de.gematik.erezept-workflow.r4-1.2.2.tgz (KorrekturRelease für v1.2.1)
 * ~~de.gematik.erezept-patientenrechnung.r4-1.0.0.tgz~~  (entfernt v1.0.2)
 * de.gematik.erezept-patientenrechnung.r4-1.0.1.tgz (KorrekturRelease für v1.0.0)
 * de.abda.erezeptabgabedaten-1.0.3.tgz
@@ -291,12 +292,6 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
 - delete examples in Packages
 - de.gematik.erezept-workflow.r4-1.0.3-1.tgz
   - Delete ProFile StructureDefinition-ChargeItem-erxChargeItem.json (keine Relevanz - future use)
-- de.gematik.erezept-workflow.r4-1.2.1.tgz
-  - defined by package dav.kbv.sfhir.cs.vs-1.0.5-json.tgz
-    - Delete KBV_CS_SFHIR_KBV_DARREICHUNGSFORM_V1.10.json
-    - Delete KBV_CS_SFHIR_KBV_NORMGROESSE_V1.00.json
-    - Delete KBV_VS_SFHIR_KBV_DARREICHUNGSFORM_V1.10.json
-    - Delete KBV_VS_SFHIR_KBV_NORMGROESSE_V1.00.json
 
 - kbv.ita.erp-1.0.1.tgz
   - Change Profile KBV_PR_ERP_Prescription.json (MedicationRequest.insurance = "type":[{"code":"Reference","targetProfile":["https://fhir.kbv.de/StructureDefinition/KBV_PR_FOR_Coverage|1.0.3"]}])

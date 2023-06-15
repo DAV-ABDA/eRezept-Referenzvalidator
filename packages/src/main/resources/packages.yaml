@@ -46,7 +46,7 @@ fhirPackages:
         filename: "kbv.ita.erp-1.1.1.tgz"
         dependencies:
           - packageName: "dav.kbv.sfhir.cs.vs"
-            packageVersion: "1.0.6"
+            packageVersion: "1.0.7"
           - packageName: "kbv.ita.for"
             packageVersion: "1.1.0"
       #    - packageName: "kbv.basis"
@@ -109,9 +109,12 @@ fhirPackages:
       1.0.5: #  ersetzt durch 1.0.6 ab 01.04.2023
         version: "1.0.5"
         filename: "dav.kbv.sfhir.cs.vs-1.0.5-json.tgz"
-      1.0.6: # abwärtskompatible?!?
+      1.0.6: #  ersetzt durch 1.0.7 ab 01.07.2023
         version: "1.0.6"
         filename: "dav.kbv.sfhir.cs.vs-1.0.6-json.tgz"
+      1.0.7: # abwärtskompatible?!?
+        version: "1.0.7"
+        filename: "dav.kbv.sfhir.cs.vs-1.0.7-json.tgz"
 
   # https://simplifier.net/erezept-workflow/~packages
   de.gematik.erezept-workflow.r4:
@@ -162,7 +165,7 @@ fhirPackages:
           - packageName: "kbv.ita.erp"
             packageVersion: "1.1.1"
       #    - packageName: "dav.kbv.sfhir.cs.vs"
-      #      packageVersion: "1.0.6"
+      #      packageVersion: "1.0.7"
       #    - packageName: "kbv.ita.for"
       #      packageVersion: "1.1.0"
       #    - packageName: "kbv.basis"
@@ -181,7 +184,7 @@ fhirPackages:
      #     - packageName: "kbv.ita.erp"
      #       packageVersion: "1.1.1"
      #     - packageName: "dav.kbv.sfhir.cs.vs"
-     #       packageVersion: "1.0.6"
+     #       packageVersion: "1.0.7"
      #     - packageName: "kbv.basis"
      #       packageVersion: "1.3.0"
      #     - packageName: "kbv.ita.for"

@@ -278,7 +278,7 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
 * de.gkvsv.erezeptabrechnungsdaten-1.2.0.tgz
 * de.gkvsv.erezeptabrechnungsdaten-1.3.0.tgz
 
-#### Anpassungen der Packages (TODO: ACHTUNG! Hinweis Instanzegültigkeiten mit PackageKontext (abwärtskompatible?!?))
+#### Anpassungen der Packages
 - Add Package dav.kbv.sfhir.cs.vs-1.0.2-json.tgz (KBV Schlüsseltabellen - externe CodeSytseme/ValueSets)
 - Add Package dav.kbv.sfhir.cs.vs-1.0.3-json.tgz (KBV Schlüsseltabellen - externe CodeSytseme/ValueSets)
   - Edit DARREICHUNGSFORM v1.09 ab 01.04.2022
@@ -288,7 +288,9 @@ eingecheckt und werden von der ABDA nicht veröffentlicht.
   - Add SFHIR_EAU_AU_ERROR_KASSE v1.00 ab 01.07.2023
 - Add Package dav.kbv.sfhir.cs.vs-1.0.6-json.tgz (KBV Schlüsseltabellen - externe CodeSytseme/ValueSets)
   - Edit DARREICHUNGSFORM v1.11 ab 01.04.2023
-
+- Add Package dav.kbv.sfhir.cs.vs-1.0.7-json.tgz (KBV Schlüsseltabellen - externe CodeSytseme/ValueSets)
+  - Edit DARREICHUNGSFORM v1.12 ab 01.07.2023
+  
 - delete examples in Packages
 - de.gematik.erezept-workflow.r4-1.0.3-1.tgz
   - Delete ProFile StructureDefinition-ChargeItem-erxChargeItem.json (keine Relevanz - future use)

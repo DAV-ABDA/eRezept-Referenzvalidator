@@ -9,7 +9,7 @@ TODO: KBV externe ValueSets und CodeSysteme -> Instanzegültigkeiten mit Package
 
 # 1.0.3? - 2023-06-XX
 - Update externe ValueSets & Codesysteme (KBV upgrade DARREICHUNGSFORM) -> new package dav.kbv.sfhir.cs.vs-1.0.7-json.tgz
-- FIX dependencies and  validityPeriod of external valuesets and codesystems (KBV)
+- FIX dependencies and validityPeriod of external valuesets and codesystems (KBV)
 - remove examples of profile-package
 - replace package de.gematik.erezept-workflow.r4-1.2.1.tgz -> de.gematik.erezept-workflow.r4-1.2.2.tgz
 

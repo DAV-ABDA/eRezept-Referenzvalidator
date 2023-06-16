@@ -274,7 +274,7 @@ public class ReferenceValidator {
         String tmp_str;
 
         // TODO: ReleaseVersionsausgabe !?! oder Option Auswertung Instanz? -> log4J ?!?
-        logger.info("Validator Version 1.0.2"); // TODO: Versionsausgabe
+        logger.info("Validator Version 1.0.3"); // TODO: Versionsausgabe
         //ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.INFORMATION, "Validator Version 1.0.0");
         logger.info("Sprach-Locale: " + Locale.getDefault().getDisplayLanguage());
         if (Locale.getDefault().getLanguage().equals(Locale.ENGLISH.getLanguage()) == false ) {
@@ -295,9 +295,13 @@ public class ReferenceValidator {
         } else { // if (!noInstanceValidityCheck) {
             instanceProfileValidityDate = ProfileHelper.getProfileValidityDateFromXmlStream(validatorInputStream, validatorHolder);
             if (instanceProfileValidityDate == null) {
-                ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.FATAL, "profile not found");
+                tmp_str = "profile not found";
+                logger.error(tmp_str);
+                ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.FATAL, tmp_str);
             } else if (instanceProfileValidityDate.getValidityPeriod() == null) {
-                ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.FATAL, "validityPeriod for profile not found");
+                tmp_str = "validityPeriod for profile not found";
+                logger.error(tmp_str);
+                ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.FATAL, tmp_str);
             } else {
                 if (instanceProfileValidityDate.getInstanceDate() == null) {
                     logger.debug("instanceDate null");
@@ -337,11 +341,15 @@ public class ReferenceValidator {
                 instanceValidityCheckResults.addAll(output);
                 return instanceValidityCheckResults;
             } else {
-                ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.ERROR, "Profile unbekannt!");
+                tmp_str = "unknown profile";
+                logger.error(tmp_str);
+                ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.ERROR, tmp_str);
                 return instanceValidityCheckResults;
             }
         } else {
-            ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.ERROR, "Profile nicht erkannt!");
+            tmp_str = "unknown profile";
+            logger.error(tmp_str);
+            ValidationMessageAdd(instanceValidityCheckResults, ResultSeverityEnum.ERROR, tmp_str);
             return instanceValidityCheckResults;
         }
     }

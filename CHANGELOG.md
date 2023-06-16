@@ -7,7 +7,7 @@ TODO: upcoming...
 TODO: new Release-Version output -> ReferenceValidator Line 277
 TODO: KBV externe ValueSets und CodeSysteme -> Instanzegültigkeiten mit PackageKontext (abwärtskompatible?)
 
-# 1.0.3? - 2023-06-XX
+# 1.0.3 - 2023-06-16
 - Update externe ValueSets & Codesysteme (KBV upgrade DARREICHUNGSFORM) -> new package dav.kbv.sfhir.cs.vs-1.0.7-json.tgz
 - FIX dependencies and validityPeriod of external valuesets and codesystems (KBV)
 - remove examples of profile-package
